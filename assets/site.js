@@ -314,10 +314,22 @@ window.REBLOOMA = Object.assign({
     openModal({ role: trigger.getAttribute('data-waitlist'), cta: trigger.getAttribute('data-cta') || '' });
   });
 
-  // Deep links: reblooma.com/#waitlist, #waitlist-practitioner, #waitlist-testing
+  // Deep links: reblooma.com/#waitlist, #waitlist-practitioner, #waitlist-testing.
+  // Also ?waitlist=1 (or =patient, =practitioner, =testing), because Instagram
+  // turns "#" into "%23" in a profile link. A link it already changed
+  // (...utm_campaign=profile%23waitlist) opens the pop-up too.
+  var WAITLIST_ROLES = /^(patient|practitioner|testing)$/;
   function openFromHash() {
     var m = location.hash.match(/^#waitlist(?:-(patient|practitioner|testing))?$/);
-    if (m) openModal({ role: m[1] || '', cta: 'deep-link' });
+    if (m) { openModal({ role: m[1] || '', cta: 'deep-link' }); return; }
+    var params = new URLSearchParams(location.search);
+    if (params.has('waitlist')) {
+      var role = params.get('waitlist');
+      openModal({ role: WAITLIST_ROLES.test(role) ? role : '', cta: 'deep-link' });
+      return;
+    }
+    var e = location.search.match(/%23waitlist(?:-(patient|practitioner|testing))?(?:&|$)/i);
+    if (e) openModal({ role: e[1] || '', cta: 'deep-link' });
   }
   window.addEventListener('hashchange', openFromHash);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', openFromHash); else openFromHash();
