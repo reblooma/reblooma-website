@@ -1,200 +1,185 @@
-<!DOCTYPE html>
-<html class="light" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>About Reblooma</title>
-<meta name="description" content="Why Reblooma exists: massage is care, and the paperwork should say so.">
-<link rel="canonical" href="https://reblooma.com/about.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Reblooma">
-<meta property="og:title" content="About Reblooma">
-<meta property="og:description" content="Why Reblooma exists: massage is care, and the paperwork should say so.">
-<meta property="og:url" content="https://reblooma.com/about.html">
-<meta name="theme-color" content="#e4deda">
-<link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script src="assets/tailwind.config.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
-<script src="assets/analytics.js"></script>
-<script src="assets/site.js" defer></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reblooma About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="assets/redesign.css">
+<style>
+nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bottom:4px}
+.h2{font-size:clamp(1.875rem,1.4rem + 1.6vw,2.5rem);margin-top:10px}
+/* Margins of the live pages (10/13/2026): content 1,080 px, header and footer 1,232 px, text 720 px */
+.wrap{max-width:1128px;padding-inline:24px}
+header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
+.col{max-width:720px;margin:0 auto}
+.band-dark{background:var(--ink);color:#fff}
+.band-dark .lead,.band-dark .sub{color:#c9cdd0}
+.band-dark .eyebrow{color:#9fd8d5}
+.band-dark a{color:#9fd8d5}
+/* Light version of the brand gradient, readable on the dark band */
+.glow{font-style:italic;background:linear-gradient(135deg,#5fd3cc,#a9a5f0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{display:inline-block;background:var(--lav);color:var(--purple);font-size:.8125rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:6px 14px}
+.notes-local{font-size:.875rem}
+
+.abh .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(40px,5vw,72px);align-items:center}
+.abh h1{font-size:clamp(2.125rem,1.5rem + 2.3vw,3.25rem);margin:16px 0}
+.abh h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.abh img,.story img{width:100%;height:auto;border-radius:20px;box-shadow:0 24px 50px -30px rgba(22,24,26,.45);display:block}
+.story{background:var(--paper)}
+.story .wrap{display:grid;grid-template-columns:300px 1fr;gap:clamp(40px,5vw,72px);align-items:center}
+.story .letter{max-width:640px}
+.story h2{font:500 italic clamp(1.5rem,1.25rem + 1vw,2rem)/1.3 var(--serif);margin:10px 0 22px}
+.story .letter p+p{margin-top:16px}
+.story .sig{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.story .sig b{display:block;font:500 italic 1.25rem var(--serif)}
+.story .sig span{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--hint);font-weight:600}
+.believe{background:var(--sand)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.three h3{font-size:1.25rem}
+.three p{color:var(--hint);font-size:var(--t-small);margin-top:10px}
+.owners{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.owners .card p.eyebrow{color:var(--hint)}
+.owners .card p+p{margin-top:8px;font-size:var(--t-small)}
+.owners .card.us{outline:2px solid var(--teal);background:var(--sel)}
+.owners .card.us p.eyebrow{color:var(--teal-ink)}
+.whodoes{background:var(--paper)}
+.where{background:var(--sand)}
+.tl{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:28px;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--stone)}
+.tl li{position:relative;padding-left:36px}
+.tl li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--stone)}
+.tl li.now::before{background:var(--teal);border-color:var(--teal)}
+.tl .when{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--hint)}
+.tl li.now .when{color:var(--teal-ink)}
+.tl h3{font-size:1.25rem;margin-top:4px}
+.tl p{color:var(--hint);font-size:var(--t-small);margin-top:4px}
+.cta-dark{text-align:center}
+.cta-dark h2{font-size:clamp(1.875rem,1.4rem + 1.6vw,2.5rem)}
+.cta-dark h2 em{font-style:normal;color:#9fd8d5}
+.cta-dark .ctas{justify-content:center;margin-top:24px;align-items:center}
+.cta-dark .mail{color:#fff;font-weight:600;user-select:all}
+@media (max-width:860px){
+  .abh .wrap,.story .wrap{grid-template-columns:1fr}
+  .story img{max-width:300px}
+  .three,.owners{grid-template-columns:1fr}
+}
+@media (min-width:861px) and (max-width:1100px){.owners{grid-template-columns:1fr 1fr}}
+</style>
 </head>
-<body class="font-body-md antialiased relative selection:bg-tertiary-container selection:text-surface">
-<div class="texture-overlay" aria-hidden="true"></div>
-<!-- BEGIN: Top Bar -->
-<button type="button" data-waitlist data-cta="top-bar" class="bg-primary flex justify-center items-center w-full py-2 px-4 text-center z-40 relative hover:opacity-90">
-<span class="text-surface font-label-caps text-label-caps uppercase tracking-widest"><span class="hidden sm:inline">In development &middot; </span>Join the waitlist for early access</span>
-</button>
-<!-- END: Top Bar -->
-<!-- BEGIN: Main Header -->
-<header class="bg-surface/80 backdrop-blur-md border-b border-primary/10 sticky top-0 w-full z-30">
-<div class="flex justify-between items-center max-w-7xl mx-auto px-container-padding h-16">
-<a class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight flex items-center" href="index.html"><img alt="" class="h-8 w-auto inline-block mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">Reblooma</a>
-<nav class="hidden lg:flex items-center gap-6" aria-label="Main">
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="index.html#how-it-works-section">How it works</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="practitioners.html">For Practitioners</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="directory.html">Find a practice</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="resources.html">Resources</a>
-<a class="text-primary font-bold font-label-caps text-label-caps uppercase pb-1 border-b-2 border-primary" href="about.html" aria-current="page">About</a>
-</nav>
-<div class="flex items-center gap-2">
-<button type="button" data-waitlist data-cta="header" class="btn-primary font-ui-button text-ui-button px-4 py-2 hover:opacity-80 transition-opacity">Join the waitlist</button>
-<button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu" class="lg:hidden w-10 h-10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">menu</span></button>
-</div>
-</div>
-<nav id="mobile-menu" hidden class="lg:hidden border-t border-primary/10 bg-surface px-container-padding pb-2" aria-label="Mobile">
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="index.html#how-it-works-section">How it works</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="practitioners.html">For Practitioners</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="directory.html">Find a practice</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="resources.html">Resources</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-primary font-bold" href="about.html">About</a>
-</nav>
+<body>
+
+<div class="dev">In development · Join the waitlist for early access</div>
+<header>
+  <div class="wrap">
+    <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
+    <nav aria-label="Main">
+      <a href="index.html#how">How it works</a>
+      <a href="practitioners.html">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html" class="on">About</a>
+    </nav>
+    <a class="btn btn-main btn-sm" href="index.html#who">Join the waitlist</a>
+  </div>
 </header>
-<!-- END: Main Header -->
-<main class="relative z-20">
 
-<!-- BEGIN: Hero -->
-<section class="max-w-7xl mx-auto px-container-padding pt-20 md:pt-24 pb-[52px] md:pb-section-gap">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-<div class="space-y-8">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary border border-primary/20 px-3 py-1 rounded-full surface-tier-1 inline-block">About Reblooma</span>
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary">Massage is care. <br>The paperwork should <span class="brand-gradient-text">say so.</span></h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Millions of people have money set aside for health care that could pay for the massage they already need. Almost none of it gets used that way, because no massage practice was set up to produce the documents. We started Reblooma to fix that part.</p>
-</div>
-<img src="assets/img/treatment-room.webp" width="1080" height="608" decoding="async" class="w-full rounded-[4px] border border-[#16181a]/[0.08] shadow-sm object-cover lg:mt-14" alt="A quiet treatment room: a linen-draped massage table, rolled towels and dried grasses against a warm plaster wall">
-</div>
-</section>
-<!-- END: Hero -->
+<main id="top">
 
-<!-- BEGIN: Founder letter -->
-<section class="bg-[#f3f0ed] border-y border-primary/5 py-[52px] md:py-section-gap">
-<div class="max-w-[1040px] mx-auto px-container-padding grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 md:gap-14 items-start">
-<img src="assets/img/joyce-family.jpg" width="700" height="933" decoding="async" class="w-full max-w-[300px] rounded-[4px] border border-[#16181a]/[0.08] shadow-sm object-cover md:mt-24" alt="Joyce with her family and their dog, outside in the snow">
-<div>
-<span class="font-label-caps uppercase block mb-4 text-[0.7rem] tracking-[0.16em] text-ink/42">Why we started</span>
-<h2 class="font-headline-md text-[28px] leading-[1.35] italic text-ink mb-8">I built Reblooma from my own search for relief.</h2>
-<div class="space-y-5 text-[1.05rem] leading-[1.75] text-ink/80">
-<p>After becoming a mother, I developed chronic pain while working long hours at a startup. Massage helped me get back on my feet. I wanted to keep it part of my recovery, without wondering whether I had the right records to support FSA or HSA spending.</p>
-<p>I&rsquo;ve spent my career in audit, compliance, and finance systems, so I know how much those details matter. An independent clinical evaluation, a practitioner-signed treatment note, and an itemized invoice each tell part of the story. Reblooma brings them together so patients can pursue eligible reimbursement with documentation in hand, while local practices spend less time gathering paperwork.</p>
-<p>I built Reblooma for people trying to feel better while managing everything else life asks of them, and for the local practitioners who care for them. My hope is simple: make it easier to seek the care that helps, with a little more clarity and peace of mind along the way.</p>
-</div>
-<div class="border-t border-primary/10 mt-10 pt-6">
-<div><p class="font-['Lora'] italic text-[1.2rem] text-ink">Joyce W.</p><p class="font-label-caps text-label-caps uppercase text-secondary">Founder, Reblooma</p></div>
-</div>
-</div>
-</div>
-</section>
-<!-- END: Founder letter -->
-
-<!-- BEGIN: Beliefs -->
-<section class="py-[52px] md:py-section-gap">
-<div class="max-w-7xl mx-auto px-container-padding">
-<div class="text-center max-w-2xl mx-auto mb-14">
-<h2 class="font-headline-md text-headline-md text-primary mb-4">What we believe</h2>
-<p class="text-on-surface-variant">Three ideas that shape every decision we make.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] p-8"><h3 class="font-headline-sm text-[22px] text-ink mb-3">The setting isn't the test.</h3><p class="text-ink/62">A day spa, a clinic, or someone who comes to your home. What qualifies care is the treatment and the documentation, not the room it happened in.</p></div>
-<div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] p-8"><h3 class="font-headline-sm text-[22px] text-ink mb-3">Practitioners shouldn't discount.</h3><p class="text-ink/62">Patients pay less because their tax rate does the work. The practitioner's rate stays where they set it.</p></div>
-<div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] p-8"><h3 class="font-headline-sm text-[22px] text-ink mb-3">Paperwork should prove something.</h3><p class="text-ink/62">A letter that nobody checks against the care proves nothing. The note and invoice show, session by session, that the treatment matched the letter.</p></div>
-</div>
-</div>
-</section>
-<!-- END: Beliefs -->
-
-<!-- BEGIN: Who does what -->
-<section class="bg-surface border-y border-primary/10 py-[52px] md:py-section-gap">
-<div class="max-w-5xl mx-auto px-container-padding">
-<span class="font-label-caps uppercase block mb-4 text-[0.7rem] tracking-[0.16em] text-ink/42">Who does what</span>
-<h2 class="font-headline-md text-headline-md text-ink mb-4">We're clear about what we do, and what we don't.</h2>
-<p class="text-ink/62 mb-12 max-w-2xl">Healthcare paperwork only earns trust when every step has an accountable owner. Here is who owns each one.</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-<div class="bg-[#f3f0ed] border-2 border-ink rounded-[4px] p-6"><p class="font-label-caps text-label-caps uppercase tracking-widest brand-gradient-text mb-3">Reblooma</p><p class="text-ink/80 text-[0.95rem] leading-relaxed">Builds the software. Assembles your notes, invoices and letter into one file. Runs the practice tools.</p></div>
-<div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] p-6"><p class="font-label-caps text-label-caps uppercase tracking-widest text-ink/42 mb-3">Dr. B</p><p class="text-ink/80 text-[0.95rem] leading-relaxed">An independent telehealth practice. Its clinicians review each request and decide whether to issue a letter.</p></div>
-<div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] p-6"><p class="font-label-caps text-label-caps uppercase tracking-widest text-ink/42 mb-3">Your practitioner</p><p class="text-ink/80 text-[0.95rem] leading-relaxed">Does the treatment, then records what they worked on and signs the clinical note.</p></div>
-<div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] p-6"><p class="font-label-caps text-label-caps uppercase tracking-widest text-ink/42 mb-3">Your plan administrator</p><p class="text-ink/80 text-[0.95rem] leading-relaxed">Reviews the claim and decides reimbursement. If they ask for more, we help you answer it.</p></div>
-</div>
-</div>
-</section>
-<!-- END: Who does what -->
-
-<!-- BEGIN: Where we are -->
-<section class="py-[52px] md:py-section-gap">
-<div class="max-w-[720px] mx-auto px-container-padding">
-<span class="font-label-caps uppercase block mb-4 text-[0.7rem] tracking-[0.16em] text-ink/42">Where we are</span>
-<h2 class="font-headline-md text-headline-md text-ink mb-10">Building it in the open.</h2>
-<ol class="relative border-l border-ink/15 ml-2 [&>li]:-ml-2">
-<li class="relative pl-10 pb-10 last:pb-0"><span class="absolute left-0 top-1 w-4 h-4 rounded-full savings-bar-gradient"></span><p class="font-label-caps text-label-caps uppercase tracking-widest text-ink/42 mb-1">Now</p><h3 class="font-headline-sm text-[20px] text-ink mb-1">In development</h3><p class="text-ink/62">Building the documentation flow and the practice tools.</p></li>
-<li class="relative pl-10 pb-10 last:pb-0"><span class="absolute left-0 top-1 w-4 h-4 rounded-full bg-ink/30"></span><p class="font-label-caps text-label-caps uppercase tracking-widest text-ink/42 mb-1">Next · Q4 2026</p><h3 class="font-headline-sm text-[20px] text-ink mb-1">Pilot practices</h3><p class="text-ink/62">A small group of practices run Reblooma with real patients before launch.</p></li>
-
-<li class="relative pl-10 pb-10 last:pb-0"><span class="absolute left-0 top-1 w-4 h-4 rounded-full bg-transparent border border-ink/30"></span><p class="font-label-caps text-label-caps uppercase tracking-widest text-ink/42 mb-1">2027</p><h3 class="font-headline-sm text-[20px] text-ink mb-1">Open to everyone</h3><p class="text-ink/62">Patients and practitioners from the waitlist come on first.</p></li>
-</ol>
-</div>
-</section>
-<!-- END: Where we are -->
-
-<!-- HIDDEN: Team section ("The people behind it"). Kept for later.
-     To bring it back: delete this comment opener and the closer below,
-     then fill in the headshots, names, roles and the advisors line.
-
-<section class="bg-[#f3f0ed] border-y border-primary/5 py-[52px] md:py-section-gap">
-<div class="max-w-5xl mx-auto px-container-padding">
-<div class="text-center max-w-2xl mx-auto mb-14">
-<h2 class="font-headline-md text-headline-md text-primary mb-4">The people behind it</h2>
-<p class="text-on-surface-variant"><span class="fill-me">Optional: advisors with credibility on this, e.g. a licensed massage therapist, a benefits or tax professional, a clinician</span></p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-<div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] p-6"><div class="placeholder rounded-[4px] flex items-center justify-center text-center text-[0.8rem] font-label-caps uppercase tracking-widest p-4 aspect-square mb-5">Headshot</div><p class="font-headline-sm text-[20px] text-ink mb-1"><span class="fill-me">Name</span></p><p class="font-label-caps text-label-caps uppercase text-secondary mb-3"><span class="fill-me">Role</span></p><p class="text-ink/62 text-[0.9rem]"><span class="fill-me">One line on why this matters to them, e.g. years as an LMT, a benefits background</span></p></div><div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] p-6"><div class="placeholder rounded-[4px] flex items-center justify-center text-center text-[0.8rem] font-label-caps uppercase tracking-widest p-4 aspect-square mb-5">Headshot</div><p class="font-headline-sm text-[20px] text-ink mb-1"><span class="fill-me">Name</span></p><p class="font-label-caps text-label-caps uppercase text-secondary mb-3"><span class="fill-me">Role</span></p><p class="text-ink/62 text-[0.9rem]"><span class="fill-me">One line on why this matters to them, e.g. years as an LMT, a benefits background</span></p></div><div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] p-6"><div class="placeholder rounded-[4px] flex items-center justify-center text-center text-[0.8rem] font-label-caps uppercase tracking-widest p-4 aspect-square mb-5">Headshot</div><p class="font-headline-sm text-[20px] text-ink mb-1"><span class="fill-me">Name</span></p><p class="font-label-caps text-label-caps uppercase text-secondary mb-3"><span class="fill-me">Role</span></p><p class="text-ink/62 text-[0.9rem]"><span class="fill-me">One line on why this matters to them, e.g. years as an LMT, a benefits background</span></p></div>
-</div>
-</div>
+<section class="hero abh">
+  <div class="wrap">
+    <div>
+      <span class="pill">About Reblooma</span>
+      <h1>Massage is care.<br>The paperwork should <em>say so.</em></h1>
+      <p class="lead">Millions of people have money set aside for health care that could pay for the massage they already need. Almost none of it gets used that way, because no massage practice was set up to produce the documents. We started Reblooma to fix that part.</p>
+    </div>
+    <img src="assets/img/treatment-room.webp" width="1080" height="608" alt="A quiet treatment room: a linen-draped massage table, rolled towels and dried grasses against a warm plaster wall">
+  </div>
 </section>
 
-     END HIDDEN: Team section -->
-
-<!-- BEGIN: CTA -->
-<section class="bg-primary text-surface py-24">
-<div class="max-w-3xl mx-auto px-container-padding text-center">
-<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-6">Build it <span class="brand-gradient-text">with us.</span></h2>
-<p class="text-surface/70 text-lg mb-10">Whether you get massage or give it, the waitlist is where it starts.</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button type="button" data-waitlist data-cta="about-cta" class="bg-white text-primary font-ui-button text-ui-button px-8 py-4 rounded-[4px] hover:opacity-90">Join the waitlist</button>
-<a href="mailto:hello@reblooma.com" class="border border-white/40 text-white font-ui-button text-ui-button px-8 py-4 rounded-[4px] hover:bg-white/10">hello@reblooma.com</a>
-</div>
-</div>
+<section class="story">
+  <div class="wrap">
+    <img src="assets/img/joyce-family.jpg" width="700" height="933" alt="Joyce with her family and their dog, outside in the snow">
+    <div class="letter">
+      <p class="eyebrow">Why we started</p>
+      <h2>I built Reblooma from my own search for relief.</h2>
+      <p>After becoming a mother, I developed chronic pain while working long hours. Massage helped me get back on my feet. I wanted to keep it part of my recovery, without wondering whether I had the right records to support FSA or HSA spending.</p>
+      <p>I&rsquo;ve spent my career in audit, compliance, and finance systems, so I know how much those details matter. An independent clinical evaluation, a practitioner-signed treatment note, and an itemized invoice each tell part of the story. Reblooma brings them together so patients can pursue eligible reimbursement with documentation in hand, while local practices spend less time gathering paperwork.</p>
+      <p>I built Reblooma for people trying to feel better while managing everything else life asks of them, and for the local practitioners who care for them. My hope is simple: make it easier to seek the care that helps, with a little more clarity and peace of mind along the way.</p>
+      <div class="sig"><b>Joyce W.</b><span>Founder, Reblooma</span></div>
+    </div>
+  </div>
 </section>
-<!-- END: CTA -->
+
+<section class="believe">
+  <div class="wrap center">
+    <h2 class="h2">What we believe</h2>
+    <p class="sub" style="margin-top:10px">Three ideas that shape every decision we make.</p>
+  </div>
+  <div class="wrap">
+    <div class="three">
+      <div class="card"><h3>The setting isn't the test.</h3><p>A day spa, a clinic, or someone who comes to your home. What qualifies care is the treatment and the documentation, not the room it happened in.</p></div>
+      <div class="card"><h3>Practitioners shouldn't discount.</h3><p>Patients pay less because their tax rate does the work. The practitioner's rate stays where they set it.</p></div>
+      <div class="card"><h3>Paperwork should prove something.</h3><p>A letter that nobody checks against the care proves nothing. The note and invoice show, session by session, that the treatment matched the letter.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="whodoes">
+  <div class="wrap">
+    <p class="eyebrow">Who does what</p>
+    <h2 class="h2">We're clear about what we do, and what we don't.</h2>
+    <p class="lead" style="margin-top:14px">Healthcare paperwork only earns trust when every step has an accountable owner. Here is who owns each one.</p>
+    <div class="owners">
+      <div class="card us"><p class="eyebrow">Reblooma</p><p>Builds the software. Assembles your notes, invoices and letter into one file. Runs the practice tools.</p></div>
+      <div class="card"><p class="eyebrow">Dr. B</p><p>An independent telehealth practice. Its clinicians review each request and decide whether to issue a letter.</p></div>
+      <div class="card"><p class="eyebrow">Your practitioner</p><p>Does the treatment, then records what they worked on and signs the clinical note.</p></div>
+      <div class="card"><p class="eyebrow">Your plan administrator</p><p>Reviews the claim and decides reimbursement. If they ask for more, we help you answer it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="where">
+  <div class="wrap"><div class="col">
+    <p class="eyebrow">Where we are</p>
+    <h2 class="h2">Building it in the open.</h2>
+    <ol class="tl">
+      <li class="now"><span class="when">Now</span><h3>In development</h3><p>Building the documentation flow and the practice tools.</p></li>
+      <li><span class="when">Next · Q4 2026</span><h3>Pilot practices</h3><p>A small group of practices run Reblooma with real patients before launch.</p></li>
+      <li><span class="when">2027</span><h3>Open to everyone</h3><p>Patients and practitioners from the waitlist come on first.</p></li>
+    </ol>
+  </div></div>
+</section>
+
+<section class="band-dark cta-dark">
+  <div class="wrap">
+    <h2>Build it <em>with us.</em></h2>
+    <p class="sub" style="margin-top:10px">Whether you get massage or give it, the waitlist is where it starts.</p>
+    <div class="ctas"><a class="btn btn-main" href="index.html#who">Join the waitlist</a><span class="mail">hello@reblooma.com</span></div>
+  </div>
+</section>
+
 </main>
-<!-- BEGIN: Footer -->
-<footer class="bg-surface-container border-t border-outline-variant/30 relative z-20">
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto px-container-padding py-20 items-start">
-<div>
-<a class="font-headline-sm text-headline-sm font-bold text-primary block mb-6" href="index.html">Reblooma</a>
-<div class="font-label-caps text-label-caps text-on-surface-variant/70">&copy; 2026 Reblooma. All rights reserved.</div>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Legal</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="privacy.html">Privacy Notice</a>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Explore</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#how-it-works-section">How it works</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="practitioners.html">For practitioners</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="directory.html">Find a practice</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="resources.html">Resources</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="about.html">About</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#faq">Help</a>
-<button type="button" data-waitlist data-cta="footer" class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left">Join the waitlist</button>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="mailto:hello@reblooma.com">hello@reblooma.com</a>
-</div>
-</div>
-<div class="border-t border-primary/5 max-w-7xl mx-auto px-container-padding py-8">
-<p class="font-label-caps text-[0.68rem] leading-[1.55] max-w-[100ch] text-left text-on-surface-variant/60">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC &sect;213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
-</div>
+<footer id="about">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
+      <div><h5>Explore</h5><ul><li><a href="index.html#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="index.html#who">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li>hello@reblooma.com</li></ul></div>
+      <div><h5>Legal</h5><ul><li><a href="https://reblooma.com/privacy.html">Privacy Notice</a></li></ul></div>
+    </div>
+    <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
+  </div>
 </footer>
-<!-- END: Footer -->
 
+<div class="mock">Mockup · 10/13/2026 · not live</div>
+
+<script>
+// Footnote links open the closed "Notes and sources" first.
+document.querySelectorAll('sup a').forEach(a=>a.addEventListener('click',()=>{const n=document.querySelector('.notes');if(n)n.open=true}));
+
+</script>
 </body>
 </html>
