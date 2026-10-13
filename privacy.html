@@ -1,9 +1,83 @@
-<!DOCTYPE html>
-<html class="light" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy Notice &mdash; Reblooma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="assets/redesign.css">
+<style>
+nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bottom:4px}
+.h2{font-size:clamp(1.875rem,1.4rem + 1.6vw,2.5rem);margin-top:10px}
+/* Margins of the live pages (10/13/2026): content 1,080 px, header and footer 1,232 px, text 720 px */
+.wrap{max-width:1128px;padding-inline:24px}
+header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
+.col{max-width:720px;margin:0 auto}
+.band-dark{background:var(--ink);color:#fff}
+.band-dark .lead,.band-dark .sub{color:#c9cdd0}
+.band-dark .eyebrow{color:#9fd8d5}
+.band-dark a{color:#9fd8d5}
+/* Light version of the brand gradient, readable on the dark band */
+.glow{font-style:italic;background:linear-gradient(135deg,#5fd3cc,#a9a5f0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{display:inline-block;background:var(--lav);color:var(--purple);font-size:.8125rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:6px 14px}
+.notes-local{font-size:.875rem}
+
+.abh .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(40px,5vw,72px);align-items:center}
+.abh h1{font-size:clamp(2.125rem,1.5rem + 2.3vw,3.25rem);margin:16px 0}
+.abh h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.abh img,.story img{width:100%;height:auto;border-radius:20px;box-shadow:0 24px 50px -30px rgba(22,24,26,.45);display:block}
+.story{background:var(--paper)}
+.story .wrap{display:grid;grid-template-columns:300px 1fr;gap:clamp(40px,5vw,72px);align-items:center}
+.story .letter{max-width:640px}
+.story h2{font:500 italic clamp(1.5rem,1.25rem + 1vw,2rem)/1.3 var(--serif);margin:10px 0 22px}
+.story .letter p+p{margin-top:16px}
+.story .sig{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.story .sig b{display:block;font:500 italic 1.25rem var(--serif)}
+.story .sig span{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--hint);font-weight:600}
+.believe{background:var(--sand)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.three h3{font-size:1.25rem}
+.three p{color:var(--hint);font-size:var(--t-small);margin-top:10px}
+.owners{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.owners .card p.eyebrow{color:var(--hint)}
+.owners .card p+p{margin-top:8px;font-size:var(--t-small)}
+.owners .card.us{outline:2px solid var(--teal);background:var(--sel)}
+.owners .card.us p.eyebrow{color:var(--teal-ink)}
+.whodoes{background:var(--paper)}
+.where{background:var(--sand)}
+.tl{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:28px;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--stone)}
+.tl li{position:relative;padding-left:36px}
+.tl li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--stone)}
+.tl li.now::before{background:var(--teal);border-color:var(--teal)}
+.tl .when{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--hint)}
+.tl li.now .when{color:var(--teal-ink)}
+.tl h3{font-size:1.25rem;margin-top:4px}
+.tl p{color:var(--hint);font-size:var(--t-small);margin-top:4px}
+.cta-dark{text-align:center}
+.cta-dark h2{font-size:clamp(1.875rem,1.4rem + 1.6vw,2.5rem)}
+.cta-dark h2 em{font-style:normal;color:#9fd8d5}
+.cta-dark .ctas{justify-content:center;margin-top:24px;align-items:center}
+.cta-dark .mail{color:#fff;font-weight:600;user-select:all}
+@media (max-width:860px){
+  .abh .wrap,.story .wrap{grid-template-columns:1fr}
+  .story img{max-width:300px}
+  .three,.owners{grid-template-columns:1fr}
+}
+@media (min-width:861px) and (max-width:1100px){.owners{grid-template-columns:1fr 1fr}}
+</style>
+<style>
+.legal{padding-block:clamp(32px,5vw,64px) clamp(48px,6vw,88px)}
+.legal h1{font-size:clamp(2.125rem,1.5rem + 2.3vw,3.25rem);margin:14px 0 20px}
+.legal h2{font-size:clamp(1.375rem,1.2rem + .6vw,1.625rem);margin:48px 0 12px}
+.legal p{color:var(--hint);margin-bottom:16px}
+.legal p b,.legal li b{color:var(--ink)}
+.legal ul{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:10px;color:var(--hint)}
+.legal li{position:relative;padding-left:30px}
+.legal li::before{content:"";position:absolute;left:4px;top:.45em;width:12px;height:7px;border-left:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(-45deg)}
+.legal .fine{font-size:var(--t-small);border-top:1px solid var(--line);padding-top:24px;margin-top:40px}
+</style>
 <meta name="description" content="How Reblooma collects, uses and protects the information you give us on this website and when you join the waitlist.">
 <link rel="canonical" href="https://reblooma.com/privacy.html">
 <meta property="og:type" content="website">
@@ -13,113 +87,94 @@
 <meta property="og:url" content="https://reblooma.com/privacy.html">
 <meta name="theme-color" content="#e4deda">
 <link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script src="assets/tailwind.config.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/wire.css">
 <script src="assets/analytics.js"></script>
 <script src="assets/site.js" defer></script>
 </head>
-<body class="font-body-md antialiased relative selection:bg-tertiary-container selection:text-surface">
-<div class="texture-overlay" aria-hidden="true"></div>
-<!-- BEGIN: Top Bar -->
-<button type="button" data-waitlist data-cta="top-bar" class="bg-primary flex justify-center items-center w-full py-2 px-4 text-center z-40 relative hover:opacity-90">
-<span class="text-surface font-label-caps text-label-caps uppercase tracking-widest"><span class="hidden sm:inline">In development &middot; </span>Join the waitlist for early access</span>
-</button>
-<!-- END: Top Bar -->
-<!-- BEGIN: Main Header -->
-<header class="bg-surface/80 backdrop-blur-md border-b border-primary/10 sticky top-0 w-full z-30">
-<div class="flex justify-between items-center max-w-7xl mx-auto px-container-padding h-16">
-<a class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight flex items-center" href="index.html"><img alt="" class="h-8 w-auto inline-block mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">Reblooma</a>
-<nav class="hidden lg:flex items-center gap-6" aria-label="Main">
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="index.html#how-it-works-section">How it works</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="practitioners.html">For Practitioners</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="directory.html">Find a practice</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="resources.html">Resources</a>
-<a class="text-primary font-bold font-label-caps text-label-caps uppercase pb-1 border-b-2 border-primary" href="about.html" aria-current="page">About</a>
-</nav>
-<div class="flex items-center gap-2">
-<button type="button" data-waitlist data-cta="header" class="btn-primary font-ui-button text-ui-button px-4 py-2 hover:opacity-80 transition-opacity">Join the waitlist</button>
-<button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu" class="lg:hidden w-10 h-10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">menu</span></button>
-</div>
-</div>
-<nav id="mobile-menu" hidden class="lg:hidden border-t border-primary/10 bg-surface px-container-padding pb-2" aria-label="Mobile">
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="index.html#how-it-works-section">How it works</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="practitioners.html">For Practitioners</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="directory.html">Find a practice</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="resources.html">Resources</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="about.html">About</a>
-</nav>
+<body>
+
+<button type="button" class="dev" data-waitlist data-cta="top-bar">In development · Join the waitlist for early access</button>
+<header>
+  <div class="wrap">
+    <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
+    <nav aria-label="Main">
+      <a href="index.html#how">How it works</a>
+      <a href="practitioners.html">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button class="menubtn" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a class="btn btn-main btn-sm" href="index.html#who" data-waitlist data-cta="header">Join the waitlist</a>
+  </div>
+  <nav id="mobile-menu" class="mmenu" hidden aria-label="Mobile">
+      <a href="index.html#how">How it works</a>
+      <a href="practitioners.html">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
 </header>
-<!-- END: Main Header -->
-<main class="relative z-20">
-<section class="max-w-[720px] mx-auto px-container-padding pt-20 md:pt-24 pb-[52px] md:pb-section-gap">
-<span class="font-label-caps uppercase block mb-4 text-[0.7rem] tracking-[0.16em] text-ink/42">Last updated 3 October 2026</span>
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Privacy Notice</h1>
-<p class="text-ink/80 mb-4">This notice covers reblooma.com and the Reblooma waitlist. Reblooma is in development; when the service opens and we begin handling clinical records, a separate notice will cover that, with stricter rules than these.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">What we collect</h2>
-<p class="text-ink/80 mb-4">When you join the waitlist or start a consultation, you give us:</p>
-<ul class="space-y-2 mb-4"><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>Your name, email address and mobile number</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>Your ZIP code</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>Whether you are a patient or a practitioner, and if a practitioner, your practice name</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>Whether you asked to be a pilot practice, and whether you agreed to receive text messages</span></li></ul>
-<p class="text-ink/80 mb-4">We also record which page and which button you came from, and any campaign or referral code in the link you followed, so we know which of our efforts reached you.</p>
-<p class="text-ink/80 mb-4"><b class="text-ink">We do not ask for health information on this website.</b> Please don&rsquo;t send us symptoms, diagnoses or medical history through this site or by email.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">How we use it</h2>
-<ul class="space-y-2 mb-4"><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>To tell you when Reblooma opens, and in which areas</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>To answer you when you contact us</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>To arrange calls with practices who ask to be pilot practices</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>To understand which pages and campaigns bring people to us</span></li></ul>
-<p class="text-ink/80 mb-4">We do not sell your information, and we do not share it with anyone so they can market their own products.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">Who processes it for us</h2>
-<p class="text-ink/80 mb-4">We use a small number of services, each bound to use the data only to provide their service to us:</p>
-<ul class="space-y-2 mb-4"><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span><b class="text-ink">GoHighLevel</b> stores waitlist contacts and sends our emails and texts</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span><b class="text-ink">Google Analytics</b> and <b class="text-ink">Microsoft Clarity</b> show us how the site is used; Clarity records page interactions with typed text masked</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span><b class="text-ink">Meta</b> tells us whether an advert led to a sign-up</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span><b class="text-ink">GitHub Pages</b> hosts this website</span></li></ul>
-<p class="text-ink/80 mb-4">If you choose to start a consultation, you leave our site for Dr. B, an independent telehealth practice with its own privacy practices. What you tell their clinicians is between you and them; we do not receive it.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">Cookies and tracking</h2>
-<p class="text-ink/80 mb-4">Analytics and advertising services set cookies or similar identifiers to recognise return visits and to measure adverts. You can block them in your browser settings or with an ad blocker, and the site will still work. We do not use cookies to build profiles about your health.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">Email and text messages</h2>
-<p class="text-ink/80 mb-4">Joining the waitlist means we may email you about Reblooma. Every email has an unsubscribe link. We text you only if you ticked the box asking us to; reply STOP to any message and we stop. Message and data rates may apply.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">How long we keep it</h2>
-<p class="text-ink/80 mb-4">We keep waitlist information until you ask us to delete it, or until two years after our last contact with you, whichever comes first.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">Your choices</h2>
-<p class="text-ink/80 mb-4">Wherever you live, you can ask us to:</p>
-<ul class="space-y-2 mb-4"><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>Tell you what we hold about you</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>Correct anything that is wrong</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>Delete your information</span></li><li class="flex items-start gap-3 text-ink/80"><span class="material-symbols-outlined text-primary text-[16px] mt-1">check</span><span>Stop emailing or texting you</span></li></ul>
-<p class="text-ink/80 mb-4">Write to <a class="underline" href="mailto:hello@reblooma.com">hello@reblooma.com</a> and we will act within 30 days. We will not treat you differently for asking. California residents have these rights under the CCPA; we do not sell or share personal information as those terms are defined there.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">Children</h2>
-<p class="text-ink/80 mb-4">Reblooma is not for under-18s, and we do not knowingly collect their information. If you believe a child has given us details, write to us and we will delete them.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">Security</h2>
-<p class="text-ink/80 mb-4">We use reputable providers, encrypted connections and limited access. No system is perfectly secure, so please don&rsquo;t send us anything sensitive by email.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">Changes</h2>
-<p class="text-ink/80 mb-4">If this notice changes we will update the date at the top. Material changes are emailed to everyone on the waitlist.</p>
-<h2 class="font-headline-sm text-[22px] text-ink mt-12 mb-3">Contact</h2>
-<p class="text-ink/80 mb-4">Reblooma &middot; <a class="underline" href="mailto:hello@reblooma.com">hello@reblooma.com</a></p>
-<p class="text-[0.8rem] text-ink/42 mt-10 border-t border-[#16181a]/10 pt-6">This notice describes our practices for this website and waitlist only. It is not a Notice of Privacy Practices under HIPAA, and it does not cover the Reblooma service, which is not yet open.</p>
+
+<main id="top">
+<section class="legal">
+  <div class="wrap"><div class="col">
+<p class="eyebrow">Last updated 3 October 2026</p>
+<h1>Privacy Notice</h1>
+<p>This notice covers reblooma.com and the Reblooma waitlist. Reblooma is in development; when the service opens and we begin handling clinical records, a separate notice will cover that, with stricter rules than these.</p>
+<h2>What we collect</h2>
+<p>When you join the waitlist or start a consultation, you give us:</p>
+<ul><li>Your name, email address and mobile number</li><li>Your ZIP code</li><li>Whether you are a patient or a practitioner, and if a practitioner, your practice name</li><li>Whether you asked to be a pilot practice, and whether you agreed to receive text messages</li></ul>
+<p>We also record which page and which button you came from, and any campaign or referral code in the link you followed, so we know which of our efforts reached you.</p>
+<p><b>We do not ask for health information on this website.</b> Please don&rsquo;t send us symptoms, diagnoses or medical history through this site or by email.</p>
+<h2>How we use it</h2>
+<ul><li>To tell you when Reblooma opens, and in which areas</li><li>To answer you when you contact us</li><li>To arrange calls with practices who ask to be pilot practices</li><li>To understand which pages and campaigns bring people to us</li></ul>
+<p>We do not sell your information, and we do not share it with anyone so they can market their own products.</p>
+<h2>Who processes it for us</h2>
+<p>We use a small number of services, each bound to use the data only to provide their service to us:</p>
+<ul><li><b>GoHighLevel</b> stores waitlist contacts and sends our emails and texts</li><li><b>Google Analytics</b> and <b>Microsoft Clarity</b> show us how the site is used; Clarity records page interactions with typed text masked</li><li><b>Meta</b> tells us whether an advert led to a sign-up</li><li><b>GitHub Pages</b> hosts this website</li></ul>
+<p>If you choose to start a consultation, you leave our site for Dr. B, an independent telehealth practice with its own privacy practices. What you tell their clinicians is between you and them; we do not receive it.</p>
+<h2>Cookies and tracking</h2>
+<p>Analytics and advertising services set cookies or similar identifiers to recognise return visits and to measure adverts. You can block them in your browser settings or with an ad blocker, and the site will still work. We do not use cookies to build profiles about your health.</p>
+<h2>Email and text messages</h2>
+<p>Joining the waitlist means we may email you about Reblooma. Every email has an unsubscribe link. We text you only if you ticked the box asking us to; reply STOP to any message and we stop. Message and data rates may apply.</p>
+<h2>How long we keep it</h2>
+<p>We keep waitlist information until you ask us to delete it, or until two years after our last contact with you, whichever comes first.</p>
+<h2>Your choices</h2>
+<p>Wherever you live, you can ask us to:</p>
+<ul><li>Tell you what we hold about you</li><li>Correct anything that is wrong</li><li>Delete your information</li><li>Stop emailing or texting you</li></ul>
+<p>Write to <a href="mailto:hello@reblooma.com">hello@reblooma.com</a> and we will act within 30 days. We will not treat you differently for asking. California residents have these rights under the CCPA; we do not sell or share personal information as those terms are defined there.</p>
+<h2>Children</h2>
+<p>Reblooma is not for under-18s, and we do not knowingly collect their information. If you believe a child has given us details, write to us and we will delete them.</p>
+<h2>Security</h2>
+<p>We use reputable providers, encrypted connections and limited access. No system is perfectly secure, so please don&rsquo;t send us anything sensitive by email.</p>
+<h2>Changes</h2>
+<p>If this notice changes we will update the date at the top. Material changes are emailed to everyone on the waitlist.</p>
+<h2>Contact</h2>
+<p>Reblooma &middot; <a href="mailto:hello@reblooma.com">hello@reblooma.com</a></p>
+<p class="fine">This notice describes our practices for this website and waitlist only. It is not a Notice of Privacy Practices under HIPAA, and it does not cover the Reblooma service, which is not yet open.</p>
+</div></div>
 </section>
 </main>
-<!-- BEGIN: Footer -->
-<footer class="bg-surface-container border-t border-outline-variant/30 relative z-20">
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto px-container-padding py-20 items-start">
-<div>
-<a class="font-headline-sm text-headline-sm font-bold text-primary block mb-6" href="index.html">Reblooma</a>
-<div class="font-label-caps text-label-caps text-on-surface-variant/70">&copy; 2026 Reblooma. All rights reserved.</div>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Legal</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="privacy.html">Privacy Notice</a>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Explore</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#how-it-works-section">How it works</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="practitioners.html">For practitioners</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="directory.html">Find a practice</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="resources.html">Resources</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="about.html">About</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#faq">Help</a>
-<button type="button" data-waitlist data-cta="footer" class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left">Join the waitlist</button>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="mailto:hello@reblooma.com">hello@reblooma.com</a>
-</div>
-</div>
-<div class="border-t border-primary/5 max-w-7xl mx-auto px-container-padding py-8">
-<p class="font-label-caps text-[0.68rem] leading-[1.55] max-w-[100ch] text-left text-on-surface-variant/60">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC &sect;213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
-</div>
+<footer id="about">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
+      <div><h5>Explore</h5><ul><li><a href="index.html#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="index.html#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li>hello@reblooma.com</li></ul></div>
+      <div><h5>Legal</h5><ul><li><a href="privacy.html">Privacy Notice</a></li></ul></div>
+    </div>
+    <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
+  </div>
 </footer>
-<!-- END: Footer -->
 
+
+<script>
+// Footnote links open the closed "Notes and sources" first.
+document.querySelectorAll('sup a').forEach(a=>a.addEventListener('click',()=>{const n=document.querySelector('.notes');if(n)n.open=true}));
+
+</script>
 </body>
 </html>
