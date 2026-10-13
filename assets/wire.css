@@ -91,3 +91,8 @@ button.dev:hover{opacity:.9}
 .dirres .brand-gradient-text{font-family:var(--serif);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;flex:none}
 .dirres .btn-primary{display:inline-flex;align-items:center;min-height:40px;padding:0 20px;border-radius:999px;background:var(--grad);color:#fff;font-weight:600;text-decoration:none}
 .dirres a{font-weight:600}
+
+/* The About call-to-action email stays white on the dark band */
+.band-dark a.mail{color:#fff}
+/* White text on gradient buttons inside dark bands (the band's link color was turning it pale teal) */
+.band-dark a.btn-main{color:#fff}
