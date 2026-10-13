@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Reblooma For Practitioners</title>
+<title>Reblooma for practitioners — Get paid in pre-tax dollars</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="assets/redesign.css">
@@ -84,10 +84,23 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
   .stat b{white-space:normal}
 }
 </style>
+<meta name="description" content="Reblooma turns your session notes into documentation patients can submit to their FSA or HSA, so a session costs them about 30% less and your rate never moves.">
+<link rel="canonical" href="https://reblooma.com/practitioners.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reblooma">
+<meta property="og:title" content="Reblooma for practitioners — Get paid in pre-tax dollars">
+<meta property="og:description" content="Reblooma turns your session notes into documentation patients can submit to their FSA or HSA, so a session costs them about 30% less and your rate never moves.">
+<meta property="og:url" content="https://reblooma.com/practitioners.html">
+<meta name="theme-color" content="#e4deda">
+<link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/wire.css">
+<script src="assets/analytics.js"></script>
+<script src="assets/site.js" defer></script>
 </head>
 <body>
 
-<div class="dev">In development · Join the waitlist for early access</div>
+<button type="button" class="dev" data-waitlist data-cta="top-bar">In development · Join the waitlist for early access</button>
 <header>
   <div class="wrap">
     <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
@@ -98,8 +111,16 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
       <a href="resources.html">Resources</a>
       <a href="about.html">About</a>
     </nav>
-    <a class="btn btn-main btn-sm" href="index.html#who">Join the waitlist</a>
+    <button class="menubtn" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a class="btn btn-main btn-sm" href="index.html#who" data-waitlist data-cta="header">Join the waitlist</a>
   </div>
+  <nav id="mobile-menu" class="mmenu" hidden aria-label="Mobile">
+      <a href="index.html#how">How it works</a>
+      <a href="practitioners.html" class="on">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
 </header>
 
 <main id="top">
@@ -113,7 +134,7 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
       <details class="more"><summary>Why a card swipe isn't enough</summary><div class="body">
         <p>A swiped FSA/HSA card isn't proof the visit qualified. If their administrator asks and nothing backs it up, your patient repays it, and quietly stops booking.</p>
       </div></details>
-      <div class="ctas"><a class="btn btn-main" href="#join">Get early access</a></div>
+      <div class="ctas"><a data-waitlist="practitioner" data-cta="practitioner-hero" class="btn btn-main" href="#join">Get early access</a></div>
       <p class="fine">Free to join. Nothing per session.</p>
     </div>
     <div class="card price">
@@ -248,8 +269,8 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
   <div class="wrap">
     <h2>Join the practitioner list.</h2>
     <p class="sub" style="margin-top:10px">Free to join. Nothing per session. Set up in an afternoon.</p>
-    <a class="btn btn-main" href="#">Get early access</a>
-    <p class="small">Want a say in how it's priced? <a href="#">Apply to be a testing practice</a></p>
+    <a data-waitlist="practitioner" data-cta="practitioner-footer-cta" class="btn btn-main" href="#">Get early access</a>
+    <p class="small">Want a say in how it's priced? <a data-waitlist="testing" data-cta="practitioner-testing" href="#">Apply to be a testing practice</a></p>
   </div>
 </section>
 
@@ -260,7 +281,7 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
     <div class="fgrid">
       <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
       <div><h5>Explore</h5><ul><li><a href="index.html#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
-      <div><h5>Help</h5><ul><li><a href="index.html#who">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li>hello@reblooma.com</li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="index.html#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li>hello@reblooma.com</li></ul></div>
       <div><h5>Legal</h5><ul><li><a href="https://reblooma.com/privacy.html">Privacy Notice</a></li></ul></div>
     </div>
     <details class="more notes"><summary>Notes and sources (4)</summary><div class="body">
@@ -275,7 +296,6 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
   </div>
 </footer>
 
-<div class="mock">Mockup · 10/13/2026 · not live</div>
 
 <script>
 // Footnote links open the closed "Notes and sources" first.

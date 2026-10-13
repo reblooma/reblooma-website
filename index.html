@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Reblooma Home Mockup</title>
+<title>Reblooma — Use your FSA/HSA for massage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Source+Sans+3:wght@400;600&display=swap">
 <style>
@@ -228,10 +228,24 @@ body.vbig{overflow:hidden}
 }
 nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bottom:4px}
 </style>
+<meta name="description" content="Your FSA or HSA can pay for therapeutic massage. Reblooma assembles the letter, the signed clinical note and the coded invoice your plan administrator asks for.">
+<link rel="canonical" href="https://reblooma.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reblooma">
+<meta property="og:title" content="Reblooma — Use your FSA/HSA for massage">
+<meta property="og:description" content="Your FSA or HSA can pay for therapeutic massage. Reblooma assembles the letter, the signed clinical note and the coded invoice your plan administrator asks for.">
+<meta property="og:url" content="https://reblooma.com/">
+<meta name="theme-color" content="#e4deda">
+<meta name="facebook-domain-verification" content="m7we062xoyzw629cspxsh7lxeci5kn">
+<link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/wire.css">
+<script src="assets/analytics.js"></script>
+<script src="assets/site.js" defer></script>
 </head>
 <body>
 
-<div class="dev">In development · Join the waitlist for early access</div>
+<button type="button" class="dev" data-waitlist data-cta="top-bar">In development · Join the waitlist for early access</button>
 <header>
   <div class="wrap">
     <a href="#top"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
@@ -242,8 +256,16 @@ nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bot
       <a href="resources.html">Resources</a>
       <a href="about.html">About</a>
     </nav>
-    <a class="btn btn-main btn-sm" href="#who">Join the waitlist</a>
+    <button class="menubtn" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a class="btn btn-main btn-sm" href="#who" data-waitlist data-cta="header">Join the waitlist</a>
   </div>
+  <nav id="mobile-menu" class="mmenu" hidden aria-label="Mobile">
+      <a href="#how" class="on">How it works</a>
+      <a href="practitioners.html">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
 </header>
 
 <main id="top">
@@ -256,7 +278,7 @@ nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bot
       <h1>Use your FSA/HSA for your massage. Leave the paperwork to us.</h1>
       <p class="lead">It can pay for massage that treats a real condition. We build the claim-ready file that shows it.</p>
       <div class="ctas">
-        <a class="btn btn-main" href="#who">Start my consultation</a>
+        <a data-waitlist="consult" data-cta="hero-consultation" class="btn btn-main" href="#who">Start my consultation</a>
         <a class="btn btn-ghost" href="#how">See how it works</a>
       </div>
       <details class="more">
@@ -414,7 +436,7 @@ nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bot
         <li>Your own practitioner, or one on Reblooma</li>
         <li>Your file, built every session</li>
       </ul>
-      <div class="act"><a class="btn btn-main btn-sm" href="#">Start the consultation</a></div>
+      <div class="act"><a data-waitlist="consult" data-cta="patient-card" class="btn btn-main btn-sm" href="#">Start the consultation</a></div>
       <details class="more"><summary>More</summary><div class="body">
         <p>Chronic pain, injury, recovery. No old records to dig up, no prior doctor's visit needed. Just describe what hurts, and a clinician at Dr. B takes it from there.</p>
       </div></details>
@@ -429,7 +451,7 @@ nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bot
         <li>Reblooma charges practitioners nothing<sup><a href="#n7">7</a></sup></li>
       </ul>
       <p class="morelink"><a href="practitioners.html">How it works for practices →</a></p>
-      <div class="act"><a class="btn btn-ghost btn-sm" href="#">Join our practitioner list</a></div>
+      <div class="act"><a data-waitlist="practitioner" data-cta="practitioner-card" class="btn btn-ghost btn-sm" href="#">Join our practitioner list</a></div>
       <details class="more"><summary>More</summary><div class="body">
         <p>Practitioners at day spas and resorts, massage and wellness practices, and mobile or in-home services are all welcome. The setting isn't the test.</p>
       </div></details>
@@ -484,7 +506,7 @@ nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bot
     <div class="fgrid">
       <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
       <div><h5>Explore</h5><ul><li><a href="#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
-      <div><h5>Help</h5><ul><li><a href="#who">Join the waitlist</a></li><li>hello@reblooma.com</li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li>hello@reblooma.com</li></ul></div>
       <div><h5>Legal</h5><ul><li><a href="https://reblooma.com/privacy.html">Privacy Notice</a></li></ul></div>
     </div>
     <details class="more notes"><summary>Notes and sources (10)</summary><div class="body">
@@ -505,7 +527,6 @@ nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bot
   </div>
 </footer>
 
-<div class="mock">Mockup · 10/13/2026 · not live</div>
 
 <script>
 // Footnote links open the closed "Notes and sources" first.

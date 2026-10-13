@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Reblooma About</title>
+<title>About Reblooma</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="assets/redesign.css">
@@ -67,10 +67,23 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 }
 @media (min-width:861px) and (max-width:1100px){.owners{grid-template-columns:1fr 1fr}}
 </style>
+<meta name="description" content="Why Reblooma exists: massage is care, and the paperwork should say so.">
+<link rel="canonical" href="https://reblooma.com/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reblooma">
+<meta property="og:title" content="About Reblooma">
+<meta property="og:description" content="Why Reblooma exists: massage is care, and the paperwork should say so.">
+<meta property="og:url" content="https://reblooma.com/about.html">
+<meta name="theme-color" content="#e4deda">
+<link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/wire.css">
+<script src="assets/analytics.js"></script>
+<script src="assets/site.js" defer></script>
 </head>
 <body>
 
-<div class="dev">In development · Join the waitlist for early access</div>
+<button type="button" class="dev" data-waitlist data-cta="top-bar">In development · Join the waitlist for early access</button>
 <header>
   <div class="wrap">
     <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
@@ -81,8 +94,16 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
       <a href="resources.html">Resources</a>
       <a href="about.html" class="on">About</a>
     </nav>
-    <a class="btn btn-main btn-sm" href="index.html#who">Join the waitlist</a>
+    <button class="menubtn" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a class="btn btn-main btn-sm" href="index.html#who" data-waitlist data-cta="header">Join the waitlist</a>
   </div>
+  <nav id="mobile-menu" class="mmenu" hidden aria-label="Mobile">
+      <a href="index.html#how">How it works</a>
+      <a href="practitioners.html">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html" class="on">About</a>
+    </nav>
 </header>
 
 <main id="top">
@@ -156,7 +177,7 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
   <div class="wrap">
     <h2>Build it <em>with us.</em></h2>
     <p class="sub" style="margin-top:10px">Whether you get massage or give it, the waitlist is where it starts.</p>
-    <div class="ctas"><a class="btn btn-main" href="index.html#who">Join the waitlist</a><span class="mail">hello@reblooma.com</span></div>
+    <div class="ctas"><a data-waitlist data-cta="about-cta" class="btn btn-main" href="index.html#who">Join the waitlist</a><span class="mail">hello@reblooma.com</span></div>
   </div>
 </section>
 
@@ -167,14 +188,13 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
     <div class="fgrid">
       <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
       <div><h5>Explore</h5><ul><li><a href="index.html#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
-      <div><h5>Help</h5><ul><li><a href="index.html#who">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li>hello@reblooma.com</li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="index.html#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li>hello@reblooma.com</li></ul></div>
       <div><h5>Legal</h5><ul><li><a href="https://reblooma.com/privacy.html">Privacy Notice</a></li></ul></div>
     </div>
     <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
   </div>
 </footer>
 
-<div class="mock">Mockup · 10/13/2026 · not live</div>
 
 <script>
 // Footnote links open the closed "Notes and sources" first.
