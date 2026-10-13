@@ -254,7 +254,7 @@ window.REBLOOMA = Object.assign({
       if (state.consult) return goToConsultation(sent);
       $('[data-wl-done-title]').textContent = 'You\'re on the list.';
       $('[data-wl-done-text]').textContent = testing
-        ? 'Thanks — we\'ll reach out personally about joining as a testing practice.'
+        ? 'Thanks. We\'ll reach out personally about joining as a testing practice.'
         : 'We\'ll be in touch as we get closer to launch.';
       showStep('done');
     }).catch(function () {
@@ -272,7 +272,7 @@ window.REBLOOMA = Object.assign({
   // Hand the patient to Dr. B. No personal details go in the URL.
   function goToConsultation(autoRedirect) {
     var url = window.REBLOOMA.consultationUrl;
-    $('[data-wl-done-title]').textContent = 'Thanks — one more step.';
+    $('[data-wl-done-title]').textContent = 'Thanks. One more step.';
     $('[data-wl-done-text]').textContent = 'Your letter comes from a consultation with Dr. B, an independent telehealth practice. ' +
       (autoRedirect ? 'We\'re taking you there now.' : 'Continue when you\'re ready.');
     $('[data-wl-close].btn-primary').classList.add('hidden');
