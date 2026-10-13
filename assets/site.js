@@ -81,7 +81,7 @@ window.REBLOOMA = Object.assign({
             '<input class="wl-input" name="practice_name" type="text" autocomplete="organization"></label>' +
           '<label class="flex items-start gap-3 mb-5 text-[0.78rem] leading-snug text-on-surface-variant cursor-pointer">' +
             '<input type="checkbox" name="testing_practice" value="yes" class="mt-0.5 rounded-sm border-primary/30 text-primary focus:ring-0">' +
-            '<span>I\'d like to be a <b class="text-primary">pilot practice</b> &mdash; first access to FSA/HSA patients, and the repeat bookings that follow.</span></label>' +
+            '<span>I\'d like to be a <b class="text-primary">pilot practice</b>: first access to FSA/HSA patients, and the repeat bookings that follow.</span></label>' +
         '</div>' +
 
         '<label class="flex items-start gap-3 mb-4 text-[0.78rem] leading-snug text-on-surface-variant cursor-pointer">' +
