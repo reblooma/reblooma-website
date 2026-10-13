@@ -246,7 +246,10 @@ window.REBLOOMA = Object.assign({
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    send(payload).then(function (sent) {
+    // A patient on the way to Dr. B never waits more than 4 seconds on GoHighLevel.
+    var saving = send(payload);
+    if (state.consult) saving = Promise.race([saving, new Promise(function (ok) { setTimeout(function () { ok(true); }, 4000); })]);
+    saving.then(function (sent) {
       (window.dataLayer = window.dataLayer || []).push({
         event: state.consult ? 'consultation_started' : 'waitlist_signup', role: role, testing_practice: testing
       });
@@ -281,7 +284,7 @@ window.REBLOOMA = Object.assign({
     link.classList.remove('hidden');
     showStep('done');
     // In test mode, stay put so the test-mode notice can be read.
-    if (autoRedirect) state.redirectTimer = setTimeout(function () { location.assign(url); }, 2500);
+    if (autoRedirect) state.redirectTimer = setTimeout(function () { location.assign(url); }, 1200);
   }
 
   // Form-encoded, so the browser sends it without a CORS preflight. GoHighLevel
