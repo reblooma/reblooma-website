@@ -1,9 +1,48 @@
-<!DOCTYPE html>
-<html class="light" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Find a massage practice near you &mdash; Reblooma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="assets/redesign.css">
+<style>
+nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bottom:4px}
+.h2{font-size:clamp(1.875rem,1.4rem + 1.6vw,2.5rem);margin-top:10px}
+/* Margins of the live pages (10/13/2026): content 1,080 px, header and footer 1,232 px, text 720 px */
+.wrap{max-width:1128px;padding-inline:24px}
+header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
+.col{max-width:720px;margin:0 auto}
+.band-dark{background:var(--ink);color:#fff}
+.band-dark .lead,.band-dark .sub{color:#c9cdd0}
+.band-dark .eyebrow{color:#9fd8d5}
+.band-dark a{color:#9fd8d5}
+/* Light version of the brand gradient, readable on the dark band */
+.glow{font-style:italic;background:linear-gradient(135deg,#5fd3cc,#a9a5f0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{display:inline-block;background:var(--lav);color:var(--purple);font-size:.8125rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:6px 14px}
+.notes-local{font-size:.875rem}
+
+.dirh{text-align:center}
+.dirh .wrap{display:block}
+.dirh h1{font-size:clamp(2.125rem,1.5rem + 2.3vw,3.25rem)}
+.dirh .lead{margin:16px auto 0}
+.search{max-width:860px;margin:36px auto 0;display:grid;grid-template-columns:1.6fr 1fr auto;gap:16px;align-items:end;text-align:left}
+.search label{display:grid;gap:8px;font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.search input,.search select{font:400 var(--t-body) var(--sans);color:var(--ink);background:var(--sand);border:1.5px solid var(--stone);border-radius:14px;min-height:52px;padding:0 16px;width:100%}
+.search input:focus,.search select:focus{outline:2px solid var(--teal);outline-offset:1px}
+.search .loc{grid-column:1/-1;display:inline-flex;gap:8px;align-items:center;background:none;border:0;padding:0;font:600 var(--t-small) var(--sans);color:var(--teal-ink);cursor:pointer;justify-self:start}
+.empty{max-width:860px;margin:20px auto 0;text-align:center;display:grid;justify-items:center;gap:12px}
+.empty .ico{margin-bottom:4px}
+.empty h2{font-size:clamp(1.5rem,1.25rem + 1vw,2rem)}
+.empty p{color:var(--hint);max-width:30em}
+.empty .ctas{justify-content:center;margin-top:8px}
+.dirfine{text-align:center;color:var(--hint);font-size:.875rem;margin-top:18px}
+.own{background:var(--sand);text-align:center}
+.own .lead{margin:14px auto 0}
+.own .btn{margin-top:24px}
+@media (max-width:760px){.search{grid-template-columns:1fr}}
+</style>
 <meta name="description" content="Search Reblooma practices by ZIP code or city. Every listed practice signs a clinical note and issues a coded itemized invoice for your FSA or HSA file.">
 <link rel="canonical" href="https://reblooma.com/directory.html">
 <meta property="og:type" content="website">
@@ -13,139 +52,87 @@
 <meta property="og:url" content="https://reblooma.com/directory.html">
 <meta name="theme-color" content="#e4deda">
 <link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script src="assets/tailwind.config.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
-<script src="assets/directory.js" defer></script>
+<link rel="stylesheet" href="assets/wire.css">
 <script src="assets/analytics.js"></script>
 <script src="assets/site.js" defer></script>
+<script src="assets/directory.js" defer></script>
 </head>
-<body class="font-body-md antialiased relative selection:bg-tertiary-container selection:text-surface">
-<div class="texture-overlay" aria-hidden="true"></div>
-<!-- BEGIN: Top Bar -->
-<button type="button" data-waitlist data-cta="top-bar" class="bg-primary flex justify-center items-center w-full py-2 px-4 text-center z-40 relative hover:opacity-90">
-<span class="text-surface font-label-caps text-label-caps uppercase tracking-widest"><span class="hidden sm:inline">In development &middot; </span>Join the waitlist for early access</span>
-</button>
-<!-- END: Top Bar -->
-<!-- BEGIN: Main Header -->
-<header class="bg-surface/80 backdrop-blur-md border-b border-primary/10 sticky top-0 w-full z-30">
-<div class="flex justify-between items-center max-w-7xl mx-auto px-container-padding h-16">
-<a class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight flex items-center" href="index.html"><img alt="" class="h-8 w-auto inline-block mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">Reblooma</a>
-<nav class="hidden lg:flex items-center gap-6" aria-label="Main">
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="index.html#how-it-works-section">How it works</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="practitioners.html">For Practitioners</a>
-<a class="text-primary font-bold font-label-caps text-label-caps uppercase pb-1 border-b-2 border-primary" aria-current="page" href="directory.html">Find a practice</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="resources.html">Resources</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="about.html">About</a>
-</nav>
-<div class="flex items-center gap-2">
-<button type="button" data-waitlist data-cta="header" class="btn-primary font-ui-button text-ui-button px-4 py-2 hover:opacity-80 transition-opacity">Join the waitlist</button>
-<button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu" class="lg:hidden w-10 h-10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">menu</span></button>
-</div>
-</div>
-<nav id="mobile-menu" hidden class="lg:hidden border-t border-primary/10 bg-surface px-container-padding pb-2" aria-label="Mobile">
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="index.html#how-it-works-section">How it works</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="practitioners.html">For Practitioners</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-primary font-bold" href="directory.html">Find a practice</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="resources.html">Resources</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="about.html">About</a>
-</nav>
+<body>
+
+<button type="button" class="dev" data-waitlist data-cta="top-bar">In development · Join the waitlist for early access</button>
+<header>
+  <div class="wrap">
+    <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
+    <nav aria-label="Main">
+      <a href="index.html#how">How it works</a>
+      <a href="practitioners.html">For practitioners</a>
+      <a href="directory.html" class="on">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button class="menubtn" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a class="btn btn-main btn-sm" href="index.html#who" data-waitlist data-cta="header">Join the waitlist</a>
+  </div>
+  <nav id="mobile-menu" class="mmenu" hidden aria-label="Mobile">
+      <a href="index.html#how">How it works</a>
+      <a href="practitioners.html">For practitioners</a>
+      <a href="directory.html" class="on">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
 </header>
-<!-- END: Main Header -->
-<main class="relative z-20">
-<!-- BEGIN: Search -->
-<section class="max-w-7xl mx-auto px-container-padding pt-20 md:pt-24 pb-10">
-<div class="max-w-[720px] mx-auto text-center">
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Find a practice near you.</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Practices partnering with Reblooma sign a clinical note after every session, matched to the condition your letter names, so the evidence exists before anyone asks for it. A day spa, a clinic, a wellness studio, or a therapist who comes to you — all of them qualify. What matters is the treatment and the records behind it, not the room it happened in.</p>
-</div>
 
-<form id="dir-form" class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] shadow-sm p-6 md:p-8 mt-12 max-w-[860px] mx-auto">
-<div class="grid grid-cols-1 sm:grid-cols-[2fr_1fr_auto] gap-4 items-end">
-<label class="block">
-<span class="font-label-caps text-label-caps uppercase text-secondary">ZIP code or city</span>
-<input id="dir-query" name="q" type="text" inputmode="text" autocomplete="postal-code" placeholder="78704 or Austin, TX" class="wl-input">
-</label>
-<label class="block">
-<span class="font-label-caps text-label-caps uppercase text-secondary">Within</span>
-<select id="dir-radius" class="wl-input">
-<option value="10">10 miles</option>
-<option selected value="25">25 miles</option>
-<option value="50">50 miles</option>
-<option value="100">100 miles</option>
-</select>
-</label>
-<button type="submit" class="btn-primary font-ui-button text-ui-button px-8 py-3 h-[44px]">Search</button>
-</div>
-<div class="flex flex-wrap items-center gap-4 mt-5 pt-5 border-t border-primary/5">
-<button type="button" id="dir-locate" class="font-ui-button text-ui-button text-primary hover:underline flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">my_location</span>Use my location</button>
-<span id="dir-count" class="font-label-caps text-label-caps uppercase text-ink/42"></span>
-<p id="dir-status" role="status" aria-live="polite" class="hidden text-[0.85rem] text-ink/62"></p>
-</div>
-</form>
+<main id="top">
+
+<section class="hero dirh">
+  <div class="wrap">
+    <h1>Find a practice near you.</h1>
+    <p class="lead">Every partner practice signs a clinical note after each session, matched to your letter. A day spa, a clinic or a therapist who comes to you: the setting doesn't matter.</p>
+    <form class="card search" id="dir-form">
+      <label>Zip code or city<input id="dir-query" name="q" type="text" inputmode="text" placeholder="78704 or Austin, TX" autocomplete="postal-code"></label>
+      <label>Within<select id="dir-radius"><option value="10">10 miles</option><option value="25" selected>25 miles</option><option value="50">50 miles</option><option value="100">100 miles</option></select></label>
+      <button class="btn btn-main" type="submit">Search</button>
+      <button class="loc" type="button" id="dir-locate"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7"/></svg> Use my location</button>
+    </form>
+    <p class="dirmeta"><span id="dir-count"></span><span id="dir-status" role="status" aria-live="polite" class="hidden"></span></p>
+    <div id="dir-results" class="dirres hidden"></div>
+    <div class="card empty" id="dir-empty">
+      <div class="ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9c0 1.4 1.1 2.5 2.7 2.5S9.3 10.4 9.3 9c0 1.4 1.2 2.5 2.7 2.5s2.7-1.1 2.7-2.5c0 1.4 1.1 2.5 2.6 2.5S20 10.4 20 9M10 20v-5h4v5"/></svg></div>
+      <h2>No practices listed yet.</h2>
+      <p>We're adding our first practices now. Tell us where you are, and we'll tell you when one opens near you. Or bring your own therapist. Most people do.</p>
+      <div class="ctas"><a data-waitlist="patient" data-cta="directory-empty" class="btn btn-main btn-sm" href="index.html#who">Tell us where you are</a><a data-waitlist="practitioner" data-cta="directory-empty-practitioner" class="btn btn-ghost btn-sm" href="practitioners.html">I run a practice</a></div>
+    </div>
+    <p class="dirfine">Listing is not a clinical endorsement. Your plan administrator decides each claim, and we help you answer whatever they ask for.</p>
+  </div>
 </section>
-<!-- END: Search -->
 
-<!-- BEGIN: Results -->
-<section class="max-w-7xl mx-auto px-container-padding pb-[52px] md:pb-section-gap">
-<div id="dir-results" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[860px] mx-auto"></div>
-
-<!-- Shown until the directory has practices in it -->
-<div id="dir-empty" class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] shadow-sm p-10 md:p-14 text-center max-w-[860px] mx-auto">
-<span class="material-symbols-outlined text-primary text-[40px] mb-4">storefront</span>
-<h2 class="font-headline-sm text-headline-sm text-ink mb-3">No practices listed yet.</h2>
-<p class="text-ink/62 max-w-[46ch] mx-auto mb-8">We&rsquo;re onboarding our first practices now. Tell us where you are and we&rsquo;ll let you know the moment one opens near you &mdash; or bring your own therapist, which is what most people do.</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button type="button" data-waitlist="patient" data-cta="directory-empty" class="btn-primary font-ui-button text-ui-button px-6 py-3">Tell us where you are</button>
-<button type="button" data-waitlist="practitioner" data-cta="directory-empty-practitioner" class="btn-secondary font-ui-button text-ui-button px-6 py-3">I run a practice</button>
-</div>
-</div>
-<p class="text-[0.78rem] text-ink/42 max-w-[860px] mx-auto mt-8 text-center">Listing is not a clinical endorsement. Your plan administrator decides each claim, and we help you answer whatever they ask for.</p>
+<section class="own">
+  <div class="wrap">
+    <h2 class="h2">Already have a therapist you trust?</h2>
+    <p class="lead">Keep them. Name their practice when you request your letter, and send them an invite. Someone who knows your history writes a better note.</p>
+    <a data-waitlist="patient" data-cta="directory-bring-your-own" class="btn btn-main" href="index.html#who">Bring my own therapist</a>
+  </div>
 </section>
-<!-- END: Results -->
 
-
-<!-- BEGIN: Bring your own -->
-<section class="py-[52px] md:py-section-gap px-container-padding">
-<div class="max-w-[720px] mx-auto text-center">
-<h2 class="font-headline-md text-headline-md text-ink mb-4">Already have a therapist you trust?</h2>
-<p class="text-ink/62 mb-8 max-w-[52ch] mx-auto">Keep them. Name your practice when you request your letter and send them an invite &mdash; setting up takes a few minutes, and someone who knows your history writes a better note.</p>
-<button type="button" data-waitlist="patient" data-cta="directory-bring-your-own" class="btn-primary font-ui-button text-ui-button px-8 py-3">Bring my own therapist</button>
-</div>
-</section>
-<!-- END: Bring your own -->
 </main>
-<!-- BEGIN: Footer -->
-<footer class="bg-surface-container border-t border-outline-variant/30 relative z-20">
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto px-container-padding py-20 items-start">
-<div>
-<a class="font-headline-sm text-headline-sm font-bold text-primary block mb-6" href="index.html">Reblooma</a>
-<div class="font-label-caps text-label-caps text-on-surface-variant/70">&copy; 2026 Reblooma. All rights reserved.</div>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Legal</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="privacy.html">Privacy Notice</a>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Explore</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#how-it-works-section">How it works</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="practitioners.html">For practitioners</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="directory.html">Find a practice</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="resources.html">Resources</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="about.html">About</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#faq">Help</a>
-<button type="button" data-waitlist data-cta="footer" class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left">Join the waitlist</button>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="mailto:hello@reblooma.com">hello@reblooma.com</a>
-</div>
-</div>
-<div class="border-t border-primary/5 max-w-7xl mx-auto px-container-padding py-8">
-<p class="font-label-caps text-[0.68rem] leading-[1.55] max-w-[100ch] text-left text-on-surface-variant/60">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC &sect;213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
-</div>
+<footer id="about">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
+      <div><h5>Explore</h5><ul><li><a href="index.html#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="index.html#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li><a href="mailto:hello@reblooma.com">hello@reblooma.com</a></li></ul></div>
+      <div><h5>Legal</h5><ul><li><a href="privacy.html">Privacy Notice</a></li></ul></div>
+    </div>
+    <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
+  </div>
 </footer>
-<!-- END: Footer -->
 
+
+<script>
+// Footnote links open the closed "Notes and sources" first.
+document.querySelectorAll('sup a').forEach(a=>a.addEventListener('click',()=>{const n=document.querySelector('.notes');if(n)n.open=true}));
+</script>
 </body>
 </html>

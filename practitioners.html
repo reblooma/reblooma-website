@@ -1,9 +1,89 @@
-<!DOCTYPE html>
-<html class="light" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reblooma for practitioners — Get paid in pre-tax dollars</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="assets/redesign.css">
+<style>
+nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bottom:4px}
+.h2{font-size:clamp(1.875rem,1.4rem + 1.6vw,2.5rem);margin-top:10px}
+/* Margins of the live pages (10/13/2026): content 1,080 px, header and footer 1,232 px, text 720 px */
+.wrap{max-width:1128px;padding-inline:24px}
+header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
+.col{max-width:720px;margin:0 auto}
+.band-dark{background:var(--ink);color:#fff}
+.band-dark .lead,.band-dark .sub{color:#c9cdd0}
+.band-dark .eyebrow{color:#9fd8d5}
+.band-dark a{color:#9fd8d5}
+/* Light version of the brand gradient, readable on the dark band */
+.glow{font-style:italic;background:linear-gradient(135deg,#5fd3cc,#a9a5f0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{display:inline-block;background:var(--lav);color:var(--purple);font-size:.8125rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:6px 14px}
+.notes-local{font-size:.875rem}
+
+.prh .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(48px,5vw,88px);align-items:center}
+.prh h1{font-size:clamp(2.125rem,1.5rem + 2.3vw,3.25rem);margin:14px 0 16px}
+/* Card centers on eyebrow to button: the fine line under the button sits outside the column height */
+.prh .lefty{position:relative;margin-bottom:28px}
+.prh .lefty>.fine{position:absolute;left:0;top:100%;margin-top:12px}
+.price{max-width:440px;justify-self:center;position:relative;top:-28px;width:100%;box-shadow:0 24px 50px -30px rgba(22,24,26,.45)}
+.price .row{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;font-variant-numeric:tabular-nums}
+.price .row b{font:500 1.75rem/1 var(--serif)}
+.price i{display:block;height:8px;border-radius:4px;background:#8d8781;margin-top:8px}
+.price i.pre{background:var(--grad);width:70%}
+.price .big{font:500 clamp(1.375rem,1.15rem + .7vw,1.625rem)/1.25 var(--serif);margin-top:22px}
+.price .big em{display:inline-block;font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats{padding-block:0 clamp(40px,6vw,72px)}
+.stats .card{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat b{display:block;white-space:nowrap;font:500 clamp(1.5rem,1.1rem + 1vw,2.125rem)/1.1 var(--serif);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stat span{display:block;color:var(--hint);font-size:var(--t-small);margin-top:6px}
+.stat+.stat{border-left:1px solid var(--line);padding-left:24px}
+.stats .tag{grid-column:1/-1;text-align:center;border-top:1px solid var(--line);padding-top:18px;font:500 italic clamp(1.125rem,1rem + .5vw,1.375rem) var(--serif)}
+.quoteband{background:var(--paper);text-align:center}
+.quoteband p{font:500 italic clamp(1.5rem,1.2rem + 1.4vw,2.25rem)/1.35 var(--serif)}
+.quoteband em{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.band-dark .lead{max-width:40em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,64px);margin-top:36px}
+.two h5{margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.18);font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:#9fd8d5}
+.dots{list-style:none;padding:0;margin:0;display:grid;gap:10px;font-size:var(--t-small)}
+.dots li{padding-left:20px;position:relative;color:#dfe3e5}
+.dots li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:#9fd8d5}
+.dots b{color:#fff}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:40px auto 0;max-width:820px;position:relative;text-align:center}
+.flow::before{content:"";position:absolute;top:28px;left:16.6%;right:16.6%;height:2px;background:linear-gradient(90deg,var(--teal) 50%,var(--stone) 50%)}
+.flow .node{position:relative;display:grid;justify-items:center;gap:6px}
+.flow .ico.dim{color:#9a9590}
+.flow b{margin-top:8px}
+.flow span{color:var(--hint);font-size:var(--t-small)}
+.try{margin-top:clamp(40px,5vw,56px);text-align:left}
+.try .card{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,4vw,48px);align-items:center}
+.try .zero{font:500 clamp(3rem,2.4rem + 2.6vw,4.25rem)/1 var(--serif);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.try h3{font-size:1.25rem}
+.try .items{display:grid;gap:16px}
+.try .items p{color:var(--hint);font-size:var(--t-small);margin-top:4px}
+.cmp{width:100%;border-collapse:collapse;margin-top:28px;font-size:var(--t-small);font-variant-numeric:tabular-nums}
+.cmp th{font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);font-weight:700;padding:10px 12px;text-align:center}
+.cmp th.us{color:var(--teal-ink)}
+.cmp td{padding:12px;border-top:1px solid var(--line);text-align:center}
+.cmp td:first-child{text-align:left;color:var(--hint)}
+.cmp td.us{font-weight:600;background:var(--sel)}
+.tblwrap{overflow-x:auto}
+.cta-dark{text-align:center}
+.cta-dark h2{font-size:clamp(1.875rem,1.4rem + 1.6vw,2.5rem)}
+.cta-dark .btn{margin-top:24px}
+.cta-dark .small{margin-top:16px;font-size:var(--t-small);color:#c9cdd0}
+@media (max-width:860px){
+  .prh .wrap,.two,.try .card{grid-template-columns:1fr}
+  .prh .lefty{margin-bottom:0}
+  .price{top:0}
+  .prh .lefty>.fine{position:static}
+  .stats .card{grid-template-columns:1fr 1fr}
+  .stat+.stat{border-left:0;padding-left:0}
+  .stat b{white-space:normal}
+}
+</style>
 <meta name="description" content="Reblooma turns your session notes into documentation patients can submit to their FSA or HSA, so a session costs them about 30% less and your rate never moves.">
 <link rel="canonical" href="https://reblooma.com/practitioners.html">
 <meta property="og:type" content="website">
@@ -13,316 +93,214 @@
 <meta property="og:url" content="https://reblooma.com/practitioners.html">
 <meta name="theme-color" content="#e4deda">
 <link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script src="assets/tailwind.config.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/wire.css">
 <script src="assets/analytics.js"></script>
 <script src="assets/site.js" defer></script>
 </head>
-<body class="font-body-md antialiased relative selection:bg-tertiary-container selection:text-surface">
-<div class="texture-overlay" aria-hidden="true"></div>
-<!-- BEGIN: Top Bar -->
-<button type="button" data-waitlist data-cta="top-bar" class="bg-primary flex justify-center items-center w-full py-2 px-4 text-center z-40 relative hover:opacity-90">
-<span class="text-surface font-label-caps text-label-caps uppercase tracking-widest"><span class="hidden sm:inline">In development &middot; </span>Join the waitlist for early access</span>
-</button>
-<!-- END: Top Bar -->
-<!-- BEGIN: Main Header -->
-<header class="bg-surface/80 backdrop-blur-md border-b border-primary/10 sticky top-0 w-full z-30">
-<div class="flex justify-between items-center max-w-7xl mx-auto px-container-padding h-16">
-<a class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight flex items-center" href="index.html"><img alt="" class="h-8 w-auto inline-block mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">Reblooma</a>
-<nav class="hidden lg:flex items-center gap-6" aria-label="Main">
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="index.html#how-it-works-section">How it works</a>
-<a class="text-primary font-bold font-label-caps text-label-caps uppercase pb-1 border-b-2 border-primary" href="practitioners.html" aria-current="page">For Practitioners</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="directory.html">Find a practice</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="resources.html">Resources</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="about.html">About</a>
-</nav>
-<div class="flex items-center gap-2">
-<button type="button" data-waitlist data-cta="header" class="btn-primary font-ui-button text-ui-button px-4 py-2 hover:opacity-80 transition-opacity">Join the waitlist</button>
-<button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu" class="lg:hidden w-10 h-10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">menu</span></button>
-</div>
-</div>
-<nav id="mobile-menu" hidden class="lg:hidden border-t border-primary/10 bg-surface px-container-padding pb-2" aria-label="Mobile">
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="index.html#how-it-works-section">How it works</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-primary font-bold" href="practitioners.html">For Practitioners</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="directory.html">Find a practice</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="resources.html">Resources</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="about.html">About</a>
-</nav>
-</header>
-<!-- END: Main Header -->
-<main class="relative z-20">
-<!-- BEGIN: Hero Section -->
-<section class="py-16 md:py-24">
-<div class="max-w-7xl mx-auto px-container-padding"><div class="max-w-[1080px] mx-auto px-container-padding"><div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"><div class="space-y-8"><div class="space-y-4"><p class="font-label-caps text-label-caps text-[#2a2724] opacity-42 uppercase tracking-widest">FSA &amp; HSA for therapeutic massage</p><h1 class="font-['Lora'] font-medium leading-tight text-[#2a2724]" style="font-size: clamp(2.3rem, 4.4vw, 3.15rem);">Get paid in pre-tax dollars. <br>Keep the patients you'd have lost.</h1><p class="font-['Source_Sans_3'] text-[1rem] text-[#2a2724] opacity-62" style="max-width: 46ch;">You already chart. Reblooma turns your notes into documentation your patients can submit to their FSA or HSA — so a session costs them about 30% less and your rate never moves. A successfully swiped FSA/HSA card isn’t proof the visit qualified: if their administrator asks and nothing backs it up, they repay it, and quietly stop booking.</p></div><div class="space-y-4"><button type="button" data-waitlist="practitioner" data-cta="practitioner-hero" class="bg-[#33302b] text-white font-ui-button text-ui-button px-8 py-4 rounded uppercase tracking-wider cursor-pointer hover:opacity-90 transition-opacity font-semibold">Get early access</button><p class="font-['Source_Sans_3'] text-[0.8rem] text-[#2a2724] opacity-42">Free to join. Nothing per session.</p></div></div><div class="bg-[#f3f0ed] border border-[rgba(42,39,36,.08)] rounded-[4px] p-8"><p class="text-[0.66rem] font-semibold tracking-[0.13em] uppercase text-[#2a2724] opacity-42 mb-6">WHAT IT DOES TO YOUR PRICE</p><div class="mb-6"><div class="flex justify-between items-baseline mb-2"><span class="text-[1rem] text-[#2a2724]">What you charge</span><span class="font-['Lora'] font-semibold text-[1.6rem] text-[#2a2724]">$120</span></div><div class="w-full h-[5px] bg-[#2a2724] opacity-[0.18] rounded-full"></div></div><div class="mb-8"><div class="flex justify-between items-baseline mb-2"><span class="text-[1rem] text-[#2a2724]">What it costs your patient</span><span class="font-['Lora'] font-semibold text-[1.6rem] text-[#2a2724]">~$84</span></div><div class="w-[70%] h-[5px] rounded-full" style="background: linear-gradient(120deg, #3498db, #8e44ad);"></div></div><div class="space-y-3"><h3 class="font-['Lora'] font-medium text-[1.75rem] leading-tight text-[#2a2724]" data-stitch-orig-opacity="0">A 30% discount that costs <br>you nothing.</h3><p class="text-[0.78rem] text-[#2a2724] opacity-42">Their tax rate does the discounting. Your rate stays where you set it.<sup class="">1</sup></p></div></div></div></div></div>
-</section>
-<!-- END: Hero Section -->
-<!-- BEGIN: Metrics Grid -->
-<section class="w-full py-12">
-<div class="max-w-[1080px] mx-auto px-container-padding bg-[#f3f0ed] border border-[rgba(42,39,36,0.08)] rounded-[4px] p-8">
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x lg:divide-x divide-[rgba(42,39,36,0.14)]">
-<div class="py-6 sm:py-4 lg:py-0">
-<div class="font-['Lora'] font-semibold text-[1.9rem] leading-tight brand-gradient-text">$0</div>
-<div class="font-body-md text-[0.8rem] text-[#2a2724] opacity-62 mt-2 leading-[1.4]">to join, and nothing per session</div>
-</div>
-<div class="px-[20px] py-6 sm:py-4 lg:py-0">
-<div class="font-['Lora'] font-semibold text-[1.9rem] leading-tight brand-gradient-text">~5 min</div>
-<div class="font-body-md text-[0.8rem] text-[#2a2724] opacity-62 mt-2 leading-[1.4]">to review and sign a SOAP note the AI seat drafts for you<sup class="">2</sup></div>
-</div>
-<div class="px-[20px] py-6 sm:py-4 lg:py-0">
-<div class="font-['Lora'] font-semibold text-[1.9rem] leading-tight brand-gradient-text">24</div>
-<div class="font-body-md text-[0.8rem] text-[#2a2724] opacity-62 mt-2 leading-[1.4]">sessions a single letter typically covers</div>
-</div>
-<div class="py-6 sm:py-4 lg:py-0 px-[20px]">
-<div class="font-['Lora'] font-semibold text-[1.6rem] leading-tight brand-gradient-text" style="font-size: 1.55rem; white-space: nowrap;">$1,900–$2,900</div>
-<div class="font-body-md text-[0.8rem] text-[#2a2724] opacity-62 mt-2 leading-[1.4]">per documented patient, at 24 sessions and $80–$120 a session<sup class="">3</sup></div>
-</div>
-</div>
-<div class="mt-6 pt-5 border-t border-[rgba(42,39,36,0.08)] text-center">
-<p class="font-['Lora'] font-medium italic text-[1.15rem] text-[#2a2724]">One letter. Twelve months. A patient who keeps coming back.</p>
-</div>
-</div>
-</section>
-<!-- END: Metrics Grid -->
-<!-- BEGIN: Pull Quote -->
-<section class="w-full surface-tier-2 py-[88px] border-y border-outline-muted">
-<div class="mx-auto text-center max-w-[1080px] px-container-padding">
-<p class="font-headline-md italic font-medium text-ink text-[1.75rem] mx-auto leading-relaxed">
-            You never discount.<br>&nbsp;Their tax rate does it for you.
-        </p>
-</div>
-</section>
-<!-- END: Pull Quote -->
-<!-- BEGIN: Features Dark Band -->
-<section class="w-full bg-[#33302b] text-[#e4deda] relative" style="background-color: #243546; padding-top: 64px; padding-bottom: 64px;"><div class="absolute top-0 left-0 w-[56px] h-[3px] bg-gradient-to-r from-[#00938e] to-[#6200ee]"></div>
-<div class="max-w-[1080px] mx-auto px-container-padding py-24">
-<div class="mb-[36px]">
-<h2 class="font-['Lora'] font-medium text-4xl mb-6 text-white">Built for a <i class="italic font-medium text-[#87cbf2]">practice of one</i></h2>
-<p class="font-['Source_Sans_3'] text-xl max-w-2xl text-[#959ea8]">Front desk, therapist, bookkeeper — Reblooma does the paperwork while you work.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-[64px]">
-<div>
-<h3 class="font-['Source_Sans_3'] uppercase mb-6 pb-2 border-b border-[rgba(255,255,255,0.16)] text-[#87cbf2] text-[0.68rem] font-semibold tracking-widest">RUNS YOUR DAY</h3>
-<ul class="space-y-4">
-<li class="relative pl-[14px] font-['Source_Sans_3'] text-base text-[rgba(255,255,255,0.78)]"><span class="absolute left-0 top-[0.7em] w-[5px] h-[5px] rounded-full bg-[#87cbf2]"></span>Calendar, bookings and patient roster in one place</li>
-<li class="relative pl-[14px] font-['Source_Sans_3'] text-base text-[rgba(255,255,255,0.78)]"><span class="absolute left-0 top-[0.7em] w-[5px] h-[5px] rounded-full bg-[#87cbf2]"></span>Check-in at the front, card payment at checkout</li>
-<li class="relative pl-[14px] font-['Source_Sans_3'] text-base text-[rgba(255,255,255,0.78)]"><span class="absolute left-0 top-[0.7em] w-[5px] h-[5px] rounded-full bg-[#87cbf2]"></span>Notes and invoices built from what you logged</li>
-<li class="relative pl-[14px] font-['Source_Sans_3'] text-base text-[rgba(255,255,255,0.78)]"><span class="absolute left-0 top-[0.7em] w-[5px] h-[5px] rounded-full bg-[#87cbf2]"></span>Earnings per session: gross, fee, net</li>
-</ul>
-</div>
-<div>
-<h3 class="font-['Source_Sans_3'] uppercase mb-6 pb-2 border-b border-[rgba(255,255,255,0.16)] text-[#87cbf2] text-[0.68rem] font-semibold tracking-widest">WHAT IT DOES FOR THE BOOK</h3>
-<ul class="space-y-[14px]"><li class="relative pl-[14px] font-['Source_Sans_3'] text-base text-[rgba(255,255,255,0.78)] leading-relaxed"><span class="absolute left-0 top-[0.7em] w-[5px] h-[5px] rounded-full bg-[rgba(255,255,255,0.45)]"></span><b class="text-white font-semibold">You never discount.</b> Same price to you, roughly 30% less to them.</li><li class="relative pl-[14px] font-['Source_Sans_3'] text-base text-[rgba(255,255,255,0.78)] leading-relaxed"><span class="absolute left-0 top-[0.7em] w-[5px] h-[5px] rounded-full bg-[rgba(255,255,255,0.45)]"></span><b class="text-white font-semibold">They arrive with the money already set aside.</b> And an FSA deadline to spend it by.</li><li class="relative pl-[14px] font-['Source_Sans_3'] text-base text-[rgba(255,255,255,0.78)] leading-relaxed"><span class="absolute left-0 top-[0.7em] w-[5px] h-[5px] rounded-full bg-[rgba(255,255,255,0.45)]"></span><b class="text-white font-semibold">A patient, not a booking.</b> One letter covers roughly 24 sessions across twelve months — so the first visit starts a course of care, not a one-off.</li><li class="relative pl-[14px] font-['Source_Sans_3'] text-base text-[rgba(255,255,255,0.78)] leading-relaxed"><span class="absolute left-0 top-[0.7em] w-[5px] h-[5px] rounded-full bg-[rgba(255,255,255,0.45)]"></span><b class="text-white font-semibold">Ninety minutes costs less than sixty did.</b> The upgrade stops being a splurge.</li><li class="relative pl-[14px] font-['Source_Sans_3'] text-base text-[rgba(255,255,255,0.78)] leading-relaxed"><span class="absolute left-0 top-[0.7em] w-[5px] h-[5px] rounded-full bg-[rgba(255,255,255,0.45)]"></span><b class="text-white font-semibold">Paid when you sign.</b> Never waiting on an administrator's decision.</li></ul>
-</div>
-</div>
-</div></section>
-<!-- END: Features Dark Band -->
-<!-- BEGIN: Money Flow -->
-<section class="w-full surface-tier-2 py-[80px] border-y border-outline-muted">
-<div class="max-w-[720px] mx-auto px-container-padding text-center">
-<h3 class="font-headline-md font-medium text-[1.6rem] text-ink mb-12">Your money moves once.</h3>
-<div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0 mb-6">
-<!-- Node 1 -->
-<div class="flex flex-col items-center">
-<div class="w-[56px] h-[56px] rounded-[4px] border border-outline-muted surface-tier-1 flex items-center justify-center mb-3 relative z-10">
-<svg class="w-6 h-6" fill="none" stroke="#16181a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 6.5v11"></path><path d="M14.8 9.2c-.5-.9-1.6-1.4-2.8-1.4-1.7 0-2.9.9-2.9 2.2 0 1.4 1.2 1.9 2.9 2.2 1.7.3 2.9.8 2.9 2.2 0 1.3-1.2 2.2-2.9 2.2-1.2 0-2.3-.5-2.8-1.4"></path></svg>
-</div>
-<span class="font-body-md text-[0.84rem] font-bold text-ink">Your patient</span>
-<span class="font-body-md text-[0.72rem] text-ink opacity-62 mt-1">pays at checkout</span>
-</div>
-<!-- Connector 1 -->
-<div class="hidden md:flex flex-1 items-center px-4 -mt-[36px] relative">
-<div class="w-full h-[2px] bg-ink relative overflow-hidden">
-<div class="w-1.5 h-1.5 rounded-full bg-ink animate-money-flow" style="animation-delay: 0s;"></div>
-<div class="w-1.5 h-1.5 rounded-full bg-ink animate-money-flow" style="animation-delay: 1s;"></div>
-<div class="w-1.5 h-1.5 rounded-full bg-ink animate-money-flow" style="animation-delay: 2s;"></div>
-</div>
-<div class="w-0 h-0 border-y-[4px] border-y-transparent border-l-[6px] border-l-ink ml-[-1px]"></div>
-</div>
-<!-- Mobile connector -->
-<div class="md:hidden flex flex-col items-center py-4">
-<div class="w-[2px] h-[30px] bg-ink relative overflow-hidden">
-<div class="absolute w-full flex flex-col items-center gap-2 animate-[flow-down_2.4s_infinite_linear] opacity-60 motion-reduce:hidden">
-<div class="w-[5px] h-[5px] rounded-full bg-ink"></div>
-<div class="w-[5px] h-[5px] rounded-full bg-ink"></div>
-<div class="w-[5px] h-[5px] rounded-full bg-ink"></div>
-</div>
-</div>
-<div class="w-0 h-0 border-x-[4px] border-x-transparent border-t-[6px] border-t-ink mt-[-1px]"></div>
-</div>
-<!-- Node 2 -->
-<div class="flex flex-col items-center">
-<div class="w-[56px] h-[56px] rounded-[4px] border-[2px] border-ink surface-tier-1 flex items-center justify-center mb-3 relative z-10 shadow-[0_0_15px_rgba(22,24,26,0.1)]">
-<svg class="w-6 h-6" fill="none" stroke="#16181a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 6.5v11"></path><path d="M14.8 9.2c-.5-.9-1.6-1.4-2.8-1.4-1.7 0-2.9.9-2.9 2.2 0 1.4 1.2 1.9 2.9 2.2 1.7.3 2.9.8 2.9 2.2 0 1.3-1.2 2.2-2.9 2.2-1.2 0-2.3-.5-2.8-1.4"></path></svg>
-</div>
-<span class="font-body-md text-[0.84rem] font-bold text-ink">You</span>
-<span class="font-body-md text-[0.72rem] text-ink opacity-62 mt-1">same day, full rate</span>
-</div>
-<!-- Connector 2 -->
-<div class="hidden md:flex flex-1 items-center px-4 -mt-[36px] relative">
-<div class="w-full h-[1.5px] border-b-[1.5px] border-dashed border-outline-muted"></div>
-<div class="w-0 h-0 border-y-[4px] border-y-transparent border-l-[6px] border-l-transparent border-l-outline-muted ml-[-1px] relative">
-<div class="absolute top-[-3px] left-[-7px] w-0 h-0 border-y-[3px] border-y-transparent border-l-[5px] border-l-[#efebe7]"></div>
-</div>
-</div>
-<!-- Mobile connector -->
-<div class="md:hidden flex flex-col items-center py-4">
-<div class="w-[1.5px] h-[30px] border-l-[1.5px] border-dashed border-outline-muted"></div>
-<div class="w-0 h-0 border-x-[4px] border-x-transparent border-t-[6px] border-t-transparent border-t-outline-muted mt-[-1px] relative">
-<div class="absolute top-[-7px] left-[-3px] w-0 h-0 border-x-[3px] border-x-transparent border-t-[5px] border-t-[#efebe7]"></div>
-</div>
-</div>
-<!-- Node 3 -->
-<div class="flex flex-col items-center opacity-50">
-<div class="w-[56px] h-[56px] rounded-[4px] border-[1.5px] border-dashed border-outline-muted flex items-center justify-center mb-3 relative z-10">
-<svg class="w-6 h-6" fill="none" stroke="#16181a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"></path><path d="M14 3v4h4"></path><path d="M9 13h6M9 16.5h4"></path></svg>
-</div>
-<span class="font-body-md text-[0.84rem] font-bold text-ink">Their plan</span>
-<span class="font-body-md text-[0.72rem] text-ink opacity-62 mt-1">afterward, without you</span>
-</div>
-</div>
-<p class="font-body-md text-[0.8rem] text-ink opacity-62 text-center mt-6">From the patient to you, and that's the end of it. The claim happens somewhere you're not.</p>
-</div>
-</section>
-<!-- END: Money Flow -->
-<!-- BEGIN: Cost Comparison -->
-<section class="w-full bg-[#e4deda] py-16">
-<div class="max-w-[640px] mx-auto surface-tier-1 rounded-[4px] p-8 text-left"><p class="font-label-caps text-sm font-semibold uppercase tracking-wider mb-8 text-ink opacity-60">And it costs you nothing to try</p><div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start"><div class="flex flex-col gap-2"><div><span class="font-headline-sm font-semibold text-[2rem] text-ink opacity-42 line-through">$30–70</span></div><div class="font-headline-md font-semibold text-[3rem] leading-none brand-gradient-text">$0</div><div class="font-body-md text-[0.8rem] text-ink opacity-62 mt-2">What most solo practices pay for scheduling software, and what Reblooma charges.</div></div><div class="flex flex-col gap-[20px]"><div><h5 class="font-headline-sm font-semibold text-[1.08rem] text-ink">Everything in one place</h5><p class="font-body-md text-[0.9rem] text-ink opacity-62">Calendar, bookings, patient roster, check-in and card payment.</p></div><div><h5 class="font-headline-sm font-semibold text-[1.08rem] text-ink">Nothing to install</h5><p class="font-body-md text-[0.9rem] text-ink opacity-62">Nothing to join. Nothing per session.</p></div><div><h5 class="font-headline-sm font-semibold text-[1.08rem] text-ink">Or keep what you have</h5><p class="font-body-md text-[0.9rem] text-ink opacity-62">Plenty of practices run both. Book where you always have; let Reblooma handle the documentation.</p></div></div></div></div>
-</section>
-<!-- END: Cost Comparison -->
-<!-- BEGIN: Insurance Comparison Table -->
-<section class="py-24 bg-[#f3f0ed]"><div class="max-w-[1080px] mx-auto px-container-padding flex justify-center">
-<div class="w-full max-w-[720px] text-left">
-<p class="font-label-caps text-label-caps text-[#2a2724] opacity-42 uppercase tracking-widest mb-4">Getting paid</p>
-<h2 class="font-['Lora'] font-medium text-4xl mb-12 text-[#2a2724]">This is a cash visit, not an insurance claim.</h2>
-<div class="space-y-6 text-[#2a2724] opacity-80 font-['Source_Sans_3'] text-[16.5px] leading-[1.62] mb-16">
-<p class="">Your patient pays you at checkout, at your full rate, same as anyone else. What happens after that is between them and their plan — it never touches your money. No claims to file, no denials, no clawbacks, nothing to chase.</p>
-<p class="">One difference: your payout releases once the session note is signed. The AI seat drafts it from what you logged, you check it and sign — about five minutes.<sup class="">2</sup> Same day, not thirty.</p>
-</div>
-<div class="overflow-x-auto -mx-container-padding px-container-padding"><div class="max-w-[620px] min-w-[520px] mx-auto font-['Source_Sans_3']">
-<div class="grid grid-cols-[1.5fr_1fr_1fr_1fr] border-b border-[rgba(42,39,36,0.08)] pb-2"><div class="text-[0.64rem] font-semibold tracking-[0.12em] uppercase text-[#2a2724] opacity-42"></div><div class="text-[0.64rem] font-semibold tracking-[0.12em] uppercase text-[#2a2724] text-center bg-[#f3f0ed] px-[12px]">Reblooma</div><div class="text-[0.64rem] font-semibold tracking-[0.12em] uppercase text-[#2a2724] opacity-42 text-center">Cash</div><div class="text-[0.64rem] font-semibold tracking-[0.12em] uppercase text-[#2a2724] opacity-42 text-center">Insurance</div></div>
-<div class="grid grid-cols-[1.5fr_1fr_1fr_1fr] items-center py-[10px] border-b border-[rgba(42,39,36,0.08)]"><div class="flex items-center gap-2"><svg class="w-[18px] h-[18px] text-[#2a2724] opacity-62" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg><div class="text-[0.8rem] text-[#2a2724] opacity-62">When you're paid</div></div><div class="text-[0.84rem] text-[#2a2724] text-center font-semibold bg-[#f3f0ed] px-[12px]">Same day</div><div class="text-[0.84rem] text-[#2a2724] text-center">Same day</div><div class="text-[0.84rem] text-[#2a2724] text-center">30–90 days</div></div><div class="grid grid-cols-[1.5fr_1fr_1fr_1fr] items-center py-[10px] border-b border-[rgba(42,39,36,0.08)]"><div class="flex items-center gap-2"><svg class="w-[18px] h-[18px] text-[#2a2724] opacity-62" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" stroke-linecap="round" stroke-linejoin="round"></path></svg><div class="text-[0.8rem] text-[#2a2724] opacity-62">Repeat visits</div></div><div class="text-[0.82rem] text-[#2a2724] text-center font-semibold bg-[#f3f0ed] px-[12px]">12 months, covered</div><div class="text-[0.82rem] text-[#2a2724] text-center">Up to them</div><div class="text-[0.82rem] text-[#2a2724] text-center">Re-authorised each visit</div></div>
-<div class="grid grid-cols-[1.5fr_1fr_1fr_1fr] items-center py-[10px] border-b border-[rgba(42,39,36,0.08)]"><div class="flex items-center gap-2"><svg class="w-[18px] h-[18px] text-[#2a2724] opacity-62" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"></path></svg><div class="text-[0.8rem] text-[#2a2724] opacity-62">Denial risk</div></div><div class="text-[0.84rem] text-[#2a2724] text-center font-semibold bg-[#f3f0ed] px-[12px]">Never yours</div><div class="text-[0.84rem] text-[#2a2724] text-center">—</div><div class="text-[0.84rem] text-[#2a2724] text-center">Yours</div></div>
-<div class="grid grid-cols-[1.5fr_1fr_1fr_1fr] items-center py-[10px] border-b border-[rgba(42,39,36,0.08)]"><div class="flex items-center gap-2"><svg class="w-[18px] h-[18px] text-[#2a2724] opacity-62" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg><div class="text-[0.8rem] text-[#2a2724] opacity-62">Admin per visit</div></div><div class="text-[0.84rem] text-[#2a2724] text-center font-semibold bg-[#f3f0ed] px-[12px]">~5 min</div><div class="text-[0.84rem] text-[#2a2724] text-center">None</div><div class="text-[0.84rem] text-[#2a2724] text-center">Hours</div></div>
-<div class="grid grid-cols-[1.5fr_1fr_1fr_1fr] items-center py-[10px] border-[rgba(42,39,36,0.08)]"><div class="flex items-center gap-2"><svg class="w-[18px] h-[18px] text-[#2a2724] opacity-62" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" stroke-linecap="round" stroke-linejoin="round"></path></svg><div class="text-[0.8rem] text-[#2a2724] opacity-62">Your rate</div></div><div class="text-[0.84rem] text-[#2a2724] text-center font-semibold bg-[#f3f0ed] px-[12px]">Yours</div><div class="text-[0.84rem] text-[#2a2724] text-center">Yours</div><div class="text-[0.84rem] text-[#2a2724] text-center">Their fee sched.</div></div>
-</div></div>
-</div>
-</div></section>
-<!-- END: Insurance Comparison Table -->
-<!-- BEGIN: FAQ -->
-<section class="py-24">
-<div class="max-w-[720px] mx-auto px-container-padding">
-<h2 class="font-headline-md font-medium text-3xl mb-12 text-center text-ink">Questions therapists ask</h2>
-<div class="divide-y divide-outline-muted">
-<details class="group py-6" open="">
-<summary class="flex justify-between items-center cursor-pointer list-none">
-<span class="font-headline-sm font-medium text-lg text-ink">1. What is an FSA or HSA?</span>
-<span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span>
-</summary>
-<div class="mt-4 font-body-md text-ink opacity-62 leading-relaxed">Money set aside from a paycheck before taxes, for health care. Over 60 million Americans hold one. FSA funds expire yearly — nearly half forfeit some.</div>
-</details>
-<details class="group py-6">
-<summary class="flex justify-between items-center cursor-pointer list-none">
-<span class="font-headline-sm font-medium text-lg text-ink">2. Does massage qualify?</span>
-<span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span>
-</summary>
-<div class="mt-4 font-body-md text-ink opacity-62 leading-relaxed">More often than you'd think. Chronic shoulder and back pain, headaches, sleep problems, stress-related tension — you're almost certainly treating patients with these already. Relaxation alone doesn't qualify, but a documented condition does. The setting is never the test; the paperwork is.</div>
-</details>
-<details class="group py-6">
-<summary class="flex justify-between items-center cursor-pointer list-none">
-<span class="font-headline-sm font-medium text-lg text-ink">3. I work at a day spa, a resort, or I'm mobile. Can I join?</span>
-<span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span>
-</summary>
-<div class="mt-4 font-body-md text-ink opacity-62 leading-relaxed">Yes. Day spas, resorts, wellness practices and mobile or in-home therapists are all welcome — the setting was never the test. You need to be a licensed massage therapist, and the session has to treat what your client's letter covers. If your spa takes payment rather than you, we'll set things up with them so the invoice comes from the business that was paid.</div>
-</details>
-<details class="group py-6">
-<summary class="flex justify-between items-center cursor-pointer list-none">
-<span class="font-headline-sm font-medium text-lg text-ink">4. I'm not clinically trained. Can I still write the notes?</span>
-<span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span>
-</summary>
-<div class="mt-4 font-body-md text-ink opacity-62 leading-relaxed">Yes. You answer a few plain-language prompts — what your client told you, where you worked, what changed — and Reblooma turns them into a proper session note for you to check and sign. You never diagnose; the condition comes from the clinician's letter. If a session drifts outside what the letter covers, you'll see it before you sign.</div>
-</details>
-<details class="group py-6">
-<summary class="flex justify-between items-center cursor-pointer list-none">
-<span class="font-headline-sm font-medium text-lg text-ink">5. My card machine already takes FSA/HSA cards. Do I need this?</span>
-<span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span>
-</summary>
-<div class="mt-4 font-body-md text-ink opacity-62 leading-relaxed">A swipe clearing means the card was not declined, not that the visit qualifies. If the administrator later asks for proof and there is none, your patient repays it. That is the patient who quietly stops booking.</div>
-</details>
-<details class="group py-6">
-<summary class="flex justify-between items-center cursor-pointer list-none">
-<span class="font-headline-sm font-medium text-lg text-ink">6. When do I get paid?</span>
-<span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span>
-</summary>
-<div class="mt-4 font-body-md text-ink opacity-62 leading-relaxed">At the time of service. No waiting on an insurer or administrator, and your payout never depends on whether your patient is reimbursed.</div>
-</details>
-<details class="group py-6">
-<summary class="flex justify-between items-center cursor-pointer list-none">
-<span class="font-headline-sm font-medium text-lg text-ink">7. What does it cost me?</span>
-<span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span>
-</summary>
-<div class="mt-4 font-body-md text-ink opacity-62 leading-relaxed">The platform is free — no signup fee, nothing per session. One optional add-on: an AI seat that drafts your notes, priced before launch. Card processing fees apply to payouts, as with any terminal.</div>
-</details>
-<details class="group py-6">
-<summary class="flex justify-between items-center cursor-pointer list-none">
-<span class="font-headline-sm font-medium text-lg text-ink">8. Who approves the claim?</span>
-<span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span>
-</summary>
-<div class="mt-4 font-body-md text-ink opacity-62 leading-relaxed">Your patient's FSA/HSA plan administrator decides, not you and not us — which means the claim is never yours to chase. Reblooma makes sure the documentation is ready before it's asked for, and if their administrator wants more, we help your patient answer it.</div>
-</details>
-</div>
-</div>
-</section>
-<!-- END: FAQ -->
-<!-- BEGIN: CTA Section -->
-<section class="w-full bg-[#243546] py-24">
-<div class="max-w-[1080px] mx-auto px-container-padding text-center">
-<h2 class="font-['Lora'] font-medium text-4xl mb-4 text-white">Join the practitioner list</h2>
-<p class="font-['Source_Sans_3'] text-lg text-[#959ea8] mb-8">Free to join. Nothing per session. Set up in an afternoon.</p>
-<button type="button" data-waitlist="practitioner" data-cta="practitioner-footer-cta" class="bg-white text-[#243546] font-ui-button text-ui-button px-8 py-4 rounded uppercase tracking-wider cursor-pointer hover:opacity-90 transition-opacity font-semibold">Get early access</button>
-<p class="font-['Source_Sans_3'] text-[0.9rem] text-[#959ea8] mt-6">Want a say in how it's priced? <button type="button" data-waitlist="testing" data-cta="practitioner-testing" class="text-white underline underline-offset-4 hover:opacity-80">Apply to be a testing practice</button></p>
-</div>
-</section>
-<!-- END: CTA Section -->
-</main>
-<!-- BEGIN: Footer -->
-<footer class="bg-surface-container border-t border-outline-variant/30 relative z-20">
-<section class="pt-12 pb-8 px-container-padding">
-<div class="max-w-[1080px] mx-auto w-full text-left space-y-4" style="font-size: 0.70rem; color: rgba(22, 24, 26, 0.42);">
-<div class="flex gap-2"><span class="font-bold shrink-0">1.</span><p>Illustrative: the saving depends on your patient's own tax rate and plan. FSA plan years and rules vary by employer; patients should verify details with their administrator.</p></div>
-<div class="flex gap-2"><span class="font-bold shrink-0">2.</span><p>Estimated time to review and sign a drafted note. Actual time varies by session and practitioner.</p></div>
-<div class="flex gap-2"><span class="font-bold shrink-0">3.</span><p>Illustrative arithmetic, not a projection: 24 sessions at $80–$120 a session over a twelve-month letter. Actual session counts, rates and letter durations vary, and are set by the clinician and by you.</p></div>
-<div class="flex gap-2"><p>Reblooma provides documentation support but does not guarantee reimbursement, which is subject to the patient's individual plan and administrator's approval.</p></div>
-</div>
-</section>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-[1080px] mx-auto px-container-padding py-20 items-start">
-<div>
-<a class="font-headline-sm text-headline-sm font-bold text-primary block mb-6" href="index.html">Reblooma</a>
-<div class="font-label-caps text-label-caps text-on-surface-variant/70">&copy; 2026 Reblooma. All rights reserved.</div>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Legal</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="privacy.html">Privacy Notice</a>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Explore</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#how-it-works-section">How it works</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="practitioners.html">For practitioners</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="directory.html">Find a practice</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="resources.html">Resources</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="about.html">About</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#faq">Help</a>
-<button type="button" data-waitlist data-cta="footer" class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left">Join the waitlist</button>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="mailto:hello@reblooma.com">hello@reblooma.com</a>
-</div>
-</div>
-<div class="border-t border-primary/5 max-w-[1080px] mx-auto px-container-padding py-8">
-<p class="font-label-caps text-[0.68rem] leading-[1.55] max-w-[100ch] text-left text-on-surface-variant/60">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC &sect;213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
-</div>
-</footer>
-<!-- END: Footer -->
+<body>
 
+<button type="button" class="dev" data-waitlist data-cta="top-bar">In development · Join the waitlist for early access</button>
+<header>
+  <div class="wrap">
+    <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
+    <nav aria-label="Main">
+      <a href="index.html#how">How it works</a>
+      <a href="practitioners.html" class="on">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button class="menubtn" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a class="btn btn-main btn-sm" href="index.html#who" data-waitlist data-cta="header">Join the waitlist</a>
+  </div>
+  <nav id="mobile-menu" class="mmenu" hidden aria-label="Mobile">
+      <a href="index.html#how">How it works</a>
+      <a href="practitioners.html" class="on">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
+</header>
+
+<main id="top">
+
+<section class="hero prh">
+  <div class="wrap">
+    <div class="lefty">
+      <p class="eyebrow">FSA &amp; HSA for therapeutic massage</p>
+      <h1>Get paid in pre&#8209;tax dollars. Keep the patients you'd have lost.</h1>
+      <p class="lead">You already chart. Reblooma turns your notes into documents your patients can send to their FSA or HSA. A session costs them about 30% less, and your rate never moves.</p>
+      <details class="more"><summary>Why a card swipe isn't enough</summary><div class="body">
+        <p>A swiped FSA/HSA card isn't proof the visit qualified. If their administrator asks and nothing backs it up, your patient repays it, and quietly stops booking.</p>
+      </div></details>
+      <div class="ctas"><a data-waitlist="practitioner" data-cta="practitioner-hero" class="btn btn-main" href="#join">Get early access</a></div>
+      <p class="fine">Free to join. Nothing per session.</p>
+    </div>
+    <div class="card price">
+      <p class="eyebrow">What it does to your price</p>
+      <div class="row"><span>What you charge</span><b>$120</b></div><i></i>
+      <div class="row"><span>What it costs your patient</span><b>~$84</b></div><i class="pre"></i>
+      <p class="big">A 30% discount that <em>costs you nothing.</em></p>
+      <p class="fine">Their tax savings, not your rate.<sup><a href="#n1">1</a></sup></p>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="card">
+      <div class="stat"><b>$0</b><span>to join, and nothing per session</span></div>
+      <div class="stat"><b>~5 min</b><span>to check and sign a note the AI drafts<sup><a href="#n2">2</a></sup></span></div>
+      <div class="stat"><b>24</b><span>sessions one letter typically covers</span></div>
+      <div class="stat"><b>$1,900–$2,900</b><span>per documented patient<sup><a href="#n3">3</a></sup></span></div>
+      <p class="tag">One letter. Twelve months. A patient who keeps coming back.</p>
+    </div>
+  </div>
+</section>
+
+<section class="quoteband">
+  <div class="wrap"><p>You never discount.<br><em>Their tax rate does it for you.</em></p></div>
+</section>
+
+<section class="band-dark">
+  <div class="wrap">
+    <h2 class="h2">Built for a <em class="glow">practice of one.</em></h2>
+    <p class="lead" style="margin-top:12px">Front desk, therapist, bookkeeper. Reblooma does the documents while you work.</p>
+    <div class="two">
+      <div>
+        <h5>Runs your day</h5>
+        <ul class="dots">
+          <li>Your patient roster in one place</li>
+          <li>Card payment at checkout</li>
+          <li>Notes and invoices built from what you logged</li>
+          <li>Earnings per session: gross, fee, net</li>
+        </ul>
+      </div>
+      <div>
+        <h5>What it does for the book</h5>
+        <ul class="dots">
+          <li><b>You never discount.</b> Same price to you, roughly 30% less to them.</li>
+          <li><b>They arrive with the money already set aside.</b> And an FSA deadline to spend it by.</li>
+          <li><b>A patient, not a booking.</b> One letter covers roughly 24 sessions across twelve months. So the first visit starts a course of care, not a one-off.</li>
+          <li><b>Ninety minutes costs less than sixty did.</b> The upgrade stops being a splurge.</li>
+          <li><b>Paid when you sign.</b> Never waiting on an administrator's decision.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap center">
+    <h2 class="h2">Your money moves once.</h2>
+    <div class="flow">
+      <div class="node"><div class="ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2c-.5-.9-1.5-1.4-2.8-1.4-1.6 0-2.8.8-2.8 2s1.1 1.7 2.8 2.1 2.8.9 2.8 2.1-1.2 2-2.8 2c-1.3 0-2.4-.6-2.9-1.5M12 6.3v1.5M12 16.2v1.5"/></svg></div><b>Your patient</b><span>pays at checkout</span></div>
+      <div class="node"><div class="ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2c-.5-.9-1.5-1.4-2.8-1.4-1.6 0-2.8.8-2.8 2s1.1 1.7 2.8 2.1 2.8.9 2.8 2.1-1.2 2-2.8 2c-1.3 0-2.4-.6-2.9-1.5M12 6.3v1.5M12 16.2v1.5"/></svg></div><b>You</b><span>full rate, once you sign</span></div>
+      <div class="node"><div class="ico dim"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg></div><b>Their plan</b><span>afterward, without you</span></div>
+    </div>
+    <div class="try">
+    <div class="card">
+      <div>
+        <p class="eyebrow">And it costs you nothing to try</p>
+        <p class="zero" style="margin-top:12px">$0</p>
+        <p class="fine">To join, and per session.</p>
+      </div>
+      <div class="items">
+        <div><h3>Nothing to install</h3><p>It runs in your browser and on your phone.</p></div>
+        <div><h3>Keep what you have</h3><p>Book where you always have. Reblooma handles the documents.</p></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper)">
+  <div class="wrap"><div class="col">
+    <p class="eyebrow">Getting paid</p>
+    <h2 class="h2">This is a cash visit, not an insurance claim.</h2>
+    <p class="lead" style="margin-top:16px">Your patient pays you at checkout, at your full rate. No claims to file, no denials, nothing to chase.</p>
+    <details class="more"><summary>More</summary><div class="body">
+      <p>What happens after checkout is between your patient and their plan. It never touches your money.</p>
+      <p>One difference: your payout releases once the session note is signed. The AI drafts it from what you logged. You check it and sign, in about five minutes.<sup><a href="#n2">2</a></sup></p>
+    </div></details>
+    <div class="tblwrap">
+      <table class="cmp">
+        <thead><tr><th></th><th class="us">Reblooma</th><th>Cash</th><th>Insurance</th></tr></thead>
+        <tbody>
+          <tr><td>When you're paid</td><td class="us">Once you sign</td><td>Same day</td><td>30–90 days</td></tr>
+          <tr><td>Repeat visits</td><td class="us">12 months, covered</td><td>Up to them</td><td>Re-authorized each visit</td></tr>
+          <tr><td>Denial risk</td><td class="us">Never yours</td><td>None</td><td>Yours</td></tr>
+          <tr><td>Admin per visit</td><td class="us">~5 min</td><td>None</td><td>Hours</td></tr>
+          <tr><td>Your rate</td><td class="us">Yours</td><td>Yours</td><td>Their fee schedule</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div></div>
+</section>
+
+<section id="faq">
+  <div class="wrap center"><h2 class="h2">Questions therapists ask.</h2></div>
+  <div class="wrap">
+    <div class="faq">
+      <details open><summary>What is an FSA or HSA?</summary><div class="a">
+        <p>Money set aside from a paycheck before taxes, for health care. Over 60 million Americans hold one. FSA funds expire each year, and nearly half of holders lose some.</p></div></details>
+      <details><summary>Does massage qualify?</summary><div class="a">
+        <p>More often than you'd think. Chronic shoulder and back pain, headaches, sleep problems, stress-related tension: you're almost certainly treating these already. Relaxation alone doesn't qualify, but a documented condition does. The setting is never the test. The records are.</p></div></details>
+      <details><summary>I work at a day spa, a resort, or I'm mobile. Can I join?</summary><div class="a">
+        <p>Yes. Day spas, resorts, wellness practices and mobile or in-home therapists are all welcome. You need to be a licensed massage therapist, and the session has to treat what your client's letter covers.</p>
+        <p>If your spa takes payment rather than you, we set things up with them so the invoice comes from the business that was paid.</p></div></details>
+      <details><summary>I'm not clinically trained. Can I still write the notes?</summary><div class="a">
+        <p>Yes. You answer a few plain prompts: what your client told you, where you worked, what changed. Reblooma turns them into a session note for you to check and sign.</p>
+        <p>You never diagnose. The condition comes from the clinician's letter. If a session drifts outside what the letter covers, you see it before you sign.</p></div></details>
+      <details><summary>My card machine already takes FSA/HSA cards. Do I need this?</summary><div class="a">
+        <p>A swipe clearing means the card wasn't declined. It doesn't mean the visit qualifies. If the administrator later asks for proof and there is none, your patient repays it. That's the patient who quietly stops booking.</p></div></details>
+      <details><summary>When do I get paid?</summary><div class="a">
+        <p>Once you sign the note and the invoice is made. You never wait on an insurer, and your pay never depends on your patient's claim.</p></div></details>
+      <details><summary>What does it cost me?</summary><div class="a">
+        <p>The platform is free: no signup fee, nothing per session. One optional add-on, an AI seat that drafts your notes, is priced before launch. Card processing fees come out of payouts, as with any terminal.</p></div></details>
+      <details><summary>Who approves the claim?</summary><div class="a">
+        <p>Your patient's plan administrator decides, not you and not us. So the claim is never yours to chase. Reblooma makes sure the documents are ready before anyone asks, and if the administrator wants more, we help your patient answer.<sup><a href="#n4">4</a></sup></p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="band-dark cta-dark" id="join">
+  <div class="wrap">
+    <h2>Join the practitioner list.</h2>
+    <p class="sub" style="margin-top:10px">Free to join. Nothing per session. Set up in an afternoon.</p>
+    <a data-waitlist="practitioner" data-cta="practitioner-footer-cta" class="btn btn-main" href="#">Get early access</a>
+    <p class="small">Want a say in how it's priced? <a data-waitlist="testing" data-cta="practitioner-testing" href="#">Apply to be a testing practice</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer id="about">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
+      <div><h5>Explore</h5><ul><li><a href="index.html#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="index.html#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li><a href="mailto:hello@reblooma.com">hello@reblooma.com</a></li></ul></div>
+      <div><h5>Legal</h5><ul><li><a href="privacy.html">Privacy Notice</a></li></ul></div>
+    </div>
+    <details class="more notes"><summary>Notes and sources (4)</summary><div class="body">
+      <ol>
+        <li id="n1">Illustrative: the saving depends on your patient's own tax rate and plan. FSA plan years and rules vary by employer; patients should check details with their administrator.</li>
+        <li id="n2">Estimated time to review and sign a drafted note. Actual time varies by session and practitioner.</li>
+        <li id="n3">Illustrative arithmetic, not a projection: 24 sessions at $80–$120 a session over a twelve-month letter. Actual session counts, rates and letter durations vary, and are set by the clinician and by you.</li>
+        <li id="n4">Reblooma provides documentation support but does not guarantee reimbursement, which is subject to the patient's individual plan and administrator's approval.</li>
+      </ol>
+    </div></details>
+    <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
+  </div>
+</footer>
+
+
+<script>
+// Footnote links open the closed "Notes and sources" first.
+document.querySelectorAll('sup a').forEach(a=>a.addEventListener('click',()=>{const n=document.querySelector('.notes');if(n)n.open=true}));
+
+</script>
 </body>
 </html>

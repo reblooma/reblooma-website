@@ -81,7 +81,7 @@ window.REBLOOMA = Object.assign({
             '<input class="wl-input" name="practice_name" type="text" autocomplete="organization"></label>' +
           '<label class="flex items-start gap-3 mb-5 text-[0.78rem] leading-snug text-on-surface-variant cursor-pointer">' +
             '<input type="checkbox" name="testing_practice" value="yes" class="mt-0.5 rounded-sm border-primary/30 text-primary focus:ring-0">' +
-            '<span>I\'d like to be a <b class="text-primary">pilot practice</b> &mdash; first access to FSA/HSA patients, and the repeat bookings that follow.</span></label>' +
+            '<span>I\'d like to be a <b class="text-primary">pilot practice</b>: first access to FSA/HSA patients, and the repeat bookings that follow.</span></label>' +
         '</div>' +
 
         '<label class="flex items-start gap-3 mb-4 text-[0.78rem] leading-snug text-on-surface-variant cursor-pointer">' +
@@ -246,7 +246,10 @@ window.REBLOOMA = Object.assign({
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    send(payload).then(function (sent) {
+    // A patient on the way to Dr. B never waits more than 4 seconds on GoHighLevel.
+    var saving = send(payload);
+    if (state.consult) saving = Promise.race([saving, new Promise(function (ok) { setTimeout(function () { ok(true); }, 4000); })]);
+    saving.then(function (sent) {
       (window.dataLayer = window.dataLayer || []).push({
         event: state.consult ? 'consultation_started' : 'waitlist_signup', role: role, testing_practice: testing
       });
@@ -254,7 +257,7 @@ window.REBLOOMA = Object.assign({
       if (state.consult) return goToConsultation(sent);
       $('[data-wl-done-title]').textContent = 'You\'re on the list.';
       $('[data-wl-done-text]').textContent = testing
-        ? 'Thanks — we\'ll reach out personally about joining as a testing practice.'
+        ? 'Thanks. We\'ll reach out personally about joining as a testing practice.'
         : 'We\'ll be in touch as we get closer to launch.';
       showStep('done');
     }).catch(function () {
@@ -272,7 +275,7 @@ window.REBLOOMA = Object.assign({
   // Hand the patient to Dr. B. No personal details go in the URL.
   function goToConsultation(autoRedirect) {
     var url = window.REBLOOMA.consultationUrl;
-    $('[data-wl-done-title]').textContent = 'Thanks — one more step.';
+    $('[data-wl-done-title]').textContent = 'Thanks. One more step.';
     $('[data-wl-done-text]').textContent = 'Your letter comes from a consultation with Dr. B, an independent telehealth practice. ' +
       (autoRedirect ? 'We\'re taking you there now.' : 'Continue when you\'re ready.');
     $('[data-wl-close].btn-primary').classList.add('hidden');
@@ -281,7 +284,7 @@ window.REBLOOMA = Object.assign({
     link.classList.remove('hidden');
     showStep('done');
     // In test mode, stay put so the test-mode notice can be read.
-    if (autoRedirect) state.redirectTimer = setTimeout(function () { location.assign(url); }, 2500);
+    if (autoRedirect) state.redirectTimer = setTimeout(function () { location.assign(url); }, 1200);
   }
 
   // Form-encoded, so the browser sends it without a CORS preflight. GoHighLevel

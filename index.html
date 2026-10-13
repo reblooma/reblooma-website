@@ -1,9 +1,233 @@
-<!DOCTYPE html>
-<html class="light" lang="en">
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reblooma — Use your FSA/HSA for massage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Tokens copied from the approved phone screens (10/12/2026). */
+:root{
+  --ground:#f4f0ec; --sand:#f6f2ee; --stone:#e4deda; --paper:#ffffff;
+  --ink:#16181a; --hint:#44474a; --line:rgba(22,24,26,.09);
+  --teal:#00938e; --teal-ink:#006e6a; --purple:#5f5aa8; --lav:#eceaf6; --sel:#e6f4f3; --mint:#e3f4ea; --green:#1a7a4a;
+  --grad:linear-gradient(135deg,#00938e,#5f5aa8);
+  --serif:'Lora',Georgia,'Times New Roman',serif;
+  --sans:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --t-body:clamp(1.0625rem,.95rem + .45vw,1.25rem);
+  --t-small:clamp(.9375rem,.88rem + .25vw,1.0625rem);
+  --gut:clamp(16px,5vw,48px);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 var(--t-body)/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.18;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--teal-ink)}
+.wrap{max-width:1600px;margin:0 auto;padding-inline:max(var(--gut),6vw)}
+
+/* Top bar */
+.dev{background:var(--ink);color:#fff;text-align:center;font-size:.8125rem;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px}
+header{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;gap:24px;min-height:72px}
+header img{height:34px;width:auto}
+nav{display:flex;gap:22px;margin-left:auto;font-size:var(--t-small);font-weight:600}
+nav a{color:var(--ink);text-decoration:none}
+nav a:hover{color:var(--teal-ink)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:999px;font:600 var(--t-small)/1 var(--sans);text-decoration:none;border:0;cursor:pointer}
+.btn-main{background:var(--grad);color:#fff}
+.btn-ghost{background:var(--paper);color:var(--ink);border:1.5px solid var(--stone)}
+.btn-sm{min-height:44px;padding:0 20px}
+
+/* Sections */
+section{padding-block:clamp(56px,8vw,96px)}
+.eyebrow{font-size:.8125rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-ink)}
+.lead{color:var(--hint);max-width:34em}
+.center{text-align:center}
+.center .lead{margin-inline:auto}
+.card{background:var(--paper);border-radius:18px;padding:clamp(22px,3vw,32px)}
+
+/* "More" opener: the phone's "Why these" pattern */
+details.more{margin-top:14px}
+details.more>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:var(--t-small);color:var(--teal-ink)}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+details.more[open]>summary::after{transform:rotate(-135deg) translateY(-2px)}
+details.more .body{margin-top:12px;color:var(--hint);font-size:var(--t-small);display:grid;gap:10px}
+sup{font-size:.7em;line-height:0}
+sup a{text-decoration:none}
+
+/* Hero */
+.hero{padding-block:clamp(24px,3vw,40px) clamp(32px,4vw,52px)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(48px,5vw,88px);align-items:center}
+.pill{display:inline-block;background:var(--lav);color:var(--purple);font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.hero h1{font-size:clamp(2.125rem,1.5rem + 2.3vw,3.25rem);margin:14px 0 14px}
+.hero .lead{font-size:clamp(1.125rem,1rem + .5vw,1.375rem)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+/* Hero picture: the live site's layout. Three documents in a row, Effective cost under them. */
+.docs{display:grid;gap:16px;justify-items:center;min-width:0}
+.dset{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%}
+.doc{background:var(--paper);border-radius:16px;padding:16px;box-shadow:0 16px 36px -24px rgba(22,24,26,.4);display:flex;flex-direction:column;min-height:252px;font-size:.75rem;color:var(--hint)}
+/* The live site's glow: each card lights up in turn, 2 s each, 6 s loop. */
+.doc{background:var(--sand);outline:1.5px solid var(--line);outline-offset:-1.5px;animation:glow 6s ease infinite}
+.dset .doc:nth-child(2){animation-delay:2s}
+.dset .doc:nth-child(3){animation-delay:4s}
+@keyframes glow{
+  0%,30%{background:var(--paper);outline-color:var(--teal);box-shadow:0 0 0 4px rgba(0,147,142,.10),0 18px 40px -18px rgba(95,90,168,.45);transform:translateY(-3px)}
+  36%,100%{background:var(--sand);outline-color:var(--line);box-shadow:0 1px 2px rgba(22,24,26,.06);transform:none}
+}
+@media (prefers-reduced-motion:reduce){.doc{animation:none}.dset .doc:nth-child(2){background:var(--paper);outline-color:var(--teal)}}
+.doc h4{margin:0;font:500 .9375rem/1.25 var(--serif);color:var(--ink)}
+.doc .dsub{margin-top:4px;font-size:.6875rem;line-height:1.35}
+.doc hr{border:0;border-top:1px solid var(--line);margin:10px 0}
+.doc .tag{align-self:flex-start;margin-top:8px;background:var(--mint);color:var(--green);font-size:.6875rem;font-weight:600;padding:3px 9px;border-radius:999px}
+.doc .ln{display:block;height:6px;border-radius:3px;background:var(--stone);margin:6px 0}
+.doc .ln.dk{background:#cfc7c1}
+.doc .two{display:flex;gap:8px}.doc .two .ln{flex:1}
+.doc .srow{display:flex;align-items:center;gap:7px;margin-top:8px;font-size:.625rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.doc .srow b{width:18px;height:18px;border-radius:50%;background:var(--sel);color:var(--teal-ink);display:grid;place-items:center;font-size:.625rem}
+.doc .thead{display:grid;grid-template-columns:1.1fr 1.3fr .6fr .6fr;gap:4px;font-size:.5625rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--hint)}
+.doc .trow{display:grid;grid-template-columns:1.1fr 1.3fr .6fr .6fr;gap:4px}
+.doc .tot{display:flex;justify-content:flex-end;align-items:baseline;gap:8px;margin-top:10px;font-size:.5625rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.doc .tot b{font-size:.875rem;letter-spacing:0;color:var(--ink);font-variant-numeric:tabular-nums}
+.doc .dfoot{margin-top:auto;border-top:1px solid var(--line);padding-top:10px;display:flex;justify-content:space-between;align-items:center;color:var(--teal-ink);font-size:.5625rem;letter-spacing:.06em;text-transform:uppercase}
+.doc .dot{width:9px;height:9px;border-radius:50%;background:var(--stone);margin-left:auto}
+.eff{width:min(300px,100%);background:var(--paper);border-radius:18px;padding:18px 20px;box-shadow:0 16px 36px -24px rgba(22,24,26,.4);text-decoration:none;color:var(--ink);display:block}
+.eff .klab{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.eff .row{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;font-size:var(--t-small);font-variant-numeric:tabular-nums}
+.eff .row span{color:var(--hint)}
+.eff .row.pre span{color:var(--ink);font-weight:600}
+.eff i{display:block;height:8px;border-radius:4px;background:var(--stone);margin-top:6px;overflow:hidden}
+.eff i.post{background:#8d8781}
+.eff i em{display:block;height:100%;width:70%;background:var(--grad)}
+.eff .fine{font-size:.75rem;font-style:italic;margin-top:8px}
+.eff .go{display:flex;align-items:center;gap:6px;border-top:1px solid var(--line);margin-top:12px;padding-top:12px;font-size:.875rem;font-weight:600;color:var(--teal-ink)}
+.eff:hover .go{text-decoration:underline}
+
+/* Steps: the live site's layout. Icon boxes joined by a line, numbered titles, centered text. */
+.sub{color:var(--hint);margin-top:12px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:48px;position:relative;text-align:center}
+.steps::before{content:"";position:absolute;top:28px;left:16.6%;right:16.6%;height:2px;background:var(--stone)}
+.step{position:relative;display:flex;flex-direction:column;align-items:center}
+.ico{width:56px;height:56px;border-radius:16px;background:var(--paper);color:var(--teal-ink);display:grid;place-items:center;box-shadow:0 10px 24px -16px rgba(22,24,26,.45);position:relative}
+.step h3{font-size:1.625rem;margin:22px 0 12px;padding-bottom:8px;border-bottom:2px solid transparent;border-image:var(--grad) 1}
+.step p{color:var(--hint);max-width:20em}
+.step details.more .body{text-align:left}
+
+/* Why this holds up: the live site's layout. One left-aligned column ending on the quote. */
+.proof{background:var(--paper)}
+.proof .col{max-width:720px;margin:0 auto}
+.proof h2{font-size:clamp(1.875rem,1.4rem + 1.6vw,2.5rem);margin-top:10px}
+.proof .intro{color:var(--hint);margin-top:16px}
+.proof .quote{font-family:var(--serif);font-style:italic;font-size:clamp(1.375rem,1.1rem + 1.2vw,1.875rem);line-height:1.4;margin-top:28px;padding-top:28px;border-top:1px solid var(--line)}
+.proof .irsnote{margin-top:14px;padding-left:14px;border-left:3px solid var(--teal)}
+.proof .irsbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--teal-ink);white-space:nowrap}
+.proof .irsbtn::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.proof .irsbtn[aria-expanded="true"]::after{transform:rotate(-135deg) translateY(-2px)}
+.proof .irsbtn:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+.proof .quote em{font-style:italic;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Who it's for: the live site's layout. Icon, title, line, checks, button. */
+#who{background:var(--sand)}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.who .ico{margin-bottom:18px}
+.who h3{font-size:1.875rem;margin-bottom:12px}
+.who .lede{color:var(--hint)}
+.checks{list-style:none;padding:0;margin:20px 0 24px;display:grid;gap:10px}
+.checks li{display:flex;gap:12px;align-items:flex-start}
+.checks li::before{content:"";flex:0 0 22px;height:22px;margin-top:3px;border-radius:50%;background:var(--sel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23006e6a' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.who .card{display:flex;flex-direction:column}
+a.fnlink{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+a.fnlink:hover{text-decoration-thickness:2px}
+.who .morelink{margin:-6px 0 20px;font-weight:600;font-size:var(--t-small)}
+.who .card .act{margin-top:auto;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* Calculator: the old layout (result left, sliders right), new look */
+.calcsec .card{max-width:960px;margin:36px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);text-align:left}
+.calcsec .res{border-right:1px solid var(--line);padding-right:clamp(24px,4vw,48px)}
+.calcsec .klab{font-size:.8125rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--hint)}
+.calcsec .big{display:flex;align-items:baseline;gap:10px;margin-top:6px;font-variant-numeric:tabular-nums}
+.calcsec .big b{font:500 clamp(3rem,2.4rem + 2.6vw,4.25rem)/1 var(--serif);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.calcsec .big span{font-family:var(--serif);color:var(--hint)}
+.calcsec .sess{font-weight:600;margin:8px 0 22px}
+.bars{display:grid;gap:16px;font-variant-numeric:tabular-nums}
+.bar{display:grid;gap:7px}
+.bar .row{display:flex;justify-content:space-between;font-size:.8125rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.bar .row b{letter-spacing:0;font-size:var(--t-small)}
+.bar i{display:block;height:12px;border-radius:6px;background:var(--stone)}
+.bar.pre .track{height:12px;border-radius:6px;background:var(--sand);overflow:hidden}
+.bar.pre i{background:var(--grad);height:100%}
+.bar.post i{background:var(--ink);opacity:.75}
+.fine{font-size:.875rem;color:var(--hint);margin-top:14px}
+.sliders{display:grid;gap:26px;align-content:center}
+.range{display:grid;gap:10px}
+.range label{display:flex;justify-content:space-between;font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.range label span{font-size:var(--t-body);letter-spacing:0;font-variant-numeric:tabular-nums}
+.range input{width:100%;accent-color:var(--teal);height:28px}
+.calcsec .disc{grid-column:1/-1;border-top:1px solid var(--line);padding-top:16px;margin:0;text-align:center}
+@media (max-width:760px){.calcsec .card{grid-template-columns:1fr}.calcsec .res{border-right:0;padding-right:0;border-bottom:1px solid var(--line);padding-bottom:24px}}
+
+/* IRS line */
+.irs{background:var(--ink);color:#fff}
+.irs h2{font-size:clamp(1.75rem,1.3rem + 2vw,2.75rem);max-width:20em;margin:0 auto}
+.irs .eyebrow{color:#9fd8d5;margin-top:14px;display:block}
+
+/* FAQ */
+.faq{max-width:780px;margin:32px auto 0;display:grid;gap:10px}
+.faq details{background:var(--paper);border-radius:16px;padding:0 22px}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:18px 0;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 1.5rem/1 var(--sans);color:var(--teal-ink)}
+.faq details[open] summary::after{content:"\2013"}
+.faq .a{padding-bottom:20px;color:var(--hint);display:grid;gap:10px}
+
+/* Footer */
+footer{background:var(--paper);padding-block:48px;font-size:var(--t-small);color:var(--hint)}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+footer h5{margin:0 0 10px;font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+footer a{color:var(--hint);text-decoration:none}
+.notes{margin-top:32px;border-top:1px solid var(--line);padding-top:20px}
+.notes ol{margin:12px 0 0;padding-left:22px;display:grid;gap:8px}
+.disc{margin-top:22px;font-size:.875rem}
+
+
+/* Video: the 30-second overview */
+.watch{padding-block:clamp(8px,1.5vw,16px) clamp(48px,6vw,80px)}
+.vbox{max-width:960px;margin:0 auto;border-radius:22px;overflow:hidden;background:var(--paper);box-shadow:0 24px 60px -30px rgba(22,24,26,.4);position:relative}
+.vbox video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--sand)}
+/* Playing: the video fills the whole window, even where the browser refuses real full screen. */
+.vbox.big{position:fixed;inset:0;z-index:9999;max-width:none;margin:0;border-radius:0;background:#000;box-shadow:none;display:flex;align-items:center;justify-content:center}
+.vbox.big video{width:100%;height:100%;aspect-ratio:auto;object-fit:contain;background:#000}
+.vclose{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:14px;width:44px;height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.18);color:#fff;font:400 26px/1 var(--sans);cursor:pointer}
+body.vbig{overflow:hidden}
+.vplay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-start;padding:clamp(12px,2.5vw,24px);background:transparent;border:0;cursor:pointer}
+.vplay span{display:inline-flex;align-items:center;gap:10px;background:var(--grad);color:#fff;font:600 var(--t-small)/1 var(--sans);padding:12px 18px 12px 14px;border-radius:999px;box-shadow:0 12px 30px -10px rgba(95,90,168,.6)}
+.vplay span::before{content:"";border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #fff}
+.vcap{text-align:center;color:var(--hint);font-size:var(--t-small);margin-top:12px}
+
+/* Mockup marker */
+.mock{position:fixed;right:12px;bottom:12px;background:var(--ink);color:#fff;font-size:.75rem;padding:6px 10px;border-radius:8px;opacity:.85;z-index:9}
+
+@media (max-width:860px){
+  nav{display:none}
+  header .wrap .btn{margin-left:auto}
+  .hero .wrap{grid-template-columns:1fr}
+  .dset{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;margin:-4px -2px 0}
+  .dset .doc{flex:0 0 min(62%,240px);scroll-snap-align:start}
+  .eff{width:100%}
+  .steps,.who{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){
+  .ctas .btn{flex:1 1 100%}
+}
+nav a.on{color:var(--teal-ink);box-shadow:inset 0 -2px 0 var(--teal);padding-bottom:4px}
+</style>
 <meta name="description" content="Your FSA or HSA can pay for therapeutic massage. Reblooma assembles the letter, the signed clinical note and the coded invoice your plan administrator asks for.">
 <link rel="canonical" href="https://reblooma.com/">
 <meta property="og:type" content="website">
@@ -14,318 +238,333 @@
 <meta name="theme-color" content="#e4deda">
 <meta name="facebook-domain-verification" content="m7we062xoyzw629cspxsh7lxeci5kn">
 <link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script src="assets/tailwind.config.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&amp;family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/wire.css">
 <script src="assets/analytics.js"></script>
 <script src="assets/site.js" defer></script>
 </head>
-<body class="font-body-md antialiased relative selection:bg-tertiary-container selection:text-surface">
-<div class="texture-overlay" aria-hidden="true"></div>
-<!-- BEGIN: Top Bar -->
-<button type="button" data-waitlist data-cta="top-bar" class="bg-primary flex justify-center items-center w-full py-2 px-4 text-center z-40 relative hover:opacity-90">
-<span class="text-surface font-label-caps text-label-caps uppercase tracking-widest"><span class="hidden sm:inline">In development &middot; </span>Join the waitlist for early access</span>
-</button>
-<!-- END: Top Bar -->
-<!-- BEGIN: Main Header -->
-<header class="bg-surface/80 backdrop-blur-md border-b border-primary/10 sticky top-0 w-full z-30">
-<div class="flex justify-between items-center max-w-7xl mx-auto px-container-padding h-16">
-<a class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight flex items-center" href="index.html"><img alt="" class="h-8 w-auto inline-block mr-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">Reblooma</a>
-<nav class="hidden lg:flex items-center gap-6" aria-label="Main">
-<a class="text-primary font-bold font-label-caps text-label-caps uppercase pb-1 border-b-2 border-primary" href="index.html#how-it-works-section" aria-current="page">How it works</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="practitioners.html">For Practitioners</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="directory.html">Find a practice</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="resources.html">Resources</a>
-<a class="text-secondary hover:text-primary transition-colors font-label-caps text-label-caps uppercase pb-1 border-b-2 border-transparent" href="about.html">About</a>
-</nav>
-<div class="flex items-center gap-2">
-<button type="button" data-waitlist data-cta="header" class="btn-primary font-ui-button text-ui-button px-4 py-2 hover:opacity-80 transition-opacity">Join the waitlist</button>
-<button type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu" class="lg:hidden w-10 h-10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">menu</span></button>
-</div>
-</div>
-<nav id="mobile-menu" hidden class="lg:hidden border-t border-primary/10 bg-surface px-container-padding pb-2" aria-label="Mobile">
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-primary font-bold" href="index.html#how-it-works-section">How it works</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="practitioners.html">For Practitioners</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="directory.html">Find a practice</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="resources.html">Resources</a>
-<a class="block py-3 border-b border-primary/5 font-label-caps text-label-caps uppercase text-secondary" href="about.html">About</a>
-</nav>
+<body>
+
+<button type="button" class="dev" data-waitlist data-cta="top-bar">In development · Join the waitlist for early access</button>
+<header>
+  <div class="wrap">
+    <a href="#top"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
+    <nav aria-label="Main">
+      <a href="#how" class="on">How it works</a>
+      <a href="practitioners.html">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button class="menubtn" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    <a class="btn btn-main btn-sm" href="#who" data-waitlist data-cta="header">Join the waitlist</a>
+  </div>
+  <nav id="mobile-menu" class="mmenu" hidden aria-label="Mobile">
+      <a href="#how" class="on">How it works</a>
+      <a href="practitioners.html">For practitioners</a>
+      <a href="directory.html">Find a practice</a>
+      <a href="resources.html">Resources</a>
+      <a href="about.html">About</a>
+    </nav>
 </header>
-<!-- END: Main Header -->
-<main class="relative z-20">
-<!-- BEGIN: HeroSection -->
-<!-- 3. Hero Section -->
-<section class="max-w-7xl mx-auto px-container-padding pt-24 pb-[52px] sm:pb-[64px] md:pb-section-gap">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 lg:gap-16 items-center">
-<!-- Left: Content -->
-<div class="flex flex-col items-start space-y-8">
-<span class="font-label-caps text-label-caps uppercase tracking-widest text-primary border border-primary/20 px-3 py-1 rounded-full surface-tier-1">In development</span>
-<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary">
-                        Use your FSA/HSA for your massage. Leave the paperwork to us.</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Your FSA or HSA can pay for massage that treats a real condition. The money is already yours, set aside before tax &mdash; and with an FSA, gone if you don't use it.¹ What's missing is the paperwork: a letter, a signed session note, a coded invoice. That's what we put together.</p>
-<div class="flex flex-col sm:flex-row gap-4 pt-4">
-<button type="button" data-waitlist="consult" data-cta="hero-consultation" class="btn-primary font-ui-button text-ui-button px-6 py-3 text-center">Start my consultation</button>
-<a class="btn-secondary font-ui-button text-ui-button px-6 py-3 text-center" href="#how-it-works-section">See how it works</a>
-</div>
-</div>
-<!-- Right: Visuals (Side-by-side Documents & Savings Comparison) -->
-<div class="relative w-full ml-auto mr-auto lg:mr-0 flex flex-col items-center gap-8">
-<!-- Docs Side-by-Side -->
-<!-- FSA/HSA Forfeiture Calculator -->
-<div class="docs-container flex flex-row items-stretch justify-start sm:justify-center gap-4 w-full overflow-x-auto sm:overflow-visible pb-2 sm:pb-0 [&>div]:min-w-[150px]">
-<!-- Doc 1 (Front - LMN) -->
-<div class="doc-row-item bg-[#f3f0ed] flex-1 shadow-sm border border-primary/15 rounded-[4px] flex flex-col justify-between relative p-3 animate-glow-1">
-<div>
-<div class="border-b border-primary/10 pb-3 mb-3 flex justify-between items-start">
-<div>
-<div class="font-headline-sm text-[11px] uppercase tracking-wider text-primary mb-1 leading-tight">Letter of Medical Necessity</div>
-<div class="font-label-caps text-[9px] text-on-surface-variant font-bold bg-primary/5 px-2 py-1 rounded inline-block mt-1">Dr. B issued</div>
-</div>
-</div>
-<div class="space-y-3">
-<div class="flex gap-2 items-center"><div class="w-12 h-1 bg-primary/20 rounded"></div><div class="w-16 h-1 bg-primary/10 rounded"></div></div>
-<div class="flex gap-2 items-center"><div class="w-16 h-1 bg-primary/20 rounded"></div><div class="w-20 h-1 bg-primary/10 rounded"></div></div>
-<div class="pt-3 space-y-2">
-<div class="w-full h-1 bg-primary/10 rounded"></div>
-<div class="w-full h-1 bg-primary/10 rounded"></div>
-<div class="w-3/4 h-1 bg-primary/10 rounded"></div>
-</div>
-</div>
-</div>
-<div class="border-t border-primary/10 pt-3 mt-3 flex items-center justify-between"><span class="material-symbols-outlined text-primary text-[16px] ml-auto">verified</span></div>
-</div>
-<!-- Doc 2 (Middle - SOAP Note) -->
-<div class="doc-row-item surface-tier-1 flex-1 shadow-sm border border-primary/15 rounded-[4px] flex flex-col justify-between relative bg-[#f3f0ed] p-3 animate-glow-2"><div><div class="border-b border-primary/10 pb-3 mb-3"><div class="font-headline-sm text-[11px] uppercase tracking-wider text-primary mb-1 leading-tight">SOAP NOTE</div><div class="font-body-md text-[9px] text-outline leading-tight">Alex reports neck and lower-back pain limiting work.</div></div><div class="space-y-4"><div class="space-y-1"><div class="flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-primary/10 flex items-center justify-center text-[7px] font-bold">S</div><div class="text-[8px] font-bold uppercase">Subjective</div></div><div class="w-full h-1 bg-primary/5 rounded"></div></div><div class="space-y-1"><div class="flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-primary/10 flex items-center justify-center text-[7px] font-bold">O</div><div class="text-[8px] font-bold uppercase">Objective</div></div><div class="w-3/4 h-1 bg-primary/5 rounded"></div></div><div class="space-y-1"><div class="flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-primary/10 flex items-center justify-center text-[7px] font-bold">A</div><div class="text-[8px] font-bold uppercase">Assessment</div></div><div class="w-full h-1 bg-primary/5 rounded"></div></div><div class="space-y-1"><div class="flex items-center gap-1"><div class="w-3 h-3 rounded-full bg-primary/10 flex items-center justify-center text-[7px] font-bold">P</div><div class="text-[8px] font-bold uppercase">Plan</div></div><div class="w-2/3 h-1 bg-primary/5 rounded"></div></div></div></div><div class="border-t border-primary/10 pt-3 mt-3 flex items-end justify-between"><div class="flex flex-col"><div class="w-16 h-px bg-primary/40 mb-1"></div><div class="text-[7px] font-label-caps uppercase text-outline">Practitioner Signature</div></div><div class="flex items-center gap-1"><span class="material-symbols-outlined text-primary text-[12px]">verified</span></div></div></div>
-<!-- Doc 3 (Back - Invoice) -->
-<div class="doc-row-item surface-tier-1 flex-1 shadow-sm border border-primary/15 rounded-[4px] flex flex-col justify-between relative bg-[#f3f0ed] p-3 animate-glow-3"><div><div class="border-b border-primary/10 pb-3 mb-3"><div class="font-headline-sm text-[11px] uppercase tracking-wider text-primary mb-1 leading-tight">CODED ITEMIZED INVOICE</div><div class="font-body-md text-[9px] text-outline leading-tight">Coded Invoice #INV-4D7F91</div></div><div class="space-y-2"><div class="grid grid-cols-5 gap-1 border-b border-primary/5 pb-1"><div class="text-[6px] font-bold uppercase text-outline">Licence no.</div><div class="text-[6px] font-bold uppercase text-outline col-span-2">Service</div><div class="text-[6px] font-bold uppercase text-outline">Min</div><div class="text-[6px] font-bold uppercase text-outline text-right">Units</div></div><div class="grid grid-cols-5 gap-1 items-center"><div class="w-6 h-1 bg-primary/10 rounded"></div><div class="col-span-2 w-12 h-1 bg-primary/10 rounded"></div><div class="w-4 h-1 bg-primary/10 rounded"></div><div class="w-4 h-1 bg-primary/10 rounded ml-auto"></div></div><div class="grid grid-cols-5 gap-1 items-center"><div class="w-6 h-1 bg-primary/10 rounded"></div><div class="col-span-2 w-10 h-1 bg-primary/10 rounded"></div><div class="w-4 h-1 bg-primary/10 rounded"></div><div class="w-4 h-1 bg-primary/10 rounded ml-auto"></div></div><div class="pt-2 flex justify-end items-baseline gap-1"><span class="text-[7px] font-bold uppercase text-outline">Total due:</span><span class="text-[10px] font-bold text-primary">$120.00</span></div></div></div><div class="flex justify-between items-center mt-3 pt-3 border-t border-primary/10"><div class="w-2 h-2 rounded-full bg-primary/20 ml-auto"></div></div></div>
-</div><a href="#calc-section" class="bg-[#f3f0ed] rounded-[4px] border border-primary/10 p-4 shadow-sm space-y-3 mx-auto w-full sm:w-3/5 lg:w-[40%] block cursor-pointer hover:bg-primary/5 transition-colors">
-<div class="space-y-2">
-<p class="font-label-caps text-[10px] uppercase tracking-widest text-primary">Effective Cost</p>
-<div class="space-y-3">
-<!-- After-Tax Row -->
-<div class="space-y-1">
-<div class="flex justify-between items-baseline">
-<span class="text-[12px] text-secondary">After-Tax (Standard)</span>
-<span class="font-bold text-primary text-[14px]">$120</span>
-</div>
-<div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden">
-<div class="h-full bg-secondary-fixed-dim w-full"></div>
-</div>
-</div>
-<!-- Pre-Tax Row -->
-<div class="space-y-1">
-<div class="flex justify-between items-baseline">
-<span class="font-bold text-primary text-[12px]">Pre-Tax (FSA/HSA)</span>
-<span class="font-bold text-primary text-[14px]">~$84</span>
-</div>
-<div class="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden">
-<div class="h-full savings-bar-gradient w-[70%]"></div>
-</div>
-</div>
-</div>
-<p class="text-[9px] text-on-surface-variant/70 italic mt-2">Assumes ~30% effective tax rate</p>
-<div class="pt-2 border-t border-primary/5 mt-2">
-<p class="text-[10px] text-secondary font-medium flex items-center gap-1">Click to calculate your savings <span class="material-symbols-outlined text-[12px]">arrow_forward</span></p>
-</div>
-</div>
-</a></div>
-</div>
+
+<main id="top">
+
+<!-- HERO: 1 headline, 1 line, 2 buttons. The rest is one tap away. -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill">In development</span>
+      <h1>Use your FSA/HSA for your massage. Leave the paperwork to us.</h1>
+      <p class="lead">It can pay for massage that treats a real condition. We build the claim-ready file that shows it.</p>
+      <div class="ctas">
+        <a data-waitlist="consult" data-cta="hero-consultation" class="btn btn-main" href="#who">Start my consultation</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <details class="more">
+        <summary>Why most people never use it</summary>
+        <div class="body">
+          <p>The money is already yours, set aside before tax. With an FSA, it is gone if you don't use it.<sup><a href="#n1">1</a></sup></p>
+          <p>What's missing is the proof: a letter, a signed session note and a coded invoice. That's what we put together.</p>
+        </div>
+      </details>
+    </div>
+    <div class="docs" aria-hidden="true">
+      <div class="dset">
+        <div class="doc">
+          <h4>Letter of medical necessity</h4>
+          <span class="tag">Dr. B issued</span>
+          <hr>
+          <div class="two"><i class="ln dk"></i><i class="ln"></i></div>
+          <div class="two"><i class="ln dk"></i><i class="ln"></i></div>
+          <i class="ln" style="margin-top:14px"></i><i class="ln"></i><i class="ln" style="width:70%"></i>
+          <div class="dfoot"><span></span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 12.5l3 3 5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="doc">
+          <h4>SOAP note</h4>
+          <p class="dsub">Alex reports neck and lower-back pain limiting work.</p>
+          <hr>
+          <div class="srow"><b>S</b>Subjective</div><i class="ln"></i>
+          <div class="srow"><b>O</b>Objective</div><i class="ln" style="width:70%"></i>
+          <div class="srow"><b>A</b>Assessment</div><i class="ln"></i>
+          <div class="srow"><b>P</b>Plan</div><i class="ln" style="width:60%"></i>
+          <div class="dfoot"><span>Practitioner signature</span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 12.5l3 3 5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="doc">
+          <h4>Coded itemized invoice</h4>
+          <p class="dsub">Coded invoice #INV-4D7F91</p>
+          <hr>
+          <div class="thead"><span>License no.</span><span>Service</span><span>Min</span><span>Units</span></div>
+          <div class="trow"><i class="ln"></i><i class="ln dk"></i><i class="ln"></i><i class="ln"></i></div>
+          <div class="trow"><i class="ln"></i><i class="ln"></i><i class="ln"></i><i class="ln"></i></div>
+          <div class="tot">Total due: <b>$120.00</b></div>
+          <div class="dfoot"><span class="dot"></span></div>
+        </div>
+      </div>
+      <a class="eff" href="#calc" aria-hidden="false">
+        <p class="klab">Effective cost</p>
+        <div class="row"><span>After-tax (standard)</span><b>$120</b></div>
+        <i class="post"></i>
+        <div class="row pre"><span>Pre-tax (FSA/HSA)</span><b>~$84</b></div>
+        <i><em></em></i>
+        <p class="fine">Assumes ~30% effective tax rate</p>
+        <span class="go">Click to calculate your savings →</span>
+      </a>
+    </div>
+  </div>
 </section>
-<!-- END: HeroSection -->
-<!-- BEGIN: HowItWorks -->
-<!-- 4. Three Steps Section -->
-<section class="bg-surface border-y border-primary/10 py-[52px] sm:py-[64px] md:py-section-gap" id="how-it-works-section">
-<div class="max-w-7xl mx-auto px-container-padding">
-<div class="text-center max-w-2xl mx-auto mb-20">
-<h2 class="font-headline-md text-headline-md text-primary mb-6">Three steps, then the money comes back.</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Two documents answer the claim. The third proves the session matched the letter.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-<!-- Connecting line for desktop -->
-<div class="hidden md:block absolute top-[28px] left-[16%] right-[16%] h-px bg-primary/15 z-0"></div>
-<!-- Step 1 -->
-<div class="relative z-10 flex flex-col items-center text-center group">
-<div class="w-[56px] h-[56px] rounded-[4px] bg-[#f3f0ed] border border-[#16181a]/[0.08] flex items-center justify-center mb-6 shadow-sm">
-<svg fill="none" stroke="#16181a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-4 pb-2 border-b-2 border-primary inline-block">1. The Letter</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">A $19 online consultation with Dr. B. Describe what's going on, and one of their clinicians reviews it — usually back within 24 hours. One letter covers twelve months of sessions.<sup class="">2</sup></p>
-</div>
-<!-- Step 2 -->
-<div class="relative z-10 flex flex-col items-center text-center group">
-<div class="w-[56px] h-[56px] rounded-[4px] bg-[#f3f0ed] border border-[#16181a]/[0.08] flex items-center justify-center mb-6 shadow-sm">
-<svg fill="none" stroke="#16181a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-4 pb-2 border-b-2 border-primary inline-block">2. The Treatment</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Book your massage as you normally would. Your practitioner signs a clinical note afterward — a few minutes, and nothing changes about your visit.</p>
-</div>
-<!-- Step 3 -->
-<div class="relative z-10 flex flex-col items-center text-center group">
-<div class="w-[56px] h-[56px] rounded-[4px] bg-[#f3f0ed] border border-[#16181a]/[0.08] flex items-center justify-center mb-6 shadow-sm">
-<svg fill="none" stroke="#16181a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width: 24px; height: 24px;" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-</div>
-<h3 class="font-headline-sm text-headline-sm text-primary mb-4 pb-2 border-b-2 border-primary inline-block">3. Your File</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Your letter, a coded itemized invoice, and the signed note land in your account together, ready to send to your administrator.<sup class="">3</sup></p>
-</div>
-</div>
-</div>
+
+
+<!-- VIDEO: the 30-second overview (Reblooma30sPromo_bgm, 10/12/2026). Plays only when tapped, with sound. -->
+<section class="watch" id="watch">
+  <div class="wrap center">
+    <div class="vbox" id="vbox">
+      <video id="vid" preload="none" playsinline poster="assets/video/poster-landscape.jpg">
+        <source src="assets/video/overview-30s-1080.mp4" type="assets/video/mp4">
+      </video>
+      <button class="vplay" id="vplay" aria-label="Play the 30-second overview"><span>Play · 0:30</span></button>
+      <button class="vclose" id="vclose" aria-label="Close the video" hidden>×</button>
+    </div>
+  </div>
 </section>
-<!-- END: HowItWorks -->
-<!-- BEGIN: InfoSection -->
-<section class="bg-[#f3f0ed] border-b border-primary/5 py-[52px] sm:py-[64px] md:py-section-gap"><div class="max-w-7xl mx-auto px-container-padding"><div class="mx-auto text-left max-w-[720px]"><div class="max-w-4xl mx-auto w-full">
-<span class="font-label-caps uppercase block mb-4" style="font-size: 0.7rem; letter-spacing: 0.16em; color: rgba(22, 24, 26, 0.42);">WHY THIS HOLDS UP</span>
-<h2 class="font-headline-md text-headline-md mb-6" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">Most services stop at the letter.</h2>
-<div class="flex flex-col items-start" style="gap: 22px;">
-<p class="" style="font-size: 1rem; line-height: 1.65; max-width: 115ch; color: rgba(22, 24, 26, 0.8);">You describe a condition, a clinician writes a recommendation, and nobody ever checks whether the care you bought had anything to do with it. In March 2024, the IRS named that defect precisely: a doctor's note doesn't establish that an otherwise personal expense is <i>"related to a targeted diagnosis-specific activity or treatment."</i> <span class="" style="font-size: 0.72rem; color: rgba(22, 24, 26, 0.42); font-style: normal;">(IR-2024-65)</span></p>
-<p class="" style="font-size: 1rem; line-height: 1.65; max-width: 115ch; color: rgba(22, 24, 26, 0.8);">The risk lands on you, not on them. A disqualified HSA withdrawal is taxed as income, plus a 20% penalty under 65, and an FSA card can be switched off until the charge is substantiated.<sup class="">4</sup></p>
-<p class="" style="font-size: 1rem; line-height: 1.65; max-width: 115ch; color: rgba(22, 24, 26, 0.8);">So Reblooma doesn't stop at the letter. Yours names a condition and the body areas it covers; your practitioner records what they actually worked on and signs it, every session. If the two don't line up, it shows — and that's the point. A document set that only ever agrees with itself proves nothing.</p>
-<p class="" style="font-size: 1rem; line-height: 1.65; max-width: 115ch; color: rgba(22, 24, 26, 0.8);">That's also what lets you go where you want to go. A day spa, a wellness practice, someone who comes to your home — the setting was never the test. What the documentation shows is.</p>
-</div>
-<div class="border-t border-primary/10 mt-6 mb-6"></div>
-<p class="max-w-[68ch]" style="font-family: Lora; font-weight: 500; font-style: italic; font-size: 1.5rem; color: rgb(22, 24, 26);">A letter says the&nbsp;<span class="brand-gradient-text font-medium">massage</span>&nbsp;should help. The&nbsp;<span class="brand-gradient-text font-medium">note&nbsp;</span>and&nbsp;<span class="brand-gradient-text font-medium">invoice&nbsp;</span>are the evidence, session by session.</p>
-</div></div></div></section>
-<!-- END: InfoSection -->
-<!-- BEGIN: CalculatorSection -->
-<section class="py-[52px] sm:py-[64px] md:py-section-gap bg-surface-container-low border-b border-primary/5" id="calc-section"><div class="max-w-7xl mx-auto px-container-padding"><div class="text-center mx-auto mb-16 max-w-4xl"><h2 class="font-headline-md text-headline-md text-primary mb-4">See how much you could keep.</h2><p class="font-body-md text-body-md text-on-surface-variant max-w-4xl">Adjust the sliders to estimate your potential tax savings when using your FSA/ HSA for massage therapy.</p></div><div class="max-w-4xl mx-auto bg-[#f3f0ed] rounded-[4px] shadow-sm border border-primary/10 p-8 md:p-12"><div class="grid grid-cols-1 md:grid-cols-2 gap-12"><div class="flex flex-col justify-center text-center md:text-left space-y-6"><p class="font-label-caps text-label-caps uppercase tracking-widest text-secondary">You'd keep about</p><div class="flex items-baseline justify-center md:justify-start gap-2"><span class="font-display-lg text-[64px] font-semibold text-primary leading-none" id="calc-savings">$432</span><span class="font-headline-sm text-secondary">a year</span></div><p class="font-body-md text-primary font-medium" id="calc-sessions-text">12 sessions of documented care</p><div class="space-y-6 pt-4"><div class="space-y-2"><div class="flex justify-between text-[11px] font-label-caps uppercase text-secondary"><span class="">WITHOUT YOUR FSA/HSA</span><span class="" id="calc-without-val">$1,440</span></div><div class="h-2.5 w-full bg-primary/10 rounded-full overflow-hidden"><div class="h-full bg-secondary w-full"></div></div></div><div class="space-y-2"><div class="flex justify-between text-[11px] font-label-caps uppercase text-primary font-bold"><span class="">WITH YOUR FSA/HSA<sup class="">5</sup></span><span class="" id="calc-with-val">$1,008</span></div><div class="h-2.5 w-full bg-primary/10 rounded-full overflow-hidden"><div class="h-full savings-bar-gradient w-[70%]" id="calc-bar-with" style="width: 70%;"></div></div></div><p class="text-[12px] font-body-md text-secondary italic mt-4">Both figures are a year, in take-home dollars.</p></div></div><div class="space-y-8 md:border-l border-primary/5 md:pl-12"><div class="group"><div class="flex justify-between items-baseline mb-3"><label class="font-label-caps text-[12px] font-bold text-primary uppercase tracking-wider">Sessions per year</label><span class="font-ui-button text-body-md font-bold text-primary" id="val-sessions">12</span></div><input class="w-full custom-slider" id="slider-sessions" max="24" min="1" step="1" type="range" value="12"></div><div class="group"><div class="flex justify-between items-baseline mb-3"><label class="font-label-caps text-[12px] font-bold text-primary uppercase tracking-wider">Session cost</label><span class="font-ui-button text-body-md font-bold text-primary" id="val-cost">$120</span></div><input class="w-full custom-slider" id="slider-cost" max="250" min="60" step="5" type="range" value="120"></div><div class="group"><div class="flex justify-between items-baseline mb-3"><label class="font-label-caps text-[12px] font-bold text-primary uppercase tracking-wider">Effective tax rate</label><span class="font-ui-button text-body-md font-bold text-primary" id="val-tax">30%</span></div><input class="w-full custom-slider" id="slider-tax" max="45" min="15" step="1" type="range" value="30"></div></div></div><p class="mt-10 text-[11px] leading-relaxed text-on-surface-variant/60 text-center">An estimate, not tax or financial advice. Forfeiture rules depend on your employer's plan, and your plan administrator decides each claim — we help you give them what they ask for.</p></div></div></section>
-<!-- END: CalculatorSection -->
-<!-- BEGIN: TargetAudiences -->
-<!-- 5. Two Doors Section -->
-<section class="max-w-7xl mx-auto px-container-padding py-[52px] sm:py-[64px] md:py-section-gap">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-<!-- Patient Card -->
-<div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] shadow-sm p-8 flex flex-col h-full relative group">
-<svg fill="none" stroke="#16181a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width: 28px; height: 28px; margin-bottom: 32px;" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"></circle><path d="M5 19.5c0-3.6 3.1-6 7-6s7 2.4 7 6"></path></svg>
-<h3 class="font-headline-md text-headline-md text-primary mb-4">If you're a patient</h3>
-<p class="font-body-md text-body-md text-on-surface-variant h-[72px] overflow-hidden">You have an FSA or HSA, and you get massage for a real problem. We build the file; you send it in.</p><div class="border-t border-[#16181a]/[0.08] mt-2 mb-6"></div><div class="h-[72px] flex items-start"><p class="text-[0.84rem] text-[#16181a]/62 italic leading-relaxed">Chronic pain, injury, recovery. No old records to dig up, no prior doctor's visit needed — just describe what hurts, and a clinician at Dr. B takes it from there.</p></div>
-<ul class="space-y-3 flex-1 mb-8"><li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check</span><span class="font-body-md text-body-md text-on-surface-variant">A $19 consultation that covers twelve months</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check</span><span class="font-body-md text-body-md text-on-surface-variant">Your own practitioner, or one on Reblooma</span></li><li class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check</span><span class="font-body-md text-body-md text-on-surface-variant">Your file, assembled every session</span></li></ul>
-<button type="button" data-waitlist="consult" data-cta="patient-card" class="btn-primary font-ui-button text-ui-button py-3 w-full sm:w-auto px-8 self-start mt-auto">Start the consultation</button>
-</div>
-<!-- Practitioner Card -->
-<div class="bg-[#f3f0ed] border border-[#16181a]/[0.08] rounded-[4px] shadow-sm p-8 flex flex-col h-full relative group" id="practitioners">
-<svg class="" fill="none" height="26" stroke="#16181a" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="margin-bottom: 32px;" viewBox="0 0 24 24" width="26"><path d="M2 20c4-3.5 16-3.5 20 0"></path><path d="M8 14V6.5m3 7.5V4.5m3 9.5V5.5m3 8.5V9"></path><path d="M8 14c0 2.2 2 3.4 4.5 3.4S17 16.2 17 14"></path></svg>
-<h3 class="font-headline-md text-headline-md text-primary mb-4">If you're a practitioner</h3>
-<p class="font-body-md text-body-md text-on-surface-variant h-[72px] overflow-hidden">You already do the therapeutic work. Reblooma turns it into documentation your patients can submit. Your treatment and your prices don't change.</p><div class="border-t border-[#16181a]/[0.08] mt-2 mb-6"></div><div class="h-[72px] flex items-start"><p class="text-[0.84rem] text-[#16181a]/62 italic leading-relaxed">Practitioners at day spas and resorts, massage and wellness practices, and mobile or in-home services are all welcome. The setting isn't the test.</p></div>
-<ul class="space-y-3 flex-1 mb-8">
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check</span>
-<span class="font-body-md text-body-md text-on-surface-variant">You never write the letter</span>
-</li>
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check</span>
-<span class="font-body-md text-body-md text-on-surface-variant">Signed SOAP notes, drafted from the session</span>
-</li>
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">check</span>
-<span class="font-body-md text-body-md text-on-surface-variant">Reblooma charges practitioners nothing</span>
-</li>
-</ul>
-<div class="flex flex-col sm:flex-row sm:items-center gap-4 mt-auto"><button type="button" data-waitlist="practitioner" data-cta="practitioner-card" class="btn-secondary font-ui-button text-ui-button py-3 w-full sm:w-auto px-8">Join our practitioner list</button><a href="practitioners.html" class="font-ui-button text-ui-button text-primary hover:underline flex items-center gap-1">How it works for practices <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div>
-</div>
-</div>
+
+<!-- STEPS: the live site's layout (icons joined by a line). One line each, full text under More. -->
+<section id="how">
+  <div class="wrap center">
+    <h2 style="font-size:clamp(1.875rem,1.4rem + 1.8vw,2.75rem)">Three steps, then the money comes back.</h2>
+    <p class="sub">Two documents answer the claim. The third proves the session matched the letter.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M8 13h.01M12 13h.01M16 13h.01M8 16.5h.01M12 16.5h.01"/></svg></div>
+        <h3>1. The Letter</h3>
+        <p>A $19 online visit with Dr. B. One letter covers twelve months.</p>
+        <details class="more"><summary>More</summary><div class="body">
+          <p>Describe what's going on, and one of their clinicians reviews it. It is usually back within 24 hours. One letter covers twelve months of sessions.<sup><a href="#n2">2</a></sup></p>
+        </div></details>
+      </div>
+      <div class="step">
+        <div class="ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M16.5 7.5c0-1.9-2-3-4.5-3s-4.5 1.2-4.5 3.3c0 4.7 9 2.4 9 7.2 0 2.1-2 3.4-4.5 3.4s-4.5-1.2-4.5-3.2"/></svg></div>
+        <h3>2. The Treatment</h3>
+        <p>Book your massage as you normally would. Your practitioner signs a note.</p>
+        <details class="more"><summary>More</summary><div class="body">
+          <p>The clinical note takes your practitioner a few minutes, and nothing changes about your visit.</p>
+        </div></details>
+      </div>
+      <div class="step">
+        <div class="ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3.5 7a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg></div>
+        <h3>3. Your File</h3>
+        <p>Your letter, a coded invoice and the signed note, together in your account.</p>
+        <details class="more"><summary>More</summary><div class="body">
+          <p>They land in your account together, ready to send to your plan administrator.<sup><a href="#n3">3</a></sup></p>
+        </div></details>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- END: TargetAudiences -->
-<!-- BEGIN: QuoteSection -->
-<!-- 6. Pull Quote -->
-<!-- 7. CTA Block -->
-<section class="bg-primary text-surface py-32 border-y border-outline/20">
-<div class="max-w-5xl mx-auto px-container-padding text-center"><blockquote class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg leading-tight mb-8" style="font-family: Lora; font-weight: 500;">The IRS tests the <span class="brand-gradient-text font-medium">treatment and the&nbsp;<br></span><span class="brand-gradient-text font-medium">paper trail</span> — not the room it happened in.</blockquote><div class="font-label-caps text-label-caps uppercase tracking-widest text-surface/60">Understanding IRC §213(d)</div></div>
+
+<!-- PROOF: the live site's layout. Heading and quote on the page; the four paragraphs under More. -->
+<section class="proof">
+  <div class="wrap"><div class="col">
+    <p class="eyebrow">Why this holds up</p>
+    <h2>Most services stop at the letter.</h2>
+    <p class="intro">Reblooma doesn't. Your practitioner records what they worked on and signs it, every session. <button class="irsbtn" type="button" aria-expanded="false" aria-controls="irsbody">IRS warning (IR-2024-65)</button></p>
+    <p class="irsnote" id="irsbody" hidden>Paid doctor's notes based only on what you report do not make an expense medical. Under Code §213(d), care must diagnose, treat, ease or prevent a disease.<sup><a href="#n4">4</a></sup></p>
+    <details class="more"><summary>Read why this matters</summary><div class="body">
+      <p>If a claim fails, the risk lands on you. A disqualified HSA withdrawal is taxed as income, plus a 20% penalty under 65. An FSA card can be switched off.<sup><a href="#n5">5</a></sup></p>
+      <p>So Reblooma checks every session against your letter. If they don't line up, it shows.</p>
+      <p>That's why the setting doesn't matter. A day spa or a home visit both work. The documents are the test.</p>
+    </div></details>
+    <p class="quote">A letter says the <em>massage</em> should help. The <em>note</em> and <em>invoice</em> are the evidence, session by session.</p>
+  </div></div>
 </section>
-<!-- END: QuoteSection -->
-<!-- BEGIN: FAQSection -->
-<section id="faq" class="py-[52px] sm:py-[64px] md:py-section-gap px-container-padding" style="background-color: rgb(228, 222, 218);"><div class="max-w-[720px] mx-auto"><h2 class="font-headline-md text-headline-md text-center mb-12" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">Before you start</h2><div class="space-y-0 border-t border-[#16181a]/10"><details class="group border-b border-[#16181a]/10" open=""><summary class="flex justify-between items-center py-6 cursor-pointer list-none"><span class="font-headline-sm text-[20px]" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">Can I really use my FSA or HSA for massage?</span><span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span></summary><div class="pb-8 pr-12"><p class="font-body-md" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">More often than people think. Under IRC §213(d), massage prescribed to treat a diagnosed condition is a qualified medical expense — the same as physical therapy.<sup class="">6</sup> Most people never find out, because the paperwork isn't something a massage practice can produce on its own. That's the part we handle.</p></div></details><details class="group border-b border-[#16181a]/10"><summary class="flex justify-between items-center py-6 cursor-pointer list-none"><span class="font-headline-sm text-[20px]" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">What do I actually need?</span><span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span></summary><div class="pb-8 pr-12"><p class="font-body-md" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">Usually two things: a letter of medical necessity and a coded itemized invoice. That's what most administrators ask for. Some go further and ask you to show the sessions actually treated the condition in your letter — so your practitioner signs a clinical note after every visit, and Reblooma files it alongside the rest. If that question ever comes, the answer is already there.</p></div></details><details class="group border-b border-[#16181a]/10"><summary class="flex justify-between items-center py-6 cursor-pointer list-none"><span class="font-headline-sm text-[20px]" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">Isn&rsquo;t a letter and a receipt enough?</span><span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">&ndash;</span></summary><div class="pb-8 pr-12"><p class="font-body-md" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">Often it is what gets asked for &mdash; but a receipt only proves you paid. A spa receipt shows a date, a total and the word &ldquo;massage,&rdquo; which connects the money to nothing in particular.</p><p class="font-body-md mt-4" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">Your Reblooma invoice is closer to a medical superbill than a spa receipt. It carries your practitioner&rsquo;s name and licence number, the date of service, the treatment with its procedure code, the diagnosis code carried over from your letter, and what you paid. Alongside the signed session note, it shows that the visit treated the condition your letter names &mdash; so you can submit with confidence, knowing the evidence is already in hand rather than hoping a receipt will do.</p></div></details><details class="group border-b border-[#16181a]/10"><summary class="flex justify-between items-center py-6 cursor-pointer list-none"><span class="font-headline-sm text-[20px]" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">Where does the letter come from?</span><span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span></summary><div class="pb-8 pr-12"><p class="font-body-md" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">A $19 online consultation with Dr. B, an established telehealth practice that has been writing these letters for years. Describe what's going on, one of their clinicians reviews it, and your letter usually arrives within 24 hours — covering you for twelve months.<sup class="">7</sup></p></div></details><details class="group border-b border-[#16181a]/10"><summary class="flex justify-between items-center py-6 cursor-pointer list-none"><span class="font-headline-sm text-[20px]" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">What kinds of problems does this cover?</span><span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span></summary><div class="pb-8 pr-12"><p class="font-body-md" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">Back pain, chronic pain, fibromyalgia, disc conditions, muscle spasms, and sleep or stress-related conditions are among the most common — the list is longer, and a clinician decides.<sup class="">8</sup> No old records to dig up and no prior doctor's visit needed; just describe what's going on.</p></div></details><details class="group border-b border-[#16181a]/10"><summary class="flex justify-between items-center py-6 cursor-pointer list-none"><span class="font-headline-sm text-[20px]" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">Can I go to a day spa, a resort, or someone who comes to my home?</span><span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span></summary><div class="pb-8 pr-12"><p class="font-body-md" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">Yes. Day spas, resorts, wellness practices and mobile or in-home therapists are all welcome — the setting was never the test. What counts is that your therapist is licensed and the session treats what your letter covers. A massage booked purely to relax, and extras like tips, add-ons, retail or facility fees, generally don't qualify, so your invoice lists the treatment on its own.</p></div></details><details class="group border-b border-[#16181a]/10"><summary class="flex justify-between items-center py-6 cursor-pointer list-none"><span class="font-headline-sm text-[20px]" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">What if my administrator questions the claim?</span><span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">&ndash;</span></summary><div class="pb-8 pr-12"><p class="font-body-md" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">Send us what they asked for and we&rsquo;ll help you answer it. Your file already holds the letter, every signed session note and every coded invoice, so most questions are answered by sending the part they want in the form they want it. If they need something further &mdash; more detail from your practitioner, a document reissued, a fuller history of your sessions &mdash; we put it together with you.</p><p class="font-body-md mt-4" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">The decision stays with your plan, but you won&rsquo;t be working out what to send on your own.</p></div></details><details class="group border-b border-[#16181a]/10"><summary class="flex justify-between items-center py-6 cursor-pointer list-none"><span class="font-headline-sm text-[20px]" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">Do I have to switch therapists?</span><span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span></summary><div class="pb-8 pr-12"><p class="font-body-md" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">Not at all — and we'd rather you didn't. Name your current practice when you request your letter and send them an invite. Setting up takes a few minutes and costs them nothing, and someone who already knows your history writes a better note. If you don't have a practice yet, we'll show you ones near you.</p></div></details><details class="group border-b border-[#16181a]/10"><summary class="flex justify-between items-center py-6 cursor-pointer list-none"><span class="font-headline-sm text-[20px]" style="font-family: Lora; font-weight: 500; color: rgb(22, 24, 26);">When can I start?</span><span class="text-2xl font-light group-open:hidden">+</span><span class="text-2xl font-light hidden group-open:block">–</span></summary><div class="pb-8 pr-12"><p class="font-body-md" style="font-family: &quot;Source Sans 3&quot;; color: rgba(22, 24, 26, 0.62);">Your letter covers every session from the day it's issued, for twelve months. Worth sorting before your next appointment rather than after a run of them.</p></div></details></div><div class="mt-12 text-center"><a class="font-body-md hover:underline" href="mailto:hello@reblooma.com" style="font-family: &quot;Source Sans 3&quot;; color: rgb(22, 24, 26);">More questions? Email hello@reblooma.com →</a></div></div></section>
-<!-- END: FAQSection -->
+
+<!-- CALCULATOR: same place and layout as the live site, new look. -->
+<section class="calcsec" id="calc">
+  <div class="wrap center">
+    <h2 style="font-size:clamp(1.875rem,1.4rem + 1.8vw,2.75rem)">See how much you could keep.</h2>
+    <p class="lead" style="margin-top:12px">Adjust the sliders to estimate your potential tax savings when using your FSA or HSA for massage therapy.</p>
+    <div class="card">
+      <div class="res">
+        <p class="klab">You'd keep about</p>
+        <p class="big"><b id="cKeep">$432</b><span>a year</span></p>
+        <p class="sess"><span id="cSess">12</span> sessions of documented care</p>
+        <div class="bars">
+          <div class="bar post"><div class="row"><span>Without your FSA/HSA</span><b id="cAfter">$1,440</b></div><i></i></div>
+          <div class="bar pre"><div class="row"><span>With your FSA/HSA<sup><a href="#n6">6</a></sup></span><b id="cPre">$1,008</b></div><div class="track"><i id="cBar" style="width:70%"></i></div></div>
+        </div>
+        <p class="fine">Both figures are a year, in take-home dollars.</p>
+      </div>
+      <div class="sliders">
+        <div class="range"><label for="rS">Sessions per year <span id="oS">12</span></label><input id="rS" type="range" min="1" max="52" value="12"></div>
+        <div class="range"><label for="rC">Session cost <span id="oC">$120</span></label><input id="rC" type="range" min="60" max="250" step="5" value="120"></div>
+        <div class="range"><label for="rT">Effective tax rate <span id="oT">30%</span></label><input id="rT" type="range" min="10" max="45" value="30"></div>
+      </div>
+      <p class="fine disc">An estimate, not tax or financial advice. Forfeiture rules depend on your employer's plan, and your plan administrator decides each claim. We help you give them what they ask for.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO: the live site's layout (icon, title, line, checks, button). The gray note is under More. -->
+<section id="who">
+  <div class="wrap who">
+    <div class="card">
+      <div class="ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.2-3.8 4-5.5 7.5-5.5s6.3 1.7 7.5 5.5"/></svg></div>
+      <h3>If you're a patient</h3>
+      <p class="lede">You have an FSA or HSA, and you get massage for a real problem. We build the file. You send it in.</p>
+      <ul class="checks">
+        <li>A $19 consultation that covers twelve months</li>
+        <li>Your own practitioner, or one on Reblooma</li>
+        <li>Your file, built every session</li>
+      </ul>
+      <div class="act"><a data-waitlist="consult" data-cta="patient-card" class="btn btn-main btn-sm" href="#">Start the consultation</a></div>
+      <details class="more"><summary>More</summary><div class="body">
+        <p>Chronic pain, injury, recovery. No old records to dig up, no prior doctor's visit needed. Just describe what hurts, and a clinician at Dr. B takes it from there.</p>
+      </div></details>
+    </div>
+    <div class="card">
+      <div class="ico"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20v-5.5c0-1 .8-1.8 1.8-1.8S8.5 13.5 8.5 14.5V17M8.5 16V9.8c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6V16M11.7 15V8.3c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6V16M14.9 15V10c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v10"/></svg></div>
+      <h3>If you're a practitioner</h3>
+      <p class="lede">You already do the work. A few taps and AI draft your notes. No discounts, and clients come back.</p>
+      <ul class="checks">
+        <li>You never write the letter</li>
+        <li>Signed SOAP notes, drafted from the session</li>
+        <li>Reblooma charges practitioners nothing<sup><a href="#n7">7</a></sup></li>
+      </ul>
+      <p class="morelink"><a href="practitioners.html">How it works for practices →</a></p>
+      <div class="act"><a data-waitlist="practitioner" data-cta="practitioner-card" class="btn btn-ghost btn-sm" href="#">Join our practitioner list</a></div>
+      <details class="more"><summary>More</summary><div class="body">
+        <p>Practitioners at day spas and resorts, massage and wellness practices, and mobile or in-home services are all welcome. The setting isn't the test.</p>
+      </div></details>
+    </div>
+  </div>
+</section>
+<section class="irs">
+  <div class="wrap center">
+    <h2>The IRS tests the treatment and the paper trail. Not the room it happened in.</h2>
+    <a class="eyebrow fnlink" href="#n4">Understanding IRC §213(d)</a>
+  </div>
+</section>
+
+<!-- FAQ: already the right pattern. All 9 kept. -->
+<section id="faq">
+  <div class="wrap center">
+    <p class="eyebrow">Before you start</p>
+    <h2 style="font-size:clamp(1.875rem,1.4rem + 1.8vw,2.75rem);margin-top:10px">Questions people ask.</h2>
+  </div>
+  <div class="wrap">
+    <div class="faq">
+      <details open><summary>Can I really use my FSA or HSA for massage?</summary><div class="a">
+        <p>More often than people think. Under IRC §213(d), massage prescribed to treat a diagnosed condition is a qualified medical expense, the same as physical therapy.<sup><a href="#n8">8</a></sup> Most people never find out, because a massage practice can't produce the documents on its own. That's the part we handle.</p></div></details>
+      <details><summary>What do I actually need?</summary><div class="a">
+        <p>Usually two things: a letter of medical necessity and a coded itemized invoice. That's what most administrators ask for.</p>
+        <p>Some go further and ask you to show the sessions actually treated the condition in your letter. So your practitioner signs a clinical note after every visit, and Reblooma files it with the rest. If that question ever comes, the answer is already there.</p></div></details>
+      <details><summary>Isn't a letter and a receipt enough?</summary><div class="a">
+        <p>Often it is what gets asked for. But a receipt only proves you paid. A spa receipt shows a date, a total and the word "massage," which connects the money to nothing in particular.</p>
+        <p>Your Reblooma invoice reads like a medical bill, not a spa receipt. It carries your practitioner's name and license number, the date of service, the treatment with its procedure code, the diagnosis code from your letter, and what you paid. With the signed session note, it shows the visit treated the condition your letter names. You submit knowing the evidence is already in hand.</p></div></details>
+      <details><summary>Where does the letter come from?</summary><div class="a">
+        <p>A $19 online consultation with Dr. B, an established telehealth practice that has written these letters for years. Describe what's going on and one of their clinicians reviews it. Your letter usually arrives within 24 hours and covers you for twelve months.<sup><a href="#n9">9</a></sup></p></div></details>
+      <details><summary>What kinds of problems does this cover?</summary><div class="a">
+        <p>Back pain, chronic pain, fibromyalgia, disc conditions, muscle spasms, and sleep or stress-related conditions are among the most common. The list is longer, and a clinician decides.<sup><a href="#n10">10</a></sup> No old records to dig up and no prior doctor's visit needed. Just describe what's going on.</p></div></details>
+      <details><summary>Can I go to a day spa, a resort, or someone who comes to my home?</summary><div class="a">
+        <p>Yes. Day spas, resorts, wellness practices and mobile or in-home therapists are all welcome. The setting was never the test. What counts is that your therapist is licensed and the session treats what your letter covers.</p>
+        <p>A massage booked purely to relax, and extras like tips, add-ons, retail or facility fees, generally don't qualify. So your invoice lists the treatment on its own.</p></div></details>
+      <details><summary>What if my administrator questions the claim?</summary><div class="a">
+        <p>Send us what they asked for and we'll help you answer it. Your file already holds the letter, every signed session note and every coded invoice. So most questions are answered by sending the part they want, in the form they want it.</p>
+        <p>If they need something more, like more detail from your practitioner, a document reissued or a fuller history of your sessions, we put it together with you. The decision stays with your plan, but you won't be working out what to send on your own.</p></div></details>
+      <details><summary>Do I have to switch therapists?</summary><div class="a">
+        <p>Not at all, and we'd rather you didn't. Name your current practice when you request your letter and send them an invite. Setting up takes a few minutes and costs them nothing, and someone who already knows your history writes a better note. If you don't have a practice yet, we'll show you ones near you.</p></div></details>
+      <details><summary>When can I start?</summary><div class="a">
+        <p>Your letter covers every session from the day it's issued, for twelve months. It's worth sorting out before your next appointment, not after a run of them.</p></div></details>
+    </div>
+    <p class="center" style="margin-top:24px;font-size:var(--t-small)">More questions? Email <a href="mailto:hello@reblooma.com"><b>hello@reblooma.com</b></a></p>
+  </div>
+</section>
 </main>
-<!-- BEGIN: Footer -->
-<footer class="bg-surface-container border-t border-outline-variant/30 relative z-20">
-<section class="pt-12 pb-8 px-container-padding">
-<div class="max-w-7xl mx-auto w-full text-left space-y-4" style="font-size: 0.70rem; color: rgba(22, 24, 26, 0.42);">
-<div class="flex gap-2"><span class="font-bold shrink-0">1.</span><p>Health FSA funds are generally forfeited at the end of your plan year. Some employers allow a small carryover or a short grace period; many allow neither. HSA funds do not expire.</p></div>
-<div class="flex gap-2"><span class="font-bold shrink-0">2.</span><p>The $19 consultation is charged by Dr. B, an independent telehealth practice, and is subject to their pricing and turnaround. Reblooma receives no part of it. Reblooma's own patient fee is published before launch. Practitioners are never charged.</p></div>
-<div class="flex gap-2"><span class="font-bold shrink-0">3.</span><p>Reblooma prepares your documents and helps you respond if your administrator asks for more. The reimbursement decision itself rests with your plan.</p></div>
-<div class="flex gap-2"><span class="font-bold shrink-0">4.</span><p>A disqualified HSA distribution is included in income and subject to an additional 20% tax if you are under 65, with limited exceptions. FSA substantiation rules and card suspension vary by plan. Reblooma is not a tax advisor.</p></div>
-<div class="flex gap-2"><span class="font-bold shrink-0">5.</span><p>Works with a health savings account (HSA) or a healthcare flexible spending account (FSA). Limited-purpose and dependent-care FSAs do not cover massage under any documentation.</p></div>
-<div class="flex gap-2"><span class="font-bold shrink-0">6.</span><p>Whether an expense qualifies depends on your condition and on the requirements of your individual plan.</p></div>
-<div class="flex gap-2"><span class="font-bold shrink-0">7.</span><p>Letters are issued at the reviewing clinician's discretion, after review. Reblooma does not write letters and does not employ the clinicians who do.</p></div>
-<div class="flex gap-2"><span class="font-bold shrink-0">8.</span><p>Examples only. Eligibility is decided on individual clinical review, never by a list.</p></div>
-</div>
-</section>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-7xl mx-auto px-container-padding py-20 items-start">
-<div>
-<a class="font-headline-sm text-headline-sm font-bold text-primary block mb-6" href="index.html">Reblooma</a>
-<div class="font-label-caps text-label-caps text-on-surface-variant/70">&copy; 2026 Reblooma. All rights reserved.</div>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Legal</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="privacy.html">Privacy Notice</a>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-primary font-semibold mb-2">Explore</span>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#how-it-works-section">How it works</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="practitioners.html">For practitioners</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="directory.html">Find a practice</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="resources.html">Resources</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="about.html">About</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="index.html#faq">Help</a>
-<button type="button" data-waitlist data-cta="footer" class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left">Join the waitlist</button>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary hover:underline transition-all text-left" href="mailto:hello@reblooma.com">hello@reblooma.com</a>
-</div>
-</div>
-<div class="border-t border-primary/5 max-w-7xl mx-auto px-container-padding py-8">
-<p class="font-label-caps text-[0.68rem] leading-[1.55] max-w-[100ch] text-left text-on-surface-variant/60">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC &sect;213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
-</div>
+
+<footer id="about">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
+      <div><h5>Explore</h5><ul><li><a href="#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="mailto:hello@reblooma.com">hello@reblooma.com</a></li></ul></div>
+      <div><h5>Legal</h5><ul><li><a href="privacy.html">Privacy Notice</a></li></ul></div>
+    </div>
+    <details class="more notes"><summary>Notes and sources (10)</summary><div class="body">
+      <ol>
+        <li id="n1">Health FSA funds are generally forfeited at the end of your plan year. Some employers allow a small carryover or a short grace period; many allow neither. HSA funds do not expire.</li>
+        <li id="n2">The $19 consultation is charged by Dr. B, an independent telehealth practice, and is subject to their pricing and turnaround. Reblooma receives no part of it. Reblooma's own patient fee is published before launch.</li>
+        <li id="n3">Reblooma prepares your documents and helps you respond if your administrator asks for more. The reimbursement decision itself rests with your plan.</li>
+        <li id="n4"><b>IRC §213(d)</b> defines medical care as the diagnosis, cure, mitigation, treatment or prevention of disease. <b>Treas. Reg. §1.213-1(e)(1)(ii)</b>, the "but-for" test: would you get this massage without the condition? Each session has to show it was treatment. <b>IRS News Release IR-2024-65</b> (2024): a doctor's note based only on what you report does not, by itself, make a wellness expense eligible.</li>
+        <li id="n5">A disqualified HSA distribution is included in income and subject to an additional 20% tax if you are under 65, with limited exceptions. FSA substantiation rules and card suspension vary by plan. Reblooma is not a tax advisor.</li>
+        <li id="n6">Works with a health savings account (HSA) or a healthcare flexible spending account (FSA). Limited-purpose and dependent-care FSAs do not cover massage under any documentation.</li>
+        <li id="n7">Reblooma never charges practitioners a platform fee. Standard card-processing fees come out of payouts, as with any card payment.</li>
+        <li id="n8">Whether an expense qualifies depends on your condition and on the requirements of your individual plan.</li>
+        <li id="n9">Letters are issued at the reviewing clinician's discretion, after review. Reblooma does not write letters and does not employ the clinicians who do.</li>
+        <li id="n10">Examples only. Eligibility is decided on individual clinical review, never by a list.</li>
+      </ol>
+    </div></details>
+    <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
+  </div>
 </footer>
-<!-- END: Footer -->
 
-<script data-purpose="calculator-logic">
-    document.addEventListener('DOMContentLoaded', () => {
-        const sliderSessions = document.getElementById('slider-sessions');
-        const sliderCost = document.getElementById('slider-cost');
-        const sliderTax = document.getElementById('slider-tax');
 
-        const valSessions = document.getElementById('val-sessions');
-        const valCost = document.getElementById('val-cost');
-        const valTax = document.getElementById('val-tax');
+<script>
+// Footnote links open the closed "Notes and sources" first.
+document.querySelectorAll('sup a, a.fnlink').forEach(a=>a.addEventListener('click',()=>{document.querySelector('.notes').open=true}));
+// Calculator, same math as the live site.
+const $=id=>document.getElementById(id), fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+function calc(){const s=+$('rS').value,c=+$('rC').value,t=+$('rT').value;
+  const after=s*c, pre=after*(1-t/100);
+  $('oS').textContent=s;$('oC').textContent=fmt(c);$('oT').textContent=t+'%';
+  $('cAfter').textContent=fmt(after);$('cPre').textContent=fmt(pre);$('cBar').style.width=(100-t)+'%';
+  $('cKeep').textContent=fmt(after-pre);$('cSess').textContent=s;}
+['rS','rC','rT'].forEach(id=>$(id).addEventListener('input',calc));calc();
+// Video: one landscape file everywhere (the "portrait" export is the same frame letterboxed). Big play button hides once playing.
+(function(){const v=$('vid'),btn=$('vplay');
+  // Play fills the screen; it shrinks back when the video ends (Joyce, 10/13/2026).
+  // The window-filling style always applies, so it works even where real full screen is refused
+  // (an app's preview pane, an embedded page). Real full screen is tried on top, inside the click.
+  const box=$('vbox'),x=$('vclose');
+  const grow=()=>{box.classList.add('big');document.body.classList.add('vbig');x.hidden=false;v.controls=true;
+    try{if(box.requestFullscreen){const r=box.requestFullscreen();if(r&&r.catch)r.catch(()=>{});}
+      else if(box.webkitRequestFullscreen)box.webkitRequestFullscreen();
+      else if(v.webkitEnterFullscreen)v.webkitEnterFullscreen();}catch(e){}};
+  const shrink=()=>{box.classList.remove('big');document.body.classList.remove('vbig');x.hidden=true;
+    try{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+      else if(document.webkitFullscreenElement)document.webkitExitFullscreen();
+      else if(v.webkitDisplayingFullscreen)v.webkitExitFullscreen();}catch(e){}};
+  btn.addEventListener('click',()=>{grow();v.play();});
+  v.addEventListener('play',()=>{btn.hidden=true;v.controls=true;if(!box.classList.contains('big'))grow();});
+  v.addEventListener('ended',()=>{shrink();v.load();btn.hidden=false;v.controls=false;});
+  // Leaving early (the ×, Esc, or the browser's own exit) pauses and shrinks.
+  const stop=()=>{v.pause();shrink();btn.hidden=false;v.controls=false;};
+  x.addEventListener('click',stop);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('big'))stop();});
+  document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&box.classList.contains('big')&&!v.ended)stop();});
+})();
 
-        const calcSavings = document.getElementById('calc-savings');
-        const calcSessionsText = document.getElementById('calc-sessions-text');
-        const calcWithoutVal = document.getElementById('calc-without-val');
-        const calcWithVal = document.getElementById('calc-with-val');
-        const calcBarWith = document.getElementById('calc-bar-with');
-
-        function updateCalculator() {
-            if (!sliderSessions || !sliderCost || !sliderTax) return;
-
-            const S = parseInt(sliderSessions.value, 10);
-            const C = parseInt(sliderCost.value, 10);
-            const R_percent = parseInt(sliderTax.value, 10);
-            const r = R_percent / 100;
-
-            const savings = Math.round(C * r * S);
-            const withoutFsa = Math.round(C * S);
-            const withFsa = Math.round(C * (1 - r) * S);
-
-            valSessions.textContent = S;
-            valCost.textContent = `$${C}`;
-            valTax.textContent = `${R_percent}%`;
-
-            calcSavings.textContent = `$${savings.toLocaleString()}`;
-            calcSessionsText.textContent = `${S} session${S !== 1 ? 's' : ''} of documented care`;
-            
-            calcWithoutVal.textContent = `$${withoutFsa.toLocaleString()}`;
-            calcWithVal.textContent = `$${withFsa.toLocaleString()}`;
-            
-            calcBarWith.style.width = `${(1 - r) * 100}%`;
-        }
-
-        if (sliderSessions && sliderCost && sliderTax) {
-            [sliderSessions, sliderCost, sliderTax].forEach(slider => {
-                slider.addEventListener('input', updateCalculator);
-            });
-            updateCalculator();
-        }
-    });
+// IRS warning: the green label after "every session." opens the warning text.
+document.querySelectorAll('.irsbtn').forEach(b=>b.addEventListener('click',()=>{const t=document.getElementById(b.getAttribute('aria-controls'));const open=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',open);t.hidden=!open}));
 </script>
 </body>
 </html>
