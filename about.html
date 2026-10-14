@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>About Reblooma</title>
+<title>About Reblooma: FSA/HSA documentation for massage</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="assets/redesign.css">
@@ -51,6 +51,8 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 .tl li{position:relative;padding-left:36px}
 .tl li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:2px solid var(--stone)}
 .tl li.now::before{background:var(--teal);border-color:var(--teal)}
+.tl li.done::before{background:var(--stone)}
+.tl p a{color:var(--teal-ink);font-weight:600}
 .tl .when{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--hint)}
 .tl li.now .when{color:var(--teal-ink)}
 .tl h3{font-size:1.25rem;margin-top:4px}
@@ -67,15 +69,20 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 }
 @media (min-width:861px) and (max-width:1100px){.owners{grid-template-columns:1fr 1fr}}
 </style>
-<meta name="description" content="Why Reblooma exists: massage is care, and the paperwork should say so.">
+<meta name="description" content="Why Reblooma exists, who does what, and where we are now. Reblooma helps massage practices give patients the documents to pay with FSA or HSA funds. Now accepting pilot practices.">
 <link rel="canonical" href="https://reblooma.com/about.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reblooma">
-<meta property="og:title" content="About Reblooma">
-<meta property="og:description" content="Why Reblooma exists: massage is care, and the paperwork should say so.">
+<meta property="og:title" content="About Reblooma: FSA/HSA documentation for massage">
+<meta property="og:description" content="Why Reblooma exists, who does what, and where we are now. Reblooma helps massage practices give patients the documents to pay with FSA or HSA funds. Now accepting pilot practices.">
 <meta property="og:url" content="https://reblooma.com/about.html">
+<meta property="og:image" content="https://reblooma.com/assets/video/poster-landscape.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#e4deda">
-<link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
+<link rel="icon" type="image/png" href="assets/brand/logo/reblooma-favicon.png">
+<link rel="apple-touch-icon" href="assets/brand/logo/reblooma-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/wire.css">
 <script src="assets/analytics.js"></script>
@@ -83,10 +90,10 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 </head>
 <body>
 
-<button type="button" class="dev" data-waitlist data-cta="top-bar">In development · Join the waitlist for early access</button>
+<button type="button" class="dev" data-waitlist data-cta="top-bar">Now accepting pilot practices · Join the waitlist</button>
 <header>
   <div class="wrap">
-    <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
+    <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour-sm.png" alt="Reblooma"></a>
     <nav aria-label="Main">
       <a href="index.html#how">How it works</a>
       <a href="practitioners.html">For practitioners</a>
@@ -151,7 +158,7 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
   <div class="wrap">
     <p class="eyebrow">Who does what</p>
     <h2 class="h2">We're clear about what we do, and what we don't.</h2>
-    <p class="lead" style="margin-top:14px">Healthcare paperwork only earns trust when every step has an accountable owner. Here is who owns each one.</p>
+    <p class="lead" style="margin-top:14px">Health care records only earn trust when every step has an accountable owner. Here is who owns each one.</p>
     <div class="owners">
       <div class="card us"><p class="eyebrow">Reblooma</p><p>Builds the software. Assembles your notes, invoices and letter into one file. Runs the practice tools.</p></div>
       <div class="card"><p class="eyebrow">Dr. B</p><p>An independent telehealth practice. Its clinicians review each request and decide whether to issue a letter.</p></div>
@@ -166,8 +173,8 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
     <p class="eyebrow">Where we are</p>
     <h2 class="h2">Building it in the open.</h2>
     <ol class="tl">
-      <li class="now"><span class="when">Now</span><h3>In development</h3><p>Building the documentation flow and the practice tools.</p></li>
-      <li><span class="when">Next · Q4 2026</span><h3>Pilot practices</h3><p>A small group of practices run Reblooma with real patients before launch.</p></li>
+      <li class="done"><span class="when">2026</span><h3>Built the foundations</h3><p>The documentation flow and the practice tools.</p></li>
+      <li class="now"><span class="when">Now · Q4 2026</span><h3>Accepting pilot practices</h3><p>A small group of practices run Reblooma with real patients before launch. <a data-waitlist="testing" data-cta="about-timeline-pilot" href="#">Apply to be a pilot practice</a></p></li>
       <li><span class="when">2027</span><h3>Open to everyone</h3><p>Patients and practitioners from the waitlist come on first.</p></li>
     </ol>
   </div></div>
@@ -176,8 +183,8 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 <section class="band-dark cta-dark">
   <div class="wrap">
     <h2>Build it <em>with us.</em></h2>
-    <p class="sub" style="margin-top:10px">Whether you get massage or give it, the waitlist is where it starts.</p>
-    <div class="ctas"><a data-waitlist data-cta="about-cta" class="btn btn-main" href="index.html#who">Join the waitlist</a><a class="mail" href="mailto:hello@reblooma.com">hello@reblooma.com</a></div>
+    <p class="sub" style="margin-top:10px">Run a practice? Apply to be a pilot practice. Get massage? Join the waitlist.</p>
+    <div class="ctas"><a data-waitlist="testing" data-cta="about-cta-pilot" class="btn btn-main" href="#">Apply to be a pilot practice</a><a data-waitlist data-cta="about-cta" class="mail" href="index.html#who">Join the waitlist</a><a class="mail" href="mailto:hello@reblooma.com">hello@reblooma.com</a></div>
   </div>
 </section>
 
@@ -186,12 +193,12 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 <footer id="about">
   <div class="wrap">
     <div class="fgrid">
-      <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
+      <div><img src="assets/brand/logo/reblooma-logo-colour-sm.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
       <div><h5>Explore</h5><ul><li><a href="index.html#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
-      <div><h5>Help</h5><ul><li><a href="index.html#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li><a href="mailto:hello@reblooma.com">hello@reblooma.com</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="index.html#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="mailto:hello@reblooma.com">hello@reblooma.com</a></li></ul></div>
       <div><h5>Legal</h5><ul><li><a href="privacy.html">Privacy Notice</a></li></ul></div>
     </div>
-    <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
+    <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of Medical Necessity are issued by independent licensed clinicians who review each request and decide.</p>
   </div>
 </footer>
 
