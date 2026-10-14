@@ -257,7 +257,7 @@ window.REBLOOMA = Object.assign({
       if (state.consult) return goToConsultation(sent);
       $('[data-wl-done-title]').textContent = 'You\'re on the list.';
       $('[data-wl-done-text]').textContent = testing
-        ? 'Thanks. We\'ll reach out personally about joining as a testing practice.'
+        ? 'Thanks. We\'ll reach out personally about joining as a pilot practice.'
         : 'We\'ll be in touch as we get closer to launch.';
       showStep('done');
     }).catch(function () {

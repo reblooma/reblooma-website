@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Find a massage practice near you &mdash; Reblooma</title>
+<title>Find a massage practice near you | Reblooma</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="assets/redesign.css">
@@ -47,11 +47,16 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 <link rel="canonical" href="https://reblooma.com/directory.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reblooma">
-<meta property="og:title" content="Find a massage practice near you &mdash; Reblooma">
+<meta property="og:title" content="Find a massage practice near you | Reblooma">
 <meta property="og:description" content="Search Reblooma practices by ZIP code or city. Every listed practice signs a clinical note and issues a coded itemized invoice for your FSA or HSA file.">
 <meta property="og:url" content="https://reblooma.com/directory.html">
+<meta property="og:image" content="https://reblooma.com/assets/video/poster-landscape.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#e4deda">
-<link rel="icon" href="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfzM8gbpe4zIFuK1LxcnjWXmJQzNsAZjpj_L2H3xAdMBrhh9UKlMD-hciqKRYFArz8QXz3DFMBbeqQIRDLc-ijdwpLHsghxDcVtVyivdtYnUj7YXVm5bYoYUQ0tPIzGVvL3BMq1xvC6zhQlB5HWWwHzRhKr11KgYGpN_CyWaJhfHUOzv3lRgkq4-lC5QgYNqdYMXOe-hSAgBBHPcfdCOO13stavS3duFUSsF4_Sq8YrNf59fu6ZlY2iZM8TLA8qfceQ">
+<link rel="icon" type="image/png" href="assets/brand/logo/reblooma-favicon.png">
+<link rel="apple-touch-icon" href="assets/brand/logo/reblooma-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/wire.css">
 <script src="assets/analytics.js"></script>
@@ -60,10 +65,10 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 </head>
 <body>
 
-<button type="button" class="dev" data-waitlist data-cta="top-bar">In development · Join the waitlist for early access</button>
+<button type="button" class="dev" data-waitlist data-cta="top-bar">Now accepting pilot practices · Join the waitlist</button>
 <header>
   <div class="wrap">
-    <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma"></a>
+    <a href="index.html"><img src="assets/brand/logo/reblooma-logo-colour-sm.png" alt="Reblooma"></a>
     <nav aria-label="Main">
       <a href="index.html#how">How it works</a>
       <a href="practitioners.html">For practitioners</a>
@@ -88,9 +93,9 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 <section class="hero dirh">
   <div class="wrap">
     <h1>Find a practice near you.</h1>
-    <p class="lead">Every partner practice signs a clinical note after each session, matched to your letter. A day spa, a clinic or a therapist who comes to you: the setting doesn't matter.</p>
+    <p class="lead">Every partner practice signs a clinical note after each session, matched to your letter. A day spa, a clinic or a practitioner who comes to you: the setting doesn't matter.</p>
     <form class="card search" id="dir-form">
-      <label>Zip code or city<input id="dir-query" name="q" type="text" inputmode="text" placeholder="78704 or Austin, TX" autocomplete="postal-code"></label>
+      <label>ZIP code or city<input id="dir-query" name="q" type="text" inputmode="text" placeholder="78704 or Austin, TX" autocomplete="postal-code"></label>
       <label>Within<select id="dir-radius"><option value="10">10 miles</option><option value="25" selected>25 miles</option><option value="50">50 miles</option><option value="100">100 miles</option></select></label>
       <button class="btn btn-main" type="submit">Search</button>
       <button class="loc" type="button" id="dir-locate"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7"/></svg> Use my location</button>
@@ -100,7 +105,7 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
     <div class="card empty" id="dir-empty">
       <div class="ico"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.5-5h13L20 9M4 9v11h16V9M4 9c0 1.4 1.1 2.5 2.7 2.5S9.3 10.4 9.3 9c0 1.4 1.2 2.5 2.7 2.5s2.7-1.1 2.7-2.5c0 1.4 1.1 2.5 2.6 2.5S20 10.4 20 9M10 20v-5h4v5"/></svg></div>
       <h2>No practices listed yet.</h2>
-      <p>We're adding our first practices now. Tell us where you are, and we'll tell you when one opens near you. Or bring your own therapist. Most people do.</p>
+      <p>We're adding our first practices now. Tell us where you are, and we'll tell you when one opens near you. Or bring your own practitioner. Most people do.</p>
       <div class="ctas"><a data-waitlist="patient" data-cta="directory-empty" class="btn btn-main btn-sm" href="index.html#who">Tell us where you are</a><a data-waitlist="practitioner" data-cta="directory-empty-practitioner" class="btn btn-ghost btn-sm" href="practitioners.html">I run a practice</a></div>
     </div>
     <p class="dirfine">Listing is not a clinical endorsement. Your plan administrator decides each claim, and we help you answer whatever they ask for.</p>
@@ -109,9 +114,9 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 
 <section class="own">
   <div class="wrap">
-    <h2 class="h2">Already have a therapist you trust?</h2>
-    <p class="lead">Keep them. Name their practice when you request your letter, and send them an invite. Someone who knows your history writes a better note.</p>
-    <a data-waitlist="patient" data-cta="directory-bring-your-own" class="btn btn-main" href="index.html#who">Bring my own therapist</a>
+    <h2 class="h2">Already have a practitioner you trust?</h2>
+    <p class="lead">Keep them. Name their practice when you request your letter. Someone who knows your history writes a better note.</p>
+    <a data-waitlist="patient" data-cta="directory-bring-your-own" class="btn btn-main" href="index.html#who">Bring my own practitioner</a>
   </div>
 </section>
 
@@ -120,12 +125,12 @@ header .wrap,footer .wrap,.rsh .wrap{max-width:1280px}
 <footer id="about">
   <div class="wrap">
     <div class="fgrid">
-      <div><img src="assets/brand/logo/reblooma-logo-colour.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
+      <div><img src="assets/brand/logo/reblooma-logo-colour-sm.png" alt="Reblooma" style="height:30px;width:auto"><p style="margin-top:12px">© 2026 Reblooma. All rights reserved.</p></div>
       <div><h5>Explore</h5><ul><li><a href="index.html#how">How it works</a></li><li><a href="practitioners.html">For practitioners</a></li><li><a href="directory.html">Find a practice</a></li><li><a href="resources.html">Resources</a></li><li><a href="about.html">About</a></li></ul></div>
-      <div><h5>Help</h5><ul><li><a href="index.html#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="index.html#faq">Help</a></li><li><a href="mailto:hello@reblooma.com">hello@reblooma.com</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="index.html#who" data-waitlist data-cta="footer">Join the waitlist</a></li><li><a href="index.html#faq">FAQ</a></li><li><a href="mailto:hello@reblooma.com">hello@reblooma.com</a></li></ul></div>
       <div><h5>Legal</h5><ul><li><a href="privacy.html">Privacy Notice</a></li></ul></div>
     </div>
-    <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of medical necessity are issued by independent licensed clinicians who review each request and decide.</p>
+    <p class="disc">Disclaimer: Reblooma is a software platform designed to assist in compiling documentation. Reblooma does not provide medical or tax advice. The eligibility of massage therapy as a qualified medical expense under IRC §213(d) is dependent on the specific facts and circumstances of the individual taxpayer and the requirements of their specific FSA/HSA plan administrator. Users should consult with their healthcare provider and a qualified tax professional. Letters of Medical Necessity are issued by independent licensed clinicians who review each request and decide.</p>
   </div>
 </footer>
 
