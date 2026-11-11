@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "cookie-policy",
+    "title": "Cookie Policy",
+    "description": "How Reblooma uses cookies and similar tools on reblooma.com, and how to change your choices.",
+    "uuid": "133506bc-58a1-4342-aad2-44e25060e826"
+  },
+  {
+    "slug": "privacy",
+    "title": "Privacy Notice",
+    "description": "How Reblooma collects, uses and protects the information you give us on this website and when you join the waitlist.",
+    "uuid": ""
+  },
+  {
+    "slug": "terms",
+    "title": "Terms of Use",
+    "description": "The terms for using reblooma.com and joining the Reblooma waitlist.",
+    "uuid": ""
+  }
+]

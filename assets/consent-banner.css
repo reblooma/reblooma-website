@@ -1,0 +1,33 @@
+/* Termly cookie banner: match Reblooma's design system.
+   Colors are set in Termly (Consent Banner > Custom Theme): buttons #16181a,
+   button text #ffffff, text #44474a, background #fcf9f6, 14px.
+   Termly has no Source Sans 3 and no corner setting, so those two live here.
+   Termly writes the font inline on each banner element; a stylesheet rule
+   marked !important wins over an inline value that isn't. */
+[class*="termly-styles-"],
+[class*="termly-styles-"] * {
+  font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+[class*="termly-styles-button"] {
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+}
+
+/* Colors also set here, so the banner matches even if Termly serves an older
+   theme. Keep these equal to the Termly Custom Theme. */
+[class*="termly-styles-root"] {
+  background: #fcf9f6 !important;   /* surface */
+  color: #44474a !important;        /* body text */
+  font-size: 14px !important;
+}
+[class*="termly-styles-buttons"] { background: transparent !important; }
+[class*="termly-styles-module-primary"] {
+  background: #16181a !important;   /* ink, .btn-primary */
+  border-color: #16181a !important;
+  color: #ffffff !important;
+}
+[class*="termly-styles-module-outline"] {
+  background: transparent !important;
+  border-color: #16181a !important;
+  color: #16181a !important;
+}
