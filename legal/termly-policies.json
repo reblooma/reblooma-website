@@ -9,12 +9,18 @@
     "slug": "privacy",
     "title": "Privacy Notice",
     "description": "How Reblooma collects, uses and protects the information you give us on this website and when you join the waitlist.",
-    "uuid": ""
+    "uuid": "0070776c-3f27-4e12-a9e7-a4e284bd4e3d"
   },
   {
     "slug": "terms",
     "title": "Terms of Use",
     "description": "The terms for using reblooma.com and joining the Reblooma waitlist.",
-    "uuid": ""
+    "uuid": "82f668e5-e54c-4749-a54f-c1a49c54e115"
+  },
+  {
+    "slug": "accessibility",
+    "title": "Accessibility Statement",
+    "description": "How Reblooma works to make reblooma.com usable for everyone, and how to tell us about a barrier.",
+    "uuid": "8c3c6e47-c61c-4d30-9ce9-063c400359db"
   }
 ]

@@ -34,11 +34,18 @@ API = "https://app.termly.io/api/v1/consumer/policies/{uuid}/content"
 MIN_LENGTH = 3000  # a real policy is tens of thousands of characters
 
 # Wording we always change after download. (old, new) pairs, applied in order.
+_GAP = r"((?:\s|&nbsp;|<[^>]+>)*)"   # spaces, &nbsp; and tags Termly puts between words
 FIXES = [
     # Joyce 11/11/2026: the El Camino Real address is a mailing address,
     # not the registered address. Keep the registered address off the site.
-    (r"a company registered in California, United States\s+at ",
-     "a company registered in California, United States, with a mailing address at "),
+    # The tags between the words are kept, so the HTML stays balanced.
+    (r"a company registered in" + _GAP + r"California" + _GAP + r"," + _GAP + r"United States" + _GAP + r"at ",
+     r"a company registered in\1California\2,\3United States, with a mailing address\4at "),
+]
+
+# Text that must never appear after FIXES. If it does, the page is not written.
+FORBIDDEN = [
+    (r"registered in California, United States at ", "the address is still called the registered address"),
 ]
 
 
@@ -66,8 +73,13 @@ def clean(raw):
 def looks_complete(text, title):
     if len(text) < MIN_LENGTH:
         return False, f"only {len(text)} characters"
-    if title.lower() not in re.sub(r"<[^>]+>", " ", text).lower():
+    plain = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", text)).split())
+    plain = re.sub(r"\s+([,.])", r"\1", plain)
+    if title.lower() not in plain.lower():
         return False, f'"{title}" not found in the text'
+    for pattern, why in FORBIDDEN:
+        if re.search(pattern, plain):
+            return False, why
     return True, ""
 
 
