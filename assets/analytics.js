@@ -12,6 +12,15 @@
  *
  * If you run GTM, you can leave ga4Id / metaPixelId / redditId blank and add
  * those tags inside GTM instead. Set them here only if you'd rather skip GTM.
+ *
+ * RULE (Joyce, 11/11/2026): never send health signals to ad platforms (Meta,
+ * Reddit, Google Ads). That means no "patient" or "practitioner" role, no
+ * "consultation", no condition, symptom or body-area words, in any event or
+ * parameter. Ad platforms get page views and a plain sign-up only. The role
+ * stays in GoHighLevel. To split results by audience, use separate campaigns
+ * (pt_ for patients, pr_ for practitioners) and UTM tags. Washington's health
+ * data law needs separate consent to share health data; a cookie banner is
+ * not enough. Plan: https://claude.ai/artifact/19xcKLa2tUKyhRt9ywt84q
  */
 window.REBLOOMA_ANALYTICS = Object.assign({
   gtmId: '',
@@ -92,11 +101,11 @@ window.REBLOOMA_ANALYTICS = Object.assign({
   function forward(entry) {
     if (!entry || !entry.event) return;
     if (entry.event === 'waitlist_signup' || entry.event === 'consultation_started') {
-      var label = entry.event === 'consultation_started' ? 'Consultation' : 'Waitlist';
-      if (window.fbq) fbq('track', 'Lead', { content_name: label, content_category: entry.role || '' });
+      // Ad platforms get a plain sign-up: no role, no "consultation" (see RULE above).
+      if (window.fbq) fbq('track', 'Lead');
       if (window.rdt) rdt('track', 'SignUp');
       if (window.gtag && cfg.ga4Id) gtag('event', entry.event, { role: entry.role || '' });
-      if (window.clarity) clarity('set', 'signup', label.toLowerCase());
+      if (window.clarity) clarity('set', 'signup', 'yes');
     }
   }
   // dataLayer is a plain array, so watch it rather than wrapping GTM's own push
