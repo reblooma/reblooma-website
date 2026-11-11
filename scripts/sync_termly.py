@@ -41,11 +41,16 @@ FIXES = [
     # The tags between the words are kept, so the HTML stays balanced.
     (r"a company registered in" + _GAP + r"California" + _GAP + r"," + _GAP + r"United States" + _GAP + r"at ",
      r"a company registered in\1California\2,\3United States, with a mailing address\4at "),
+    # Joyce 11/11/2026: Termly leaves the children contact email blank, and
+    # has no question in its editor that fills it. Use our support inbox.
+    (r"please contact us at" + _GAP + r"_{3,}",
+     r'please contact us at\1<a href="mailto:support@reblooma.com">support@reblooma.com</a>'),
 ]
 
 # Text that must never appear after FIXES. If it does, the page is not written.
 FORBIDDEN = [
     (r"registered in California, United States at ", "the address is still called the registered address"),
+    (r"_{3,}", "a fill-in blank (____) was left empty in Termly"),
 ]
 
 
