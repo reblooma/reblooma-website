@@ -31,3 +31,48 @@
   border-color: #16181a !important;
   color: #16181a !important;
 }
+
+/* Shorter banner (Joyce 11/11/2026: "so tall"). Termly squeezes the message
+   into a narrow column next to three wide buttons. Let the message take the
+   width, size the buttons to their words, and trim the padding. */
+[class*="termly-styles-termly-banner"] {
+  padding: 14px 20px !important;
+}
+[class*="termly-styles-content"] {
+  align-items: center !important;
+  gap: 20px !important;
+}
+[class*="termly-styles-message"] {
+  flex: 1 1 auto !important;
+  max-width: none !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+[class*="termly-styles-buttons"] {
+  flex: 0 0 auto !important;
+  padding: 0 !important;
+  gap: 8px !important;
+}
+[class*="termly-styles-buttons"] button {
+  width: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 7px 16px !important;
+  white-space: nowrap !important;
+}
+@media (max-width: 767px) {
+  [class*="termly-styles-content"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  [class*="termly-styles-buttons"] {
+    flex-direction: row !important;
+    width: 100% !important;
+  }
+  [class*="termly-styles-buttons"] button {
+    flex: 1 1 0 !important;
+    padding: 7px 8px !important;
+  }
+  [class*="termly-styles-termly-banner"] { padding: 12px 16px !important; }
+}
